@@ -1,0 +1,168 @@
+:root {
+    --bg-color: #1a1a1a;
+    --card-bg: #252525;
+    --text-color: #e0e0e0;
+    --nvidia-green: #76b900;
+    --nvidia-green-hover: #5ca900;
+    --status-fixed: #76b900;
+    --status-pending: #ff4444;
+    --border-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--nvidia-green);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: var(--nvidia-green);
+    margin-bottom: 0.5rem;
+}
+
+.header-content p {
+    color: #888;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--nvidia-green);
+}
+
+.driver-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.driver-header {
+    background-color: #2d2d2d;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.driver-version {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--nvidia-green);
+}
+
+.bug-list {
+    list-style: none;
+}
+
+.bug-item {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.bug-item:last-child {
+    border-bottom: none;
+}
+
+.bug-desc {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.bug-status {
+    flex-shrink: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.status-fixed {
+    color: var(--status-fixed);
+}
+
+.status-pending {
+    color: var(--status-pending);
+}
+
+.pagination-container {
+    text-align: center;
+    padding: 2rem 0 4rem;
+}
+
+#load-more-btn {
+    background-color: var(--nvidia-green);
+    color: #000;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#load-more-btn:hover {
+    background-color: var(--nvidia-green-hover);
+}
+
+#load-more-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    display: none;
+}
+
+/* Hidden utility for search filtering */
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .bug-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .bug-status {
+        align-self: flex-start;
+    }
+}

@@ -1,0 +1,2860 @@
+[
+  {
+    "version": "526.98",
+    "bugs": [
+      {
+        "description": "Toggling HDR on and off in-game causes game stability issues when non-native resolution is used [3624030]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[DirectX 12] Shadowplay recordings may appear over exposed when Use HDR is enabled from the Windows display settings. [200742937]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "Older versions of Minecraft Java Edition show corruption on screen [3870232]",
+        "status": "fixed",
+        "fixed_in_version": "527.56",
+        "original_status_text": "Fixed (527.56)"
+      },
+      {
+        "description": "MSI Afterburner is not prioritizing GPU temp limit over power when selected in app [3858911]",
+        "status": "fixed",
+        "fixed_in_version": "527.37",
+        "original_status_text": "Fixed (527.37)"
+      },
+      {
+        "description": "[RTX 40 series] Metro Exodus Enhanced Edition may show random screen flash during gameplay [3793355]",
+        "status": "fixed",
+        "fixed_in_version": "527.37",
+        "original_status_text": "Fixed (527.37)"
+      },
+      {
+        "description": "[GeForce RTX 4090] Watch Dogs 2 may display flickering when staring at the sky [3858016]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Monitor may briefly flicker on waking from display sleep if DSR/DLDSR is enabled [3592260]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "Driver 526.98 fails to install on certain GeForce GTX 3060 Ti graphics cards [3872912]",
+        "status": "fixed",
+        "fixed_in_version": "527.37",
+        "original_status_text": "Fixed (527.37)"
+      },
+      {
+        "description": "[Microsoft Surface Book 2] Display driver fails to install on GeForce GTX 1060 [3876764]",
+        "status": "fixed",
+        "fixed_in_version": "527.56",
+        "original_status_text": "Fixed (527.56)"
+      }
+    ]
+  },
+  {
+    "version": "527.37",
+    "bugs": [
+      {
+        "description": "Flicker may be observed when streaming using the TikTok Broadcasting Tool [3831084]",
+        "status": "fixed",
+        "fixed_in_version": "527.37",
+        "original_status_text": "Fixed (527.37)"
+      },
+      {
+        "description": "Background apps may randomly display a slight shift in color saturation [3766872]",
+        "status": "fixed",
+        "fixed_in_version": "527.37",
+        "original_status_text": "Fixed (527.37)"
+      },
+      {
+        "description": "[Halo Wars 2] In-game foliage is larger than normal and displays constant flickering [3888343]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Ghost Recon Breakpoint] Game may crash when launched using Vulkan API [3856900]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Steam version] Forza Horizon 4 may freeze after 15-30 minutes of gameplay [3866530]",
+        "status": "fixed",
+        "fixed_in_version": "531.18",
+        "original_status_text": "Fixed (531.18)"
+      },
+      {
+        "description": "[RTX 4090] No display when hot plugging back and forth between DisplayPort and HDMI [3672801]",
+        "status": "fixed",
+        "fixed_in_version": "527.56",
+        "original_status_text": "Fixed (527.56)"
+      },
+      {
+        "description": "Errors in Adobe Premiere and After Effects with H.264 and HEVC content [3881781]",
+        "status": "fixed",
+        "fixed_in_version": "527.56",
+        "original_status_text": "Fixed (527.56)"
+      },
+      {
+        "description": "[Rainbow Six Siege] The sky may display random flicker when using DirectX API [3898594]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "527.56",
+    "bugs": [
+      {
+        "description": "OBS Studio may crash when opening Virtual Camera Device [3880090]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "528.02",
+    "bugs": [
+      {
+        "description": "Portal RTX hang during resolution/mode change and GFE recording [3894168]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "AVS4You monochrome video preview [3890225]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "Players report black/grey screens in Outer Wilds with 522.25 driver [3841593]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "Lumion Pro 12.3 - Heavy corruption observed on app window [3784371]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "Fixed brightness issue on some Notebooks [3765244]",
+        "status": "fixed",
+        "fixed_in_version": "528.02",
+        "original_status_text": "Fixed (528.02)"
+      },
+      {
+        "description": "Adobe Premiere Pro, Photoshop, and Lightroom instability with 528.02 [3940086]",
+        "status": "fixed",
+        "fixed_in_version": "528.24",
+        "original_status_text": "Fixed (528.24)"
+      },
+      {
+        "description": "Adobe Photoshop 24.1 application instability with 528.02 when using GeForce Experience [3940488]",
+        "status": "fixed",
+        "fixed_in_version": "528.24",
+        "original_status_text": "Fixed (528.24)"
+      },
+      {
+        "description": "[Adobe Premiere Pro] ProRes RAW files appear completely black when previewing [3924753]",
+        "status": "fixed",
+        "fixed_in_version": "528.24",
+        "original_status_text": "Fixed (528.24)"
+      }
+    ]
+  },
+  {
+    "version": "528.24",
+    "bugs": [
+      {
+        "description": "Autodesk Alias: Expected transparent window appears opaque [3891620]",
+        "status": "fixed",
+        "fixed_in_version": "528.24",
+        "original_status_text": "Fixed (528.24)"
+      },
+      {
+        "description": "OctaneBench 2020 fails intermittently due to render engine failure [3880988]",
+        "status": "fixed",
+        "fixed_in_version": "528.24",
+        "original_status_text": "Fixed (528.24)"
+      },
+      {
+        "description": "Increase in DPC latency observed in Latencymon for Ampere-based GPUs [3952556]",
+        "status": "fixed",
+        "fixed_in_version": "536.67",
+        "original_status_text": "Fixed (536.67)"
+      },
+      {
+        "description": "[Adobe Bridge] Application may crash when previewing images in full screen mode [3957846]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "When Discord is open in the background, graphics card memory clocks will not reach full speeds [3960028]",
+        "status": "fixed",
+        "fixed_in_version": "528.49",
+        "original_status_text": "Fixed (528.49)"
+      },
+      {
+        "description": "[Dying Light 2] Occasional stutter is observed when Reflex is enabled [3949473]",
+        "status": "fixed",
+        "fixed_in_version": "External",
+        "original_status_text": "Fixed External"
+      }
+    ]
+  },
+  {
+    "version": "528.49",
+    "bugs": [
+      {
+        "description": "Adobe Bridge stability issues with 528.02 [3957846]",
+        "status": "fixed",
+        "fixed_in_version": "528.49",
+        "original_status_text": "Fixed (528.49)"
+      },
+      {
+        "description": "Disable Hitman 3 Resizable Bar profile on Intel platforms [3956209]",
+        "status": "fixed",
+        "fixed_in_version": "528.49",
+        "original_status_text": "Fixed (528.49)"
+      },
+      {
+        "description": "Adobe After Effects / Media Encoder – issues with ProRes RAW files [3957455] [3957469]",
+        "status": "fixed",
+        "fixed_in_version": "531.18",
+        "original_status_text": "Fixed (531.18)"
+      },
+      {
+        "description": "Adobe Premiere Pro application instability [3940086]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      }
+    ]
+  },
+  {
+    "version": "531.18",
+    "bugs": [
+      {
+        "description": "Call of Duty Modern Warfare 2 occasional stability issues [3934963]",
+        "status": "fixed",
+        "fixed_in_version": "531.18",
+        "original_status_text": "Fixed (531.18)"
+      },
+      {
+        "description": "Enable Dead Space Resizable Bar profile [3954048]",
+        "status": "fixed",
+        "fixed_in_version": "531.18",
+        "original_status_text": "Fixed (531.18)"
+      },
+      {
+        "description": "Higher CPU usage from NVIDIA Container might be observed after exiting a game [4007208]",
+        "status": "fixed",
+        "fixed_in_version": "531.29",
+        "original_status_text": "Fixed (531.29)"
+      },
+      {
+        "description": "[Notebook] Random bugcheck may be observed on certain laptops with GeForce GTX 10/MX250/350 series GPUs [4008527]",
+        "status": "fixed",
+        "fixed_in_version": "531.29",
+        "original_status_text": "Fixed (531.29)"
+      },
+      {
+        "description": "Adobe application stability issues using 531.18 [4009055][4008751]",
+        "status": "fixed",
+        "fixed_in_version": "531.29",
+        "original_status_text": "Fixed (531.29)"
+      },
+      {
+        "description": "Assassin's Creed Origins may randomly crash with recent driver [4008770]",
+        "status": "fixed",
+        "fixed_in_version": "531.61",
+        "original_status_text": "Fixed (531.61)"
+      },
+      {
+        "description": "Certain games may crash when applying a GeForce Experience game filter [4008945]",
+        "status": "fixed",
+        "fixed_in_version": "536.67",
+        "original_status_text": "Fixed (536.67)"
+      },
+      {
+        "description": "[Hogwarts Legacy] Black Screen/Hang on Launch at Shader Compilation Screen using Driver 531.18 [4012825] -> Workaround: Close and relaunch game.",
+        "status": "fixed",
+        "fixed_in_version": "531.61",
+        "original_status_text": "Fixed (531.61)"
+      },
+      {
+        "description": "[HDMI 2.1] Auto Low Latency Mode remains active when G-SYNC is disabled from the NVIDIA Control Panel [4011174]",
+        "status": "fixed",
+        "fixed_in_version": "536.40",
+        "original_status_text": "Fixed (536.40)"
+      }
+    ]
+  },
+  {
+    "version": "531.29",
+    "bugs": [
+      {
+        "description": "[The Witcher 3: Wild Hunt] After updating to patch v4.02, game will randomly crash if DLSS 3 Frame Generation is enabled from the in-game settings [4026075]",
+        "status": "fixed",
+        "fixed_in_version": "External",
+        "original_status_text": "Fixed External"
+      }
+    ]
+  },
+  {
+    "version": "531.41",
+    "bugs": [
+      {
+        "description": "Enscape crash at startup with 531.18 [4008190]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "Beamr - Issue with AV1 encoding in PTD=0 mode [3981172]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "Derivative TouchDesigner - NVAR: crash when using multi-person tracking [3808674]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "[Forza Horizon 5] Rainbow like artifacts in game after driver update [3839021]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "[Portal with RTX] \"Background application max frame rate\" setting is getting engaged while game is in focus [3897352]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "Disable Horizon Zero Dawn Resizable Bar profile on Intel platforms [3759681]",
+        "status": "fixed",
+        "fixed_in_version": "531.41",
+        "original_status_text": "Fixed (531.41)"
+      },
+      {
+        "description": "Event Viewer logs nvlddmkm error at the end of the OCCT video ram test when memory is full [4049182]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[The Last of Us Part 1] Game may randomly crash during gameplay on GeForce RTX 30 series GPUs [4031676]",
+        "status": "fixed",
+        "fixed_in_version": "531.61",
+        "original_status_text": "Fixed (531.61)"
+      },
+      {
+        "description": "Stuttering may be observed in games when MFAA in enabled from the NVIDIA Control Panel while using DLSS 3 Frame Generation [4054402]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Small checkerboard like pattern may randomly appear in Chromium based applications [3992875]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Surface Book/Surface Studio] Dedicated GPU stuck at lowest clock speed when notebook is running off of battery [4063597]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      },
+      {
+        "description": "After updating to R530 drivers, certain GeForce RTX 40 series notebook models may randomly experience a TDR/black screen [4024853]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Solidworks] Models may not render properly when \"Enhanced Graphics Performance\" is enabled from the application settings [4050712]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "EA Desktop app incorrectly detected as a game by GeForce Experience Shadowplay [4049414]",
+        "status": "fixed",
+        "fixed_in_version": "531.68",
+        "original_status_text": "Fixed (531.68)"
+      }
+    ]
+  },
+  {
+    "version": "531.61",
+    "bugs": [
+      {
+        "description": "[Resident Evil 4 Remake] Corruption in the game when FXAA enabled [4051903]",
+        "status": "fixed",
+        "fixed_in_version": "531.61",
+        "original_status_text": "Fixed (531.61)"
+      }
+    ]
+  },
+  {
+    "version": "531.68",
+    "bugs": [
+      {
+        "description": "[Immortals Fenyx Rising] is randomly crashing to desktop after a driver update to 531.41 [4042712]",
+        "status": "fixed",
+        "fixed_in_version": "531.68",
+        "original_status_text": "Fixed (531.68)"
+      },
+      {
+        "description": "[Counter Strike 2] Enabling Reflex may reduce performance [4065567]",
+        "status": "fixed",
+        "fixed_in_version": "531.68",
+        "original_status_text": "Fixed (531.68)"
+      },
+      {
+        "description": "Some monitors may display random black screen flicker when in Display Stream Compression mode when using R530 drivers [4034096]",
+        "status": "fixed",
+        "fixed_in_version": "545.84",
+        "original_status_text": "Fixed (545.84)"
+      },
+      {
+        "description": "[Asus VG27WQ][Acer XV253Q] Highest monitor refresh rate is missing from the NVIDIA Control Panel after updating to NVIDIA display driver 531.41 [4072741]",
+        "status": "fixed",
+        "fixed_in_version": "531.79",
+        "original_status_text": "Fixed (531.79)"
+      },
+      {
+        "description": "[Control][DX12] Cut scenes and videos show tearing and partial jitter [4084000]",
+        "status": "fixed",
+        "fixed_in_version": "536.99",
+        "original_status_text": "Fixed (536.99)"
+      },
+      {
+        "description": "In certain languages, the NVIDIA Control Panel option is missing when right-clicking over the NVIDIA system tray icon [4019721]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "[RTX 30 series] Application crash may be observed while playing Battlefield 2042/The Last of Us/Unreal Editor [4013983]",
+        "status": "fixed",
+        "fixed_in_version": "531.79",
+        "original_status_text": "Fixed (531.79)"
+      }
+    ]
+  },
+  {
+    "version": "532.03",
+    "bugs": [
+      {
+        "description": "[Age of Wonders 4] Application stability issues [4101637]",
+        "status": "fixed",
+        "fixed_in_version": "532.03",
+        "original_status_text": "Fixed (532.03)"
+      },
+      {
+        "description": "[Bus Simulator 21] Ansel & Freestyle not working [4090979]",
+        "status": "fixed",
+        "fixed_in_version": "532.03",
+        "original_status_text": "Fixed (532.03)"
+      },
+      {
+        "description": "[Microsoft Flight Simulator] Game may randomly crash when playing in DX12 mode after updating to driver 531.41 [4051526]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      },
+      {
+        "description": "Fast sync caps the game FPS to the monitors maximum refresh rate [4114157]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      }
+    ]
+  },
+  {
+    "version": "535.98",
+    "bugs": [
+      {
+        "description": "[MAGIX Vegas Pro] Preview not working properly on some notebooks [4067005]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "[TouchDesigner] Degraded performance using Vulkan [3952439]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "[Nsight Tools] Abnormal termination that previously required a reboot [4056470]",
+        "status": "fixed",
+        "fixed_in_version": "535.98",
+        "original_status_text": "Fixed (535.98)"
+      },
+      {
+        "description": "When using multiple monitors which support adaptive sync, users may see random flicker on certain displays when G-SYNC after updating to driver 535.98 [4138119]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      },
+      {
+        "description": "Red Dead Redemption 2 may crash a few minutes after starting the game [4140319]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      },
+      {
+        "description": "Dead Space (2023) may crash during gameplay [4140545]",
+        "status": "fixed",
+        "fixed_in_version": "536.99",
+        "original_status_text": "Fixed (536.99)"
+      },
+      {
+        "description": "Launching a DirectX game on an Alienware x17 R2 w/ GeForce RTX 3080 Ti causes the screen to turn blank after updating GPU driver to v535.98 [4029825]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "3rd party GPU monitoring utilities may be unable to detect features of certain GeForce GTX 10 series graphics cards [4150170]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      }
+    ]
+  },
+  {
+    "version": "536.23",
+    "bugs": [
+      {
+        "description": "[ON1 Photo RAW] Application crashing [4114127]",
+        "status": "fixed",
+        "fixed_in_version": "536.23",
+        "original_status_text": "Fixed (536.23)"
+      }
+    ]
+  },
+  {
+    "version": "536.4",
+    "bugs": [
+      {
+        "description": "[Street Fighter 6] Corruption during the fight start cutscene when MFAA is applied [4147907]",
+        "status": "fixed",
+        "fixed_in_version": "536.40",
+        "original_status_text": "Fixed (536.40)"
+      },
+      {
+        "description": "Addresses vignette effect that could appear on image border pixels [4054040]",
+        "status": "fixed",
+        "fixed_in_version": "536.40",
+        "original_status_text": "Fixed (536.40)"
+      },
+      {
+        "description": "Not able to detect external HDMI display from NVCPL after driver re-installed [4085941]",
+        "status": "fixed",
+        "fixed_in_version": "536.40",
+        "original_status_text": "Fixed (536.40)"
+      },
+      {
+        "description": "GeForce RTX 4060 may not drop down to the lowest performance state while idling on some PC configuration [4186490]",
+        "status": "fixed",
+        "fixed_in_version": "537.58",
+        "original_status_text": "Fixed (537.58)"
+      }
+    ]
+  },
+  {
+    "version": "536.67",
+    "bugs": [
+      {
+        "description": "[Lenovo Legion 5 15ACH6H] Unable to select refresh rate higher than 60Hz for internal LCD panel [4139117]",
+        "status": "fixed",
+        "fixed_in_version": "536.67",
+        "original_status_text": "Fixed (536.67)"
+      },
+      {
+        "description": "[Halo Infinite] Significant performance drop is observed on Maxwell-based GPUs. [4052711]",
+        "status": "fixed",
+        "fixed_in_version": "546.01",
+        "original_status_text": "Fixed (546.01)"
+      },
+      {
+        "description": "[Battlefield 2042] Game stability can decrease when applying GeForce Experience Freestyle filters. [4170804]",
+        "status": "fixed",
+        "fixed_in_version": "536.99",
+        "original_status_text": "Fixed (536.99)"
+      },
+      {
+        "description": "[GeForce Experience Freestyle] Game stability can decrease when applying a GeForce Experience Freestyle filter.. [4171660]",
+        "status": "fixed",
+        "fixed_in_version": "536.99",
+        "original_status_text": "Fixed (536.99)"
+      },
+      {
+        "description": "[Ratchet & Clank: Rift Apart] Game may display fluctuations in frame rate when using Reflex with DirectStorage [4212649]",
+        "status": "fixed",
+        "fixed_in_version": "537.13",
+        "original_status_text": "Fixed (537.13)"
+      },
+      {
+        "description": "[GeForce GTX 10/RTX 20 series] PC may randomly freeze/bugcheck when Windows Hardware-Accelerated GPU Scheduling and NVIDIA SLI are both enabled [4009884]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      }
+    ]
+  },
+  {
+    "version": "536.99",
+    "bugs": [
+      {
+        "description": "[Elgato Wave Link] Potential audio issues with NVIDIA Broadcast effects [3752618]",
+        "status": "fixed",
+        "fixed_in_version": "537.13",
+        "original_status_text": "Fixed (537.13)"
+      },
+      {
+        "description": "Horizontal band may appear when cloning a G-SYNC display to HDMI monitor [4103923 / 4343427]",
+        "status": "fixed",
+        "fixed_in_version": "551.23",
+        "original_status_text": "Fixed (551.23)"
+      }
+    ]
+  },
+  {
+    "version": "537.13",
+    "bugs": [
+      {
+        "description": "A new NVIDIA icon is created in the system tray each time a a user switch takes place in Windows [4251314]",
+        "status": "fixed",
+        "fixed_in_version": "546.33",
+        "original_status_text": "Fixed (546.33)"
+      },
+      {
+        "description": "[Alienware X17 R2 w/ GeForce RTX 3080 Ti] Display goes blank when DirectX game is launched while notebook is in dedicated GPU mode [4146369]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Counter-strike: Global Offensive may display a black screen when using the GeForce Experience In-Game Overlay [4257572]",
+        "status": "fixed",
+        "fixed_in_version": "537.34",
+        "original_status_text": "Fixed (537.34)"
+      },
+      {
+        "description": "[RTX 4060 Ti] Display may randomly flicker with a black bar on the top of the screen when using desktop apps [4239893]",
+        "status": "fixed",
+        "fixed_in_version": "551.23",
+        "original_status_text": "Fixed (551.23)"
+      }
+    ]
+  },
+  {
+    "version": "537.34",
+    "bugs": [
+      {
+        "description": "[Starfield] Profile updated for Microsoft Store/Xbox Game Pass version [4266797]",
+        "status": "fixed",
+        "fixed_in_version": "537.34",
+        "original_status_text": "Fixed (537.34)"
+      }
+    ]
+  },
+  {
+    "version": "537.42",
+    "bugs": [
+      {
+        "description": "[Octane Render]: TLAS with custom intersection shaders may cause slowdown in performance [4164876]",
+        "status": "fixed",
+        "fixed_in_version": "537.42",
+        "original_status_text": "Fixed (537.42)"
+      },
+      {
+        "description": "[Octane Render]: Inconsistent behavior and broken motion keys using TLAS with numKeys value set to \"2\" [4088077]",
+        "status": "fixed",
+        "fixed_in_version": "537.42",
+        "original_status_text": "Fixed (537.42)"
+      },
+      {
+        "description": "Increased DPC latency may be observed when GPU is connected over HDMI 2.1 FRL at 10bpc/12bpc [4253581]",
+        "status": "fixed",
+        "fixed_in_version": "537.58",
+        "original_status_text": "Fixed (537.58)"
+      }
+    ]
+  },
+  {
+    "version": "537.58",
+    "bugs": [
+      {
+        "description": "Add Microsoft Store/Xbox Game Pass application profile for Lies of P [4290286]",
+        "status": "fixed",
+        "fixed_in_version": "537.58",
+        "original_status_text": "Fixed (537.58)"
+      }
+    ]
+  },
+  {
+    "version": "545.84",
+    "bugs": [
+      {
+        "description": "Monitor colors are incorrect after coming back from display sleep [3420257]",
+        "status": "fixed",
+        "fixed_in_version": "545.84",
+        "original_status_text": "Fixed (545.84)"
+      },
+      {
+        "description": "Windows Event Viewer incorrectly logs an error when NVTOPPS stops [4331318]",
+        "status": "fixed",
+        "fixed_in_version": "546.01",
+        "original_status_text": "Fixed (546.01)"
+      },
+      {
+        "description": "Windows 10 transparency effects are not displaying correctly after driver update [4335862]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "Brightness levels may not get applied correctly when playing back SDR videos in Chrome while HDR is enabled form the Windows Settings [4336461]",
+        "status": "fixed",
+        "fixed_in_version": "External",
+        "original_status_text": "Fixed External"
+      },
+      {
+        "description": "[Halo Infinite] Increased loading times after updating to driver 545.84 [4337526]",
+        "status": "fixed",
+        "fixed_in_version": "546.01",
+        "original_status_text": "Fixed (546.01)"
+      }
+    ]
+  },
+  {
+    "version": "545.92",
+    "bugs": [
+      {
+        "description": "[Discord] When streaming gameplay, colors may appear muted [4349586]",
+        "status": "fixed",
+        "fixed_in_version": "546.33",
+        "original_status_text": "Fixed (546.33)"
+      },
+      {
+        "description": "[VR] Desktop colors turn overexposed after closing VR app [4171604]",
+        "status": "fixed",
+        "fixed_in_version": "545.92",
+        "original_status_text": "Fixed (545.92)"
+      }
+    ]
+  },
+  {
+    "version": "546.01",
+    "bugs": [
+      {
+        "description": "LG C3 OLED TV does not show up as a validated G-SYNC Compatible display in the NVIDIA Control Panel [4247350]",
+        "status": "fixed",
+        "fixed_in_version": "546.01",
+        "original_status_text": "Fixed (546.01)"
+      },
+      {
+        "description": "Stable Diffusion significant performance reduction after driver update [4166994] - Workaround outlined here: https://nvidia.custhelp.com/app/answers/detail/a_id/5490",
+        "status": "fixed",
+        "fixed_in_version": "546.01",
+        "original_status_text": "Fixed (546.01)"
+      },
+      {
+        "description": "Random Bugcheck may be observed on certain systems [4343844]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "Armored Warfare may crash when loading into the lobby or launching a game [4357377]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Potential stutter may be observed when scrolling in web browsers on certain system configurations [4362307]",
+        "status": "fixed",
+        "fixed_in_version": "551.52",
+        "original_status_text": "Fixed (551.52)"
+      },
+      {
+        "description": "[Wallpaper Engine] Wallpaper shows tearing when cloned in multi-monitor configuration [4364562]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Notebook] Dynamic Display Mode tray tool may hang on certain Advanced Optimus notebooks when trying to switch GPU mode [4364619]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Advanced Optimus] On certain notebook configurations, after closing 3D application, DGPU may not go back to sleep when using NVIDIA driver 546.01 [4364631]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Firefox Beta] Increased page file memory use when enabling RTX Video Super Resolution [4359080]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      }
+    ]
+  },
+  {
+    "version": "546.17",
+    "bugs": [
+      {
+        "description": "[Alan Wake 2] Addressing gradual stability and performance degradation over extended periods of gameplay [4334633]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Counter Strike 2] Improved NVIDIA Reflex functionality and performance [4361128]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Starfield/Cyberpunk 2077] Stutter observed on some Advanced Optimus notebooks [4341762]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Control] Game stability issues over extended periods of gameplay [4313811]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[OBS] Tearing issue when recording high resolution video [4359771]",
+        "status": "fixed",
+        "fixed_in_version": "546.17",
+        "original_status_text": "Fixed (546.17)"
+      },
+      {
+        "description": "[Maxwell] after multiple sleep/wake attempts, monitor may not wake up [4351702]",
+        "status": "fixed",
+        "fixed_in_version": "546.65",
+        "original_status_text": "Fixed (546.65)"
+      },
+      {
+        "description": "After extended PC use, V-SYNC may stop working correctly on some configurations [4379096]",
+        "status": "fixed",
+        "fixed_in_version": "546.33",
+        "original_status_text": "Fixed (546.33)"
+      }
+    ]
+  },
+  {
+    "version": "546.29",
+    "bugs": [
+      {
+        "description": "[Call of Duty: Modern Warfare 2] Updated application profile [4372908]",
+        "status": "fixed",
+        "fixed_in_version": "546.29",
+        "original_status_text": "Fixed (546.29)"
+      },
+      {
+        "description": "[Netflix] Display issues for videos when using Edge browser. Recommend using Windows Netflix application as workaround. [4388454]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "546.33",
+    "bugs": [
+      {
+        "description": "[Chaos Vantage] Application takes longer to launch in r545 compared to r535  [5372807]",
+        "status": "fixed",
+        "fixed_in_version": "546.33",
+        "original_status_text": "Fixed (546.33)"
+      },
+      {
+        "description": "[Blender] Application crashes on exit [4363978]",
+        "status": "fixed",
+        "fixed_in_version": "546.33",
+        "original_status_text": "Fixed (546.33)"
+      },
+      {
+        "description": "Fluctuations in FPS may be observed when using HWINFO64 sensors while \"Enable NVML\" setting is checked [4432698]",
+        "status": "fixed",
+        "fixed_in_version": "External",
+        "original_status_text": "Fixed External ?"
+      }
+    ]
+  },
+  {
+    "version": "546.65",
+    "bugs": [
+      {
+        "description": "Cyberpunk 2077: GeForce Experience 1-click optimization not working with v2.1 game update. [4412456]",
+        "status": "fixed",
+        "fixed_in_version": "546.65",
+        "original_status_text": "Fixed (546.65)"
+      }
+    ]
+  },
+  {
+    "version": "551.23",
+    "bugs": [
+      {
+        "description": "Forza Horizon 4: Ansel/ Freestyle filters cause application to freeze or crash [4253513]",
+        "status": "fixed",
+        "fixed_in_version": "551.23",
+        "original_status_text": "Fixed (551.23)"
+      },
+      {
+        "description": "[Monster Hunter: World] Game may display artifacting in DX11. No issue in DX12 [4471655]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[The Talos Principle Principle 2/Ark: Survival Ascended] Game may randomly crash if DLSS Frame Generation is enabled [4362644]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "NVIDIA Freestyle filter settings are not saved after quitting game [4472656]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "When playing back SDR videos in Chrome/Edge, deep blacks may not appear correctly when HDR is enabled from the Windows Settings [4492243]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "Maximum brightness on some notebook panels may appear dimmer after updating to driver 551.23 [4486559]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Vulkan] Rainbow Six: Siege may randomly crash during gameplay after updating to driver 551.23 [4494886]",
+        "status": "fixed",
+        "fixed_in_version": "551.52",
+        "original_status_text": "Fixed (551.52)"
+      }
+    ]
+  },
+  {
+    "version": "551.52",
+    "bugs": [
+      {
+        "description": "Some users may experience intermittent micro-stuttering in games when vertical sync is enabled [4445940]",
+        "status": "fixed",
+        "fixed_in_version": "551.52",
+        "original_status_text": "Fixed (551.52)"
+      },
+      {
+        "description": "Red Dead Redemption 2: Stutter observed on some Advanced Optimus notebooks [4425987]",
+        "status": "fixed",
+        "fixed_in_version": "551.52",
+        "original_status_text": "Fixed (551.52)"
+      },
+      {
+        "description": "Immortals of Aveum: Addresses stability issues over extended gameplay [4415277]",
+        "status": "fixed",
+        "fixed_in_version": "551.52",
+        "original_status_text": "Fixed (551.52)"
+      }
+    ]
+  },
+  {
+    "version": "551.61",
+    "bugs": [
+      {
+        "description": "Tom Clancy's Rainbow Six Siege: Stability issues when running Vulkan API [4460050]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "RTX Video HDR: Tone mapping not working properly with custom HDR brightness values in Windows [4472972]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "Adobe Substance 3D: Stager unable to initialize the viewport [4403960]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "Adobe Substance 3D: Vulkan version of Substance Painter cannot be launched [4425856]",
+        "status": "fixed",
+        "fixed_in_version": "551.61",
+        "original_status_text": "Fixed (551.61)"
+      },
+      {
+        "description": "Using NVENC to encode videos may result in corrupted videos or error message on GeForce GTX 16xx GPUs [4511046]",
+        "status": "fixed",
+        "fixed_in_version": "551.76",
+        "original_status_text": "Fixed (551.76)"
+      },
+      {
+        "description": "[Notebook] Steamwebhelper.exe blocking Advanced Optimus display mode switch [4536504]",
+        "status": "fixed",
+        "fixed_in_version": "551.76",
+        "original_status_text": "Fixed (551.76)"
+      }
+    ]
+  },
+  {
+    "version": "551.76",
+    "bugs": [
+      {
+        "description": "The Talos Principle 2: Game stability issues when DLSS FG is enabled [4492121] [RELATED WITH 4362644]",
+        "status": "fixed",
+        "fixed_in_version": "551.76",
+        "original_status_text": "Fixed (551.76)"
+      },
+      {
+        "description": "Tekken 8 may randomly crash during gameplay on GeForce GTX 10 series graphics cards [4503216]",
+        "status": "fixed",
+        "fixed_in_version": "555.85",
+        "original_status_text": "Fixed (555.85)"
+      },
+      {
+        "description": "[Acer XZ272] When parsing the invalid EDID of the monitor, the PC will bugcheck/go into system reboot [4487078]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      }
+    ]
+  },
+  {
+    "version": "551.86",
+    "bugs": [
+      {
+        "description": "[Advanced Optimus] Notebook may not wake up from sleep when in NVIDIA GPU only display mode [4454524]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "[Hitman 3] Stutter observed in some Advanced Optimus notebooks [4443236]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "RTX HDR uses saturation and tone curve that matches Gamma 2.0 instead of 2.2 [4514298]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "RTX Digital Vibrance incorrectly detects Paint.net app as a supported app [4539617]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "SideFX Houdini: crashes when calling optixModuleCreateWithTasks [4500058]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "Adobe Substance 3D Stager: Profile update for new executable [4501935]",
+        "status": "fixed",
+        "fixed_in_version": "551.86",
+        "original_status_text": "Fixed (551.86)"
+      },
+      {
+        "description": "[Horizon Forbidden West Complete Edition] Lower GPU utilization when Reflex is set to On + Boost [4412035]",
+        "status": "fixed",
+        "fixed_in_version": "555.85",
+        "original_status_text": "Fixed (555.85)"
+      }
+    ]
+  },
+  {
+    "version": "552.12",
+    "bugs": [
+      {
+        "description": "Horizon Forbidden West: Resizable BAR profile [4496595]",
+        "status": "fixed",
+        "fixed_in_version": "552.12",
+        "original_status_text": "Fixed (552.12)"
+      },
+      {
+        "description": "After updating to GRD 552.12, Pico Neo3 VR headset displays black screen when launching SteamVR [4592387]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Ark Survival Evolved] Artifacts can be observed when opening the in-game inventory [4485993]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "PUBG: Game stability issues over extended gameplay on Intel 12th Gen platforms [4030936]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      },
+      {
+        "description": "HTC Vive Pro 2: System crash with bugcheck after enabling VR HMD with multi-displays [4119187]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      }
+    ]
+  },
+  {
+    "version": "552.22",
+    "bugs": [
+      {
+        "description": "After waking up PC from sleep, PC may exhibit a small stutter when opening an app when GPU is connected to certain monitors. [4594458]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Chaos V-Ray: NVIDIA OptiX IR fails to link [4479756]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      },
+      {
+        "description": "Jianying Pro: General stability issues with 551.xx drivers [4561996]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      },
+      {
+        "description": "SideFX/Houdini: OptiX applications crashing when using Shader Execution Reordering  (SER) [4589827]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      },
+      {
+        "description": "Maya: Application crash for some user workflows [4584743]",
+        "status": "fixed",
+        "fixed_in_version": "552.22",
+        "original_status_text": "Fixed (552.22)"
+      },
+      {
+        "description": "[Microsoft New Teams/Outlook] Visual artifacts when MFAA is enabled from the NVIDIA Control Panel [4608670]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      }
+    ]
+  },
+  {
+    "version": "552.44",
+    "bugs": [
+      {
+        "description": "Ghost of Tsushima DIRECTOR'S CUT: Resizable BAR profile [4597841]",
+        "status": "fixed",
+        "fixed_in_version": "552.44",
+        "original_status_text": "Fixed (552.44)"
+      }
+    ]
+  },
+  {
+    "version": "555.85",
+    "bugs": [
+      {
+        "description": "Blender Cycles: Motion blur renders incorrectly with some GPU architectures [4607411]",
+        "status": "fixed",
+        "fixed_in_version": "555.85",
+        "original_status_text": "Fixed (555.85)"
+      },
+      {
+        "description": "LG 32GS95UE is not detected as G-SYNC Compatible [4564083]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      },
+      {
+        "description": "[The Last of Us Part 1] Out of memory error with 555.xx drivers [4663766]",
+        "status": "fixed",
+        "fixed_in_version": "556.12",
+        "original_status_text": "Fixed (556.12)"
+      },
+      {
+        "description": "[GeForce Experience] Driver page may not detect new driver has been installed until user reboots PC [4662117]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[GeForce Experience] Flickering or black screen if Instant Replay is enabled [4665009]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      },
+      {
+        "description": "CUDA 12.5 does not work with CUDA enabled Docker images [4668302]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      },
+      {
+        "description": "[Valorant] In-game statistics incorrectly shows high latency with 555.xx drivers [4668309]",
+        "status": "fixed",
+        "fixed_in_version": "556.12",
+        "original_status_text": "Fixed (556.12)"
+      },
+      {
+        "description": "Video playback in full screen mode may cause monitor(s) to flicker repeatedly if GeForce Experience Instant Replay is enabled [4668513]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "555.99",
+    "bugs": [
+      {
+        "description": "[NVIDIA app] FPS overlay showing NA in multiple games [4608943]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      },
+      {
+        "description": "LG OLED48C4 TV is not detected as G-SYNC Compatible [4645783]",
+        "status": "fixed",
+        "fixed_in_version": "555.99",
+        "original_status_text": "Fixed (555.99)"
+      },
+      {
+        "description": "[GeForce Experience] Performance Monitoring overlay may stop refreshing GPU information [4679970]",
+        "status": "fixed",
+        "fixed_in_version": "561.09",
+        "original_status_text": "Fixed (561.09)"
+      },
+      {
+        "description": "NVIDIA app Automatic Tuning scanning is interrupted when NVIDIA Instant Replay is enabled [4686661]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Halo Infinite] Game crashes during the initial loading screen after updating to GRD 555.99 [4685335]",
+        "status": "fixed",
+        "fixed_in_version": "556.12",
+        "original_status_text": "Fixed (556.12)"
+      },
+      {
+        "description": "After installing R555 drivers, PCs with older Core 2 Duo/Core 2 Quad CPUs may experience a bugcheck [4696051]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[NVENC] Quality and bitrate settings are ignored at 10-bit encoding [4697900]",
+        "status": "fixed",
+        "fixed_in_version": "560.70",
+        "original_status_text": "Fixed (560.70)"
+      }
+    ]
+  },
+  {
+    "version": "556.12",
+    "bugs": [
+      {
+        "description": "Notebook mux switch is blocked when Overwolf application is running [3804893]",
+        "status": "fixed",
+        "fixed_in_version": "556.12",
+        "original_status_text": "Fixed (556.12)"
+      },
+      {
+        "description": "[OBS] Scaling 10-bit HVEC or AV1 content down below 50% in viewport shows corruption for some configurations [4496901]",
+        "status": "fixed",
+        "fixed_in_version": "560.70",
+        "original_status_text": "Fixed (560.70)"
+      },
+      {
+        "description": "[GeForce Experience/NVIDIA App] If GPU utilization gets stuck at 0% within Performance overlay, games may display stutter [4720547]",
+        "status": "fixed",
+        "fixed_in_version": "560.81",
+        "original_status_text": "Fixed (560.81)"
+      }
+    ]
+  },
+  {
+    "version": "560.7",
+    "bugs": [
+      {
+        "description": "[Adobe Premiere] Visual corruption in Source and Program Monitor Previews when using 555.85 driver [4679207]",
+        "status": "fixed",
+        "fixed_in_version": "560.70",
+        "original_status_text": "Fixed (560.70)"
+      },
+      {
+        "description": "[Unity] Artifacts when rendering overlapped geometry on anti-aliased framebuffer [4616564]",
+        "status": "fixed",
+        "fixed_in_version": "560.70",
+        "original_status_text": "Fixed (560.70)"
+      },
+      {
+        "description": "[Dying Light 2 Stay Human: Reloaded Edition] Game crashes when attempting to load with updated Vulkan Loader [4739980]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Octane Render] Render may not complete on RTX 30 series and older GPUs after updating to R555 and higher drivers [4726026]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Farming Simulator 22] Game may crash when loading on GeForce RTX 30/40 series with 560.70 driver [4751153]",
+        "status": "fixed",
+        "fixed_in_version": "560.81",
+        "original_status_text": "Fixed (560.81)"
+      },
+      {
+        "description": "Full range of refresh rates not available on some monitors [4752570]",
+        "status": "fixed",
+        "fixed_in_version": "560.81",
+        "original_status_text": "Fixed (560.81)"
+      }
+    ]
+  },
+  {
+    "version": "560.81",
+    "bugs": [
+      {
+        "description": "NVIDIA Container showing high CPU utilization [4745922]",
+        "status": "fixed",
+        "fixed_in_version": "560.81",
+        "original_status_text": "Fixed (560.81)"
+      },
+      {
+        "description": "[NVIDIA App] Game filters may intermittently be missing when invoking the NVIDIA Overlay in-game [4790774]",
+        "status": "fixed",
+        "fixed_in_version": "561.09",
+        "original_status_text": "Fixed (561.09)"
+      }
+    ]
+  },
+  {
+    "version": "560.94",
+    "bugs": [
+      {
+        "description": "GeForce Experience unable to locate Counter-Strike 2 [4800698]",
+        "status": "fixed",
+        "fixed_in_version": "560.94",
+        "original_status_text": "Fixed (560.94)"
+      },
+      {
+        "description": "[Octane Benchmark]: Unable to finish octane benchmark [4744794]",
+        "status": "fixed",
+        "fixed_in_version": "560.94",
+        "original_status_text": "Fixed (560.94)"
+      },
+      {
+        "description": "[GeForce Experience] Performance Monitoring overlay may stop refreshing GPU information [4679970]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "561.09",
+    "bugs": [
+      {
+        "description": "[Chaos V-Ray] Performance regression in some workloads when running R560 drivers [4766640]",
+        "status": "fixed",
+        "fixed_in_version": "561.09",
+        "original_status_text": "Fixed (561.09)"
+      }
+    ]
+  },
+  {
+    "version": "565.9",
+    "bugs": [
+      {
+        "description": "Dying Light 2 Stay Human: Game launch shows frozen white screen then crashes to desktop [4738045]",
+        "status": "fixed",
+        "fixed_in_version": "565.90",
+        "original_status_text": "Fixed (565.90)"
+      },
+      {
+        "description": "Enabling MSAA globally causes corruption to Steamlink streaming [4741818]",
+        "status": "fixed",
+        "fixed_in_version": "565.90",
+        "original_status_text": "Fixed (565.90)"
+      },
+      {
+        "description": "Final Fantasy XV: Turning on Turf Effects causes texture flickering with drivers newer than 546.65 [4745646]",
+        "status": "fixed",
+        "fixed_in_version": "565.90",
+        "original_status_text": "Fixed (565.90)"
+      },
+      {
+        "description": "[VRR] Slight monitor backlight panel flicker when FPS drops below 60FPS [4785222]",
+        "status": "fixed",
+        "fixed_in_version": "565.90",
+        "original_status_text": "Fixed (565.90)"
+      },
+      {
+        "description": "[Advanced Optimus] Asus ROG notebook screen freezes when switching from iGPU to dGPU [4849577]",
+        "status": "fixed",
+        "fixed_in_version": "565.90",
+        "original_status_text": "Fixed (565.90)"
+      },
+      {
+        "description": "[Maxwell] MSI GT72 2QD notebook may bugcheck upon installing R560+ drivers [4798073]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Digital Vibrance custom setting does not persist on reboot [4801216]",
+        "status": "fixed",
+        "fixed_in_version": "566.03",
+        "original_status_text": "Fixed (566.03)"
+      },
+      {
+        "description": "DSR/DLDSR resolutions may not appear in certain games [4889817]",
+        "status": "fixed",
+        "fixed_in_version": "566.14",
+        "original_status_text": "Fixed (566.14)"
+      },
+      {
+        "description": "[Halo Infinite] Game may fail to launch on Windows 10 OS [4895142]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "When \"Shader Cache size\" is set to \"disabled\", cache files may still be created [4895217]",
+        "status": "fixed",
+        "fixed_in_version": "566.14",
+        "original_status_text": "Fixed (566.14)"
+      },
+      {
+        "description": "[Bluestacks/Corsair iCUE] May display higher than normal CPU usage [4895184][4893446]",
+        "status": "fixed",
+        "fixed_in_version": "566.14",
+        "original_status_text": "Fixed (566.14)"
+      },
+      {
+        "description": "[SteamVR] Changing refresh rate may cause PC to bugcheck [4910686]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "566.03",
+    "bugs": [
+      {
+        "description": "Houdini XPU rendering shows green tint [4917245]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Windows 10 transparency effects not working correctly after updating to GRD 566.03 [4922638]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "566.14",
+    "bugs": [
+      {
+        "description": "[Call of Duty MWIII] filename change preventing users from using GFE Freestyle Filters [4927183]",
+        "status": "fixed",
+        "fixed_in_version": "566.14",
+        "original_status_text": "Fixed (566.14)"
+      },
+      {
+        "description": "[Fortnite/Forza Horizon 5/God of War: Ragnarok] Game may crash during gameplay after updating to R565 release drivers [4895068]",
+        "status": "fixed",
+        "fixed_in_version": "566.36",
+        "original_status_text": "Fixed (566.36)"
+      },
+      {
+        "description": "[Evernote/QQ/Asus Armoury Crate] displays higher than normal CPU usage [4730911]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      }
+    ]
+  },
+  {
+    "version": "566.36",
+    "bugs": [
+      {
+        "description": "Changing state of \"Display GPU Activity Icon in Notification Area\" does not take effect until PC is rebooted [4995658]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "CPU usage may increase from process \"ntoskrnl.exe\" [5001913]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "X ? Maybe fixed?"
+      },
+      {
+        "description": "[G-SYNC] Indiana Jones and the Great Circle may display micro-stutters when Vertical Sync is disabled [5015165]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      }
+    ]
+  },
+  {
+    "version": "572.16",
+    "bugs": [
+      {
+        "description": "Certain G-SYNC Compatible monitors may display flickering when game FPS drops below 60FPS [5003305]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      },
+      {
+        "description": "Improved stability for Ubisoft games using the Snowdrop engine [4914325]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      },
+      {
+        "description": "Motion blur renders incorrectly in some more cases in Blender Cycles [4912221]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      },
+      {
+        "description": "[KeyShot2024] TDR on loading the scene Camera Keyframe Animation [4909719]",
+        "status": "fixed",
+        "fixed_in_version": "572.16",
+        "original_status_text": "Fixed (572.16)"
+      },
+      {
+        "description": "[VRay 6] Unexpected Low Performance on CUDA Vpath Tests for Blackwell GPUs [4915763]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      },
+      {
+        "description": "[GeForce RTX 5080] Valorant may crash when starting game [4951583]",
+        "status": "fixed",
+        "fixed_in_version": "572.42",
+        "original_status_text": "Fixed (572.42)"
+      },
+      {
+        "description": "3rd party utility NVIDIA Profile Inspector may crash when used with NVIDIA driver 572.16 [5073734]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[No Mans Sky] Game may crash when enabling frame generation [5083718]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Windows 11 23H2] When exiting Final Fantasy XVI, PC may freeze [5083532]",
+        "status": "fixed",
+        "fixed_in_version": "572.42",
+        "original_status_text": "Fixed (572.42)"
+      },
+      {
+        "description": "[Delta Force] Some PC configurations may experience performance regression when Resizable BAR is enabled [5083758]",
+        "status": "fixed",
+        "fixed_in_version": "572.42",
+        "original_status_text": "Fixed (572.42)"
+      },
+      {
+        "description": "[GODOT/Red Dead Redemption 2/ImGui] Some Vulkan apps may display minor 2D pixel offset atifacts [5086373]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "X ? Maybe fixed?"
+      },
+      {
+        "description": "[GeForce RTX 5080/5090] ARK Survival Evoled crashes shortly after launching game [5086449]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[Shadow of the Tomb Raider] Game may crash when Ray Traced Shadow quality is set to High or Ultra [5086423]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[SteamVR] Some apps may display stutter on GeForce RTX 50 series [5088118]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      },
+      {
+        "description": "After letting display go to sleep for an extended period, driver may crash when waking up monitor [5089560]",
+        "status": "fixed",
+        "fixed_in_version": "572.47",
+        "original_status_text": "Fixed (572.47)"
+      },
+      {
+        "description": "Adobe Substance 3D Painter texture corruption in baking results from GPU raytracing [5091781]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      },
+      {
+        "description": "[GeForce RTX 5080] Fortnite in Performance Mode may crash when starting the game [5094211]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "PC may bugcheck IRQL NOT LESS OR EQUAL 0xa during gameplay with HDR enabled [5091576]",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      }
+    ]
+  },
+  {
+    "version": "572.42",
+    "bugs": [
+      {
+        "description": "[3DMark DXR Feature Test] Unusually low score for Blackwell GPUs [5062329]",
+        "status": "fixed",
+        "fixed_in_version": "572.42",
+        "original_status_text": "Fixed (572.42)"
+      },
+      {
+        "description": "[DLSS4] Resolved a compatibility issue caused by version mismatches between current and updated dynamic link library files [5081921]",
+        "status": "fixed",
+        "fixed_in_version": "572.42",
+        "original_status_text": "Fixed (572.42)"
+      },
+      {
+        "description": "[Vulkan/DirectX] Some apps may display slight image corruption on pixelated 2D patterns [5071565]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      },
+      {
+        "description": "[5080/5090][DisplayPort][Audio] audio may stop working when GPU is connected via DisplayPort 1.4 w/ DSC at very high refresh rates [5104848]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      }
+    ]
+  },
+  {
+    "version": "572.47",
+    "bugs": [
+      {
+        "description": "[GeForce RTX 50 series] Various black screen issues [5088957] [5100062] [5089089]",
+        "status": "fixed",
+        "fixed_in_version": "576.40",
+        "original_status_text": "Fixed (576.40)"
+      }
+    ]
+  },
+  {
+    "version": "572.6",
+    "bugs": [
+      {
+        "description": "[Adobe Substance 3D Sampler] Crashing at launch with R570 branch drivers [5083712]",
+        "status": "fixed",
+        "fixed_in_version": "572.60",
+        "original_status_text": "Fixed (572.60)"
+      },
+      {
+        "description": "PC may boot to black screen on certain monitors when connected via DisplayPort [5131002]",
+        "status": "fixed",
+        "fixed_in_version": "572.70",
+        "original_status_text": "Fixed (572.70)"
+      }
+    ]
+  },
+  {
+    "version": "572.7",
+    "bugs": [
+      {
+        "description": "Forza Horizon 5 lights flicker at night time [5147170] [5038335]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Red Dead Redemption 2 crashes shortly after starting a game in DX12 mode. No issue in Vulkan mode [5137042]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Display may show black screen when selecting DLDSR resolution [5144768]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[GeForce RTX 5080/5090] Graphics cards may not run at full speeds on system reboot when overclocked [5088034]",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      },
+      {
+        "description": "[GeForce RTX 50 series] GeForce RTX 50 series GPUs crashes with black screen  [5120886]",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      },
+      {
+        "description": "Dithering/banding in some games on RTX 50-series GPUs [5121715]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Some NVIDIA Control Panel / NVIDIA App settings changes immediately get reset or give error [5160516] -> Work around: https://nvidia.custhelp.com/app/answers/detail/a_id/5645",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      },
+      {
+        "description": "GPU scaling option is missing from NVIDIA Control Panel / NVIDIA App when DSC monitor connected [5156168]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Cyberpunk 2077 will crash when using Photo Mode to take a screenshot with path tracing enabled [5076545]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      }
+    ]
+  },
+  {
+    "version": "572.83",
+    "bugs": [
+      {
+        "description": "[VRED 2026] Optix compile error with R570 branch drivers [5122360]",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      },
+      {
+        "description": "[Derivative TouchDesigner ] Application stability issues [4606316]",
+        "status": "fixed",
+        "fixed_in_version": "572.83",
+        "original_status_text": "Fixed (572.83)"
+      },
+      {
+        "description": "[RTX 50 series] Colors may appear slightly saturated in games when in game-resolution is below native resolution of monitor and display scaling is set to 100% [5158681]",
+        "status": "fixed",
+        "fixed_in_version": "576.40",
+        "original_status_text": "Fixed (576.40)"
+      },
+      {
+        "description": "[RTX 50 series] Varjo Aero VR headset may fail to establish connection [5117518]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "GeForce RTX 50 Series: Slightly higher DPC latency may be observed on some system configuration [5168553]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[Overwatch 2] Game may display micro-stutters when using V-SYNC [5171856]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[RTX 50 series] UBISoft Connect client may incorrectly be detected triggering lower power state by GPU / lower performance in games [5183470]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Improves game stability when playing games with DLSS4 Frame Generation + G-SYNC [5144337]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[RTX 50 series] PCs with one DisplayPort 2.1 monitor + one DisplayPort 1.4 monitor connected may a bugcheck when playing back copy protected videos [5167145]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Track corruption in Forza Motorsport in benchmark or night races [5201811]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      }
+    ]
+  },
+  {
+    "version": "576.02",
+    "bugs": [
+      {
+        "description": "[Fortnite] random crashes during gameplay [5171520]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[The First Berserker: Khazan] Game may crash with DXGI ERROR DEVICE_REMOVED error on Windows 11 24H2 [5195216]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[Monster Hunter Wilds] Game may crash after accepting the quest When Frost Falls with DLSS Frame Generation enabled [5087795]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[InZOI] Game may crash with error \"GPU crashed or D3D Device Removed\" [5154864]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[Hellblade 2 Senua's Saga] Increased aliasing when using TSR [5125662]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[Hellblade 2 Senua's Saga] Crashing when using Smooth Motion [5209772]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[The Last of Us Part 1] Crash when using Smooth Motion [5208799]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Micro-stutters may be observed when forcing V-SYNC through the NVIDIA Control Panel [5202703][5202474]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "V-SYNC in NVIDIA Control Panel + Frame Generation causes issues in DLSS 4 games [5124816]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[UNCHARTED: Legacy of Thieves Collection] Artifacts on screen when collecting treasures [5158954]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "GPU may black screen when Multiplane Overlay operation is being used [5160845]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "WGF11 Compute Shader error in Windows 11 Insider Build [4894179]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "LG 27GN950: Display blacked out when applying 120Hz refresh rate [5044229]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "PC display will not wake after extended sleep time [5131052]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Black screen issue when testing 3DMark [5095825]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Primary Blank display showing blank after hot plug the display in daisy chain [4978206]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Display shows blank screen on setting refresh rate to 165Hz or 200Hz when daisy chain is enabled [5049227]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "Second display showing blank applying higher refresh rate for second display when displays connected in daisy chain [4956573]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "AOROUS FO32U2P: Primary monitor goes blank when Hot Plug Detection or power cycle second display in daisy chain [5075448]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "GeForce RTX 50 Series: Crash with black screen when playing graphically demanding games [5098914]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "LG 5K2K 45GX950A-B: GeForce RTX 50 Series GPUs display blank screens when running in DisplayPort 2.1 mode with HDR [5192671]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[RTX 50 series] [LG 27GX790A/45GX950A/32GX870A/40WT95UF/27G850A]: Display blank screens when running in DisplayPort 2.1 mode with HDR [5080789]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[Octanebench] Performance regression [3523803]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[DaVinci Resolve] UI overlay in Fusion page is not displayed correctly [4974721]",
+        "status": "fixed",
+        "fixed_in_version": "576.02",
+        "original_status_text": "Fixed (576.02)"
+      },
+      {
+        "description": "[GeForce RTX 50 series notebook] Resume from Modern Standy can result in black screen [5204385]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Hogwarts Legacy may display flickering when Frame Generation is enabled [5216455]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[RTX 50 series] Portal RTX displays rainbow colored artifacts after updating to GRD 576.02 [5108472]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[RTX 50 series] Final Fantasy VII Rebirth may crash during shader compilation after updating to GRD 576.02 [5230492]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Horizon Forbidden West freezes after loading a game save [5227554]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "GPU monitoring utilities stop reporting GPU temperature after waking PC from sleep [5231307]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "Marvel Rivals displays broken shadows when Global Illumination set to \"Lumen GI - Ultra Quality\" or \"Lumen GI - High Quality\" [5231701]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Ghost of Tsushima Directors Cut: Flickering/corruption around light sources [5138067]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[RTX 50 series] Lumion 2024 may crash when entering render mode [5232345]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] [Black Myth]: Game will randomly crash when Wukong transforms [5231902]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      }
+    ]
+  },
+  {
+    "version": "576.28",
+    "bugs": [
+      {
+        "description": "[RTX 50 series] Grey screen crashes with multiple monitors [5239138]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] [Dead Island 2]: The game crash after updating to GRD 576.02 [5238676]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] [Resident Evil 4 Remake]: Flickering background textures [5227655]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Some games may display shadow flicker/corruption after updating to GRD 576.02 [5231537]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Lower idle GPU clock speeds after updating to GRD 576.02 [5232414]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] Momentary display flicker occurs when running in DisplayPort2.1 mode with a high refresh rate [5009200]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[RTX 50 series] SteamVR may display random V-SYNC micro-stutters when using multiple displays [5152246]",
+        "status": "fixed",
+        "fixed_in_version": "576.28",
+        "original_status_text": "Fixed (576.28)"
+      },
+      {
+        "description": "[Monster Hunter Wilds] Random stability issues [5204023]",
+        "status": "fixed",
+        "fixed_in_version": "576.40",
+        "original_status_text": "Fixed (576.40)"
+      },
+      {
+        "description": "Dragons Dogma 2 displays shadow flicker [5252205]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[RTX 50 series] Dead Space Remake displays shadow flicker [5241013]",
+        "status": "fixed",
+        "fixed_in_version": "576.40",
+        "original_status_text": "Fixed (576.40)"
+      },
+      {
+        "description": "EA Sports FC 25: stability issues [5251937]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[RTX 50 series] Video playback in a web browser may show brief red/green flash corruption [5241341]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Wuthering Waves may randomly crash during gameplay after updating to R575 drivers [5259963]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[F1 23/F1 24] Game crashes at the end of a race [5240429]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "[SCUM] Game may crash after updating to R575 drivers [5257319]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "[Diablo II Resurrected] Game displays black screen corruption when using DLSS [5264112]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      }
+    ]
+  },
+  {
+    "version": "576.4",
+    "bugs": [
+      {
+        "description": "Slight stutter may be observed on certain LG TVs at lower refresh rates when G-SYNC is enabled [5198025]",
+        "status": "fixed",
+        "fixed_in_version": "576.40",
+        "original_status_text": "Fixed (576.40)"
+      },
+      {
+        "description": "Forza Horizon 5: stability issues [5131160]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Shader disk cache will not be created with certain games if OS username contains unicode characters [5274587]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "Enshrouded crashes after launching game [5279848]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[NVIDIA App] Adding an unsupported app to NVIDIA App and enabling Smooth Motion forces it globally to other apps [5243686]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "Battlefield 2042: random square artifacts may appear around lights during gameplay [5284105]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Changing a setting in the \"NVIDIA Control Panel\" -> \"Manage 3D Settings\" may trigger shader disk cache rebuild [5282396]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[Notebook] GeForce RTX 50 series TGP limit may be clipped earlier [5170771]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "[Lumion 12] Missing certain UI components [5213228]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "[Varjo XR3] Varjo XR3 HMD is not working on RTX 50 series GPUs [5173753]",
+        "status": "fixed",
+        "fixed_in_version": "576.52",
+        "original_status_text": "Fixed (576.52)"
+      },
+      {
+        "description": "Gray Zone Warfare: stability issues [5284518]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      }
+    ]
+  },
+  {
+    "version": "576.52",
+    "bugs": [
+      {
+        "description": "[RTX 50 series] Twinmotion: Bugcheck when attempting to launch [5282285]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[RTX 50 series] Monster Hunter World may crash when playing in DX12 mode [5325098]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      },
+      {
+        "description": "[DirectX 12] Intermittent crash may be observed in certain games when hardware-accelerated GPU scheduling is disabled [5327650]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  },
+  {
+    "version": "576.8",
+    "bugs": [
+      {
+        "description": "Dune: Awakening: stability issues [5273568]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Clair Obscur: Expedition 33: stability issues [5283401]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Monster Hunter World: stability issues when playing in DX12 mode [5305302]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Marvel Rivals: stability issues [5273681]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "GTA V Enhanced: stability issues [5302755]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Honor of Kings: World: stability issues [5304344]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Indiana Jones and The Great Circle: Image corruption [5326122]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "GeForce RTX 5090 FE acoustic improvements for idle and low loads [5139629]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "[RTX 50 series] Adobe Substance 3D Painter: showing viewport corruption after baking [5270020]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "BlackmagicDesign: UI overlay in Fusion page is not displayed correctly [5237584]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Videos captured with NVIDIA App may appear washed out after editing with the Windows Photos app [5294224]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "Certain DisplayPort 1.4 monitors may display random black screen flicker when connected to DisplayPort 2.1 graphics card [5277453]",
+        "status": "fixed",
+        "fixed_in_version": "576.80",
+        "original_status_text": "Fixed (576.80)"
+      },
+      {
+        "description": "World of Warcraft: displays artifacts when ray tracing is enabled [5273429]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Counter-Strike 2: Text may appear slightly distorted when in-game resolution is lower than the native resolution of the display [5278913]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "When enabling NVIDIA Smooth Motion in games, GPU video memory runs at slightly lower speed [5337348]",
+        "status": "fixed",
+        "fixed_in_version": "576.88",
+        "original_status_text": "Fixed (576.88)"
+      },
+      {
+        "description": "Cyberpunk 2077: Some notebooks will freeze when NVIDIA App Overlay is used when DLSS Frame Generation is enabled [5327306]",
+        "status": "fixed",
+        "fixed_in_version": "576.88",
+        "original_status_text": "Fixed (576.88)"
+      },
+      {
+        "description": "Black screen when switching between 480Hz and 360Hz on Sony SDM-27Q10S monitor [5335399]",
+        "status": "fixed",
+        "fixed_in_version": "576.88",
+        "original_status_text": "Fixed (576.88)"
+      }
+    ]
+  },
+  {
+    "version": "576.88",
+    "bugs": [
+      {
+        "description": "Black screen when installing drivers on some AMD Ryzen configurations [5107271]",
+        "status": "fixed",
+        "fixed_in_version": "576.88",
+        "original_status_text": "Fixed (576.88)"
+      }
+    ]
+  },
+  {
+    "version": "577.0",
+    "bugs": [
+      {
+        "description": "Counter-Strike 2: Black screen using 4:3 aspect ratio resolution on ASUS ROG PG27AQN monitor [5300665]",
+        "status": "fixed",
+        "fixed_in_version": "577.00",
+        "original_status_text": "Fixed (577.00)"
+      },
+      {
+        "description": "NARAKA BLADEPOINT: Stability issues on a specific map when using DX11 and DLSS Super Resolution [5374090]",
+        "status": "fixed",
+        "fixed_in_version": "577.00",
+        "original_status_text": "Fixed (577.00)"
+      }
+    ]
+  },
+  {
+    "version": "580.88",
+    "bugs": [
+      {
+        "description": "Marvel’s Spider-Man Remastered: Lower performance after updating to R575 drivers [5412725]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Starcraft Remastered: Objects may display slight artifacts [5162957]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Cyberpunk 2077: Micro-stutter may be observed when VSYNC is enabled [5243668]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "JX Online 3: Artifacts may appear on the water surface [5247344]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "32-bit games crash when using DXVK translation layer during startup [5252103]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Control: game may crash when ray tracing is enabled [5261356]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "ABZU: Corruption observed in the water [5330078]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "EA Sports FC 25: General stability issues [5331630]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Dirt 5: Game crash on startup [5349426]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Blender: Black dots on reference image [5339988]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Cloudflare WARP: Display mode change blocked on Advanced Optimus systems [5368524]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Windows Photos: Trimming a video may cause the colors to be changed [5158063]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "GPU video memory runs at slightly lower speed after enabling NVIDIA Smooth Motion [5370796]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "For some systems running hybrid graphics mode, dGPU may not go to sleep [5232857]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Samsung 57\" Odyssey Neo G9: Momentary flicker may be observed when resizing window [5243530]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "LGE 27GX790A-B: Blank screens when running in DisplayPort 2.1 mode with HDR [5334029]",
+        "status": "fixed",
+        "fixed_in_version": "580.88",
+        "original_status_text": "Fixed (580.88)"
+      },
+      {
+        "description": "Some notebook displays may appear dim when an external HDR monitor is connected and display mode is set to \"NVIDIA GPU only\" [5429667]",
+        "status": "fixed",
+        "fixed_in_version": "580.97",
+        "original_status_text": "Fixed (580.97)"
+      }
+    ]
+  },
+  {
+    "version": "580.97",
+    "bugs": [
+      {
+        "description": "Samsung 57\" Odyssey Neo G9 Flicker/Underflow when idle at desktop [5361116]",
+        "status": "fixed",
+        "fixed_in_version": "580.97",
+        "original_status_text": "Fixed (580.97)"
+      },
+      {
+        "description": "Adobe Premiere Pro: Some system configurations can freeze during export using hardware encoding [5431822]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      }
+    ]
+  },
+  {
+    "version": "581.08",
+    "bugs": [
+      {
+        "description": "Marvel Rivals: Negative performance impact when using some 581.xx drivers [5444816]",
+        "status": "fixed",
+        "fixed_in_version": "581.29",
+        "original_status_text": "Fixed (581.29)"
+      },
+      {
+        "description": "Forza Motorsport: Game crashes if using Smooth Motion while bringing up NVIDIA Appoverlay statistics [5412757]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "Gray Zone Warfare: Game stability issues [5371781]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "ARK: Survival Ascended: Game stability issues [5441616]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "Potential memory leak when using NVENC hardware encoding [5442678]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "Power cycling monitor can result in monitor flickering when NVIDIA App is installed [5434811]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "NVIDIA App game filter issues after driver update [5429651]",
+        "status": "fixed",
+        "fixed_in_version": "581.08",
+        "original_status_text": "Fixed (581.08)"
+      },
+      {
+        "description": "Like a Dragon: Infinite Wealth: Light flickering after driver update on some system configurations [5432356]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      }
+    ]
+  },
+  {
+    "version": "581.15",
+    "bugs": [
+      {
+        "description": "Marvel's Avengers - The Definitive Edition: Game crashes to desktop on startup [5350712]",
+        "status": "fixed",
+        "fixed_in_version": "581.15",
+        "original_status_text": "Fixed (581.15)"
+      },
+      {
+        "description": "Certain monitors may display a random flicker when hot plugged over HDMI [5280259]",
+        "status": "fixed",
+        "fixed_in_version": "581.15",
+        "original_status_text": "Fixed (581.15)"
+      }
+    ]
+  },
+  {
+    "version": "581.42",
+    "bugs": [
+      {
+        "description": "Battlefield 2042: Increased GPU Crashing after updating to R580 drivers [5446395]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Forza Horizon 4: Slight flickering from light sources [5404555]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Planet Coaster 2: crashes after updating to R580 drivers [5447412]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Performance drops in DirectX 11 apps when using Smooth Motion with RivaTuner FPS cap [5476266]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Stuttering in games using GODOT engine after updating to R580 drivers[5466820]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Adobe After Effects / Adobe Premiere Pro crashes on launch when Smooth Motion is enabled globally [5515256]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      },
+      {
+        "description": "Videos colors may appear distorted when \"Noise reduction\" is set to \"Use the NVIDIA setting\" on some system configurations [5401959]",
+        "status": "fixed",
+        "fixed_in_version": "581.42",
+        "original_status_text": "Fixed (581.42)"
+      }
+    ]
+  },
+  {
+    "version": "581.57",
+    "bugs": [
+      {
+        "description": "Steam overlay may cause game stability issues [5521892]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Hell is Us: Random red/green visual glitches during gameplay [5505371]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Black Myth: Wukong: Minor graphical glitch may randomly appear during gameplay after updating to R580 drivers [5453535]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Madden 26: Stability issues after updating to R580 drivers [5446236]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Games may crash if the installed game directory contains Chinese characters while Smooth Motion is enabled [5537563]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Total War: Warhammer III: Graphics corruption [5363634]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Delta Force: game stability issues when Smooth Motion is enabled [5540567]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Clair Obscur: Expedition 33: Display artifacts and stability issues when starting a game after waking PC from sleep [5467318]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Borderlands 4 corruption and stability issues [5497338]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "Black screen on Alienware AW2524H monitor after changing display settings [5430236]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      },
+      {
+        "description": "DxO Photolab 9: Stability issues when using the AI masks [5475130]",
+        "status": "fixed",
+        "fixed_in_version": "581.57",
+        "original_status_text": "Fixed (581.57)"
+      }
+    ]
+  },
+  {
+    "version": "581.8",
+    "bugs": [
+      {
+        "description": "F1 25: Performance optimizations when using DLSS Frame Generation [5422722]",
+        "status": "fixed",
+        "fixed_in_version": "581.80",
+        "original_status_text": "Fixed (581.80)"
+      },
+      {
+        "description": "Vulkan apps crash when launched on Core 2 Duo / Core 2 Quad CPUs [5509161]",
+        "status": "fixed",
+        "fixed_in_version": "581.80",
+        "original_status_text": "Fixed (581.80)"
+      }
+    ]
+  },
+  {
+    "version": "591.44",
+    "bugs": [
+      {
+        "description": "Battlefield 6: Gaming stability issues [5582125]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Black Myth: Wukong: Lower performance in driver branches newer than R570 [5562283]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Monster Hunter World: Iceborne: Some particle effects may be missing on GeForce RTX 50 Series GPUs [5546598]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Call of Duty: Black Ops 3: Gameplay becomes dim over time [5488108]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Madden 26: Stability issues [5535693]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Users running R580 branch drivers (58x.xx) or newer may observe lower performance in some games after updating to Windows 11 October 2025 KB5066835 [5561605]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "The Witcher 3: Wild Hunt: Random corruption on main character's sword corruption [5363151]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Adobe Premiere Pro: Freeze During Export Using Hardware Encoding [5431822]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Sophos Home Antivirus: System stability issues [5581371]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Green line observed while viewing videos in Chromium browser on GeForce RTX 50 Series GPUs [5535388]",
+        "status": "fixed",
+        "fixed_in_version": "591.44",
+        "original_status_text": "Fixed (591.44)"
+      },
+      {
+        "description": "Unable to deselect \"Show Notification Tray Icon\" from NVIDIA Control Panel [5622213]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      }
+    ]
+  },
+  {
+    "version": "591.59",
+    "bugs": [
+      {
+        "description": "Enshrouded: Game stability issues on GeForce RTX 50 Series GPUs [5664067]",
+        "status": "fixed",
+        "fixed_in_version": "591.59",
+        "original_status_text": "Fixed (591.59)"
+      },
+      {
+        "description": "Assassin's Creed Valhalla: HDR toggle not functional when Smooth Motion is enabled [5469746]",
+        "status": "fixed",
+        "fixed_in_version": "591.59",
+        "original_status_text": "Fixed (591.59)"
+      },
+      {
+        "description": "Dying Light: The Beast: Game stability issues after updating to 591.44 driver [5720536]",
+        "status": "fixed",
+        "fixed_in_version": "591.59",
+        "original_status_text": "Fixed (591.59)"
+      },
+      {
+        "description": "Display color seems faded after switching to non-native resolution [5548662]",
+        "status": "fixed",
+        "fixed_in_version": "591.59",
+        "original_status_text": "Fixed (591.59)"
+      },
+      {
+        "description": "Using RTX HDR on select televisions causes games to blackscreen [5720286]",
+        "status": "fixed",
+        "fixed_in_version": "591.59",
+        "original_status_text": "Fixed (591.59)"
+      }
+    ]
+  },
+  {
+    "version": "591.74",
+    "bugs": [
+      {
+        "description": "Arena Breakout: Infinite: Game stability issues [5748974]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      },
+      {
+        "description": "Brightness adjustment issues on various displays [5739739]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      },
+      {
+        "description": "Colors are not applied correctly when using Digital Vibrance [5718365]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      },
+      {
+        "description": "Slight banding may be observed on gradients in SDR color mode [5720512]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      },
+      {
+        "description": "Using RTX HDR in Vulkan games causes black screen on LG OLED TVs [5763163]",
+        "status": "fixed",
+        "fixed_in_version": "591.74",
+        "original_status_text": "Fixed (591.74)"
+      },
+      {
+        "description": "Call of Duty: Modern Warfare: Image corruption after driver update [5733427]",
+        "status": "pending",
+        "fixed_in_version": null,
+        "original_status_text": "Pending"
+      }
+    ]
+  }
+]
