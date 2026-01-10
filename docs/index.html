@@ -1,32 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVIDIA Driver Issue Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for UI icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>NVIDIA Driver Issue Tracker</h1>
-            <p>Tracking known issues and fixes across driver versions</p>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-icon"><ion-icon name="hardware-chip-outline"></ion-icon></span>
+                <h1>NvidiaWatch</h1>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                <ion-icon name="moon-outline" class="icon-moon"></ion-icon>
+                <ion-icon name="sunny-outline" class="icon-sun"></ion-icon>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Track Driver Issues</h2>
+            <p>Stay updated with the latest bugs and fixes across NVIDIA driver versions.</p>
+            
+            <!-- UPDATE LINKS HERE for latest driver discussions -->
+            <div class="quick-links">
+                <a href="https://www.reddit.com/r/nvidia/comments/1q5a3zx/game_ready_studio_driver_59174_faqdiscussion/" target="_blank" class="link-btn reddit">
+                    <ion-icon name="logo-reddit"></ion-icon>
+                    <span>Latest Reddit Discussion</span>
+                </a>
+                <a href="https://www.nvidia.com/en-us/geforce/forums/user/15//580016/geforce-grd-59174-feedback-thread-released-1526/" target="_blank" class="link-btn nvidia">
+                    <ion-icon name="chatbubbles-outline"></ion-icon>
+                    <span>Official Feedback Thread</span>
+                </a>
+            </div>
+
+            <div class="search-wrapper">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                <input type="text" id="search-input" placeholder="Search version, game, or bug...">
+            </div>
         </div>
     </header>
 
     <main>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search issues, versions, or status...">
-        </div>
-
-        <div id="driver-container">
+        <div id="driver-container" class="grid-layout">
             <!-- Driver cards will be injected here -->
         </div>
 
         <div class="pagination-container">
-            <button id="load-more-btn">Load More</button>
+            <!-- Pagination injected by script.js -->
         </div>
     </main>
+
+    <footer>
+        <p>Unofficial Tracker. Data sourced from community reports.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
