@@ -331,10 +331,11 @@ main {
 }
 
 .bug-desc {
-    font-family: var(--ff-hand);
-    font-size: 1.25rem;
+    font-family: var(--ff-mono);
+    font-size: 0.85rem;
     color: var(--text-primary);
     word-break: break-word;
+    line-height: 1.6;
 }
 
 .bug-footer {
