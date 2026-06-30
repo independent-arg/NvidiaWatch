@@ -6,7 +6,7 @@
     <title>NVIDIA Driver Issue Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Ionicons for UI icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -51,6 +51,21 @@
     </header>
 
     <main>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num" id="stat-total-drivers">-</div>
+                <div class="stat-label">Total Drivers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num" id="stat-total-bugs">-</div>
+                <div class="stat-label">Issues Tracked</div>
+            </div>
+            <div class="stat done">
+                <div class="stat-num" id="stat-fixed-rate">-</div>
+                <div class="stat-label">Fix Rate</div>
+            </div>
+        </div>
+
         <div id="driver-container" class="grid-layout">
             <!-- Driver cards will be injected here -->
         </div>
