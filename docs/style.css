@@ -410,13 +410,44 @@ footer {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 3rem;
+    padding: 4rem 1.5rem;
     color: var(--text-secondary);
     font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border-top: 1px solid var(--border-color);
     background-color: var(--bg-surface);
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+.credit {
+    font-size: 12px;
+    margin-top: 1rem;
+    color: var(--text-primary);
+}
+
+.credit strong {
+    color: var(--accent-color);
+}
+
+.footer-links {
+    margin-top: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
 }
 
 /* Mobile Responsiveness */

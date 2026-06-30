@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NVIDIA Driver Issue Tracker</title>
+    <title>NvidiaWatch | Community Driver Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,24 +28,24 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h2>Track Driver Issues</h2>
-            <p>Stay updated with the latest bugs and fixes across NVIDIA driver versions.</p>
+            <h2>Community Bug Tracker</h2>
+            <p>Check which drivers are safe to use and stay on top of the latest known issues.</p>
             
             <!-- UPDATE LINKS HERE for latest driver discussions -->
             <div class="quick-links">
-                <a href="https://www.reddit.com/r/nvidia/comments/1q5a3zx/game_ready_studio_driver_59174_faqdiscussion/" target="_blank" class="link-btn reddit">
+                <a href="https://www.reddit.com/r/nvidia/comments/1u7gsli/game_ready_studio_driver_61062_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
                     <ion-icon name="logo-reddit"></ion-icon>
-                    <span>Latest Reddit Discussion</span>
+                    <span>Join the Reddit Talk</span>
                 </a>
-                <a href="https://www.nvidia.com/en-us/geforce/forums/user/15//580016/geforce-grd-59174-feedback-thread-released-1526/" target="_blank" class="link-btn nvidia">
+                <a href="https://www.nvidia.com/en-us/geforce/forums/game-ready-drivers/13/587128/geforce-grd-61062-feedback-thread-released-61626/" target="_blank" rel="noopener noreferrer" class="link-btn nvidia">
                     <ion-icon name="chatbubbles-outline"></ion-icon>
-                    <span>Official Feedback Thread</span>
+                    <span>Official Feedback</span>
                 </a>
             </div>
 
             <div class="search-wrapper">
                 <ion-icon name="search-outline" class="search-icon"></ion-icon>
-                <input type="text" id="search-input" placeholder="Search version, game, or bug...">
+                <input type="text" id="search-input" placeholder="Search for a game, bug, or driver version...">
             </div>
         </div>
     </header>
@@ -54,15 +54,15 @@
         <div class="stats">
             <div class="stat">
                 <div class="stat-num" id="stat-total-drivers">-</div>
-                <div class="stat-label">Total Drivers</div>
+                <div class="stat-label">Total drivers</div>
             </div>
             <div class="stat">
                 <div class="stat-num" id="stat-total-bugs">-</div>
-                <div class="stat-label">Issues Tracked</div>
+                <div class="stat-label">Issues tracked</div>
             </div>
             <div class="stat done">
                 <div class="stat-num" id="stat-fixed-rate">-</div>
-                <div class="stat-label">Fix Rate</div>
+                <div class="stat-label">Fix rate</div>
             </div>
         </div>
 
@@ -76,7 +76,13 @@
     </main>
 
     <footer>
-        <p>Unofficial Tracker. Data sourced from community reports.</p>
+        <p>This is a community-run project. Data is sourced from user reports and official notes.</p>
+        <p class="credit">Built with ❤️ by <strong>independent-arg</strong> for the community.</p>
+        <div class="footer-links">
+            <a href="https://github.com/independent-arg/NvidiaWatch" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-github"></ion-icon> GitHub Repository
+            </a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
