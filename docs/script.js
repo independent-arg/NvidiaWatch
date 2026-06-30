@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const driverContainer = document.getElementById('driver-container');
+    const statTotalDrivers = document.getElementById('stat-total-drivers');
+    const statTotalBugs = document.getElementById('stat-total-bugs');
+    const statFixedRate = document.getElementById('stat-fixed-rate');
     const searchInput = document.getElementById('search-input');
     const themeBtn = document.getElementById('theme-toggle');
     const htmlEl = document.documentElement;
@@ -34,12 +37,30 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             allDrivers = data.sort((a, b) => parseFloat(b.version) - parseFloat(a.version));
             filteredDrivers = allDrivers; // Initial state
+            updateStats(allDrivers);
             renderDrivers();
             renderPagination();
         })
         .catch(err => console.error('Error loading data:', err));
 
     // --- Core Logic ---
+
+    function updateStats(drivers) {
+        let totalDrivers = drivers.length;
+        let totalBugs = 0;
+        let fixedBugs = 0;
+
+        drivers.forEach(d => {
+            totalBugs += d.bugs.length;
+            fixedBugs += d.bugs.filter(b => b.status === 'fixed').length;
+        });
+
+        const rate = totalBugs > 0 ? Math.round((fixedBugs / totalBugs) * 100) : 0;
+
+        statTotalDrivers.textContent = totalDrivers;
+        statTotalBugs.textContent = totalBugs;
+        statFixedRate.textContent = `${rate}%`;
+    }
 
     function getPaginatedData() {
         const startIndex = (currentPage - 1) * itemsPerPage;
