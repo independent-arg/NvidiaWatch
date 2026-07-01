@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-view="masonry">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Metadata -->
     <title>NvidiaWatch | Community Driver Tracker</title>
+    <meta name="description" content="Track known issues and stability of NVIDIA Game Ready and Studio drivers. Community-driven bug reports to help you find the safest driver version.">
+    <meta name="keywords" content="Nvidia, GPU Drivers, Bug Tracker, Game Ready, Studio Driver, Stability, GPU Issues">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://independent-arg.github.io/NvidiaWatch/">
+    <meta property="og:title" content="NvidiaWatch | Community Driver Tracker">
+    <meta property="og:description" content="Check which drivers are safe to use and stay on top of the latest known issues.">
+    <meta property="og:image" content="https://independent-arg.github.io/NvidiaWatch/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font weight optimization -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Ionicons for UI icons -->
+    
+    <!-- Optimized Ionicons (no nomodule) -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -19,10 +35,16 @@
                 <span class="logo-icon"><ion-icon name="hardware-chip-outline"></ion-icon></span>
                 <h1>NvidiaWatch</h1>
             </div>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
-                <ion-icon name="moon-outline" class="icon-moon"></ion-icon>
-                <ion-icon name="sunny-outline" class="icon-sun"></ion-icon>
-            </button>
+            <div class="nav-controls">
+                <button id="view-mode-toggle" class="theme-btn" aria-label="Switch view mode" aria-pressed="false">
+                    <ion-icon name="list-outline" class="icon-timeline"></ion-icon>
+                    <ion-icon name="apps-outline" class="icon-masonry"></ion-icon>
+                </button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode" aria-pressed="true">
+                    <ion-icon name="moon-outline" class="icon-moon"></ion-icon>
+                    <ion-icon name="sunny-outline" class="icon-sun"></ion-icon>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -31,7 +53,6 @@
             <h2>Community Bug Tracker</h2>
             <p>Check which drivers are safe to use and stay on top of the latest known issues.</p>
             
-            <!-- UPDATE LINKS HERE for latest driver discussions -->
             <div class="quick-links">
                 <a href="https://www.reddit.com/r/nvidia/comments/1u7gsli/game_ready_studio_driver_61062_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
                     <ion-icon name="logo-reddit"></ion-icon>
@@ -45,7 +66,31 @@
 
             <div class="search-wrapper">
                 <ion-icon name="search-outline" class="search-icon"></ion-icon>
-                <input type="text" id="search-input" placeholder="Search for a game, bug, or driver version...">
+                <input type="text" id="search-input" placeholder="Search for a game, bug, or driver version..." aria-label="Search drivers and issues">
+                <button id="search-clear" class="search-clear-btn hidden" aria-label="Clear search">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                </button>
+            </div>
+
+            <!-- New UX Controls: Filters and Sorting -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <span class="filter-label">Status:</span>
+                    <div class="filter-chips" id="status-filters">
+                        <button class="chip active" data-filter="all">All</button>
+                        <button class="chip" data-filter="pending">Pending</button>
+                        <button class="chip" data-filter="fixed">Fixed</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Sort by:</span>
+                    <select id="sort-select" class="sort-dropdown">
+                        <option value="version-desc">Version (newest)</option>
+                        <option value="version-asc">Version (oldest)</option>
+                        <option value="bugs-desc">Most bugs</option>
+                        <option value="bugs-asc">Fewest bugs</option>
+                    </select>
+                </div>
             </div>
         </div>
     </header>
@@ -66,7 +111,7 @@
             </div>
         </div>
 
-        <div id="driver-container" class="grid-layout">
+        <div id="driver-container" class="masonry-layout" aria-live="polite">
             <!-- Driver cards will be injected here -->
         </div>
 
