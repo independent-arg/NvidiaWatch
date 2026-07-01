@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     const itemsPerPage = 9;
     
-    // Filter and sort state
-    let currentFilter = 'all'; // all, pending, fixed
+    let currentFilter = 'all'; 
     let currentSort = 'version-desc';
 
     // --- Helpers ---
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return !isNaN(verNum) ? verNum.toFixed(2) : version;
     }
 
-    // Robust version comparator (handles dots and potential suffixes)
     function compareVersions(a, b) {
         const splitA = a.split('.').map(n => parseFloat(n) || 0);
         const splitB = b.split('.').map(n => parseFloat(n) || 0);
@@ -50,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
         
         const newRelativePathQuery = window.location.pathname + '?' + params.toString();
-        history.pushState(null, '', newRelativePathQuery);
+        // Keep the hash if it exists
+        const hash = window.location.hash;
+        history.pushState(null, '', newRelativePathQuery + hash);
     }
 
     function loadStateFromURL() {
@@ -121,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             allDrivers = data;
             
-            // Dynamic title with the latest version
             const latest = data.sort((a, b) => compareVersions(b.version, a.version))[0];
             if (latest) {
                 document.title = `NvidiaWatch | Latest Driver ${formatVersion(latest.version)}`;
@@ -129,7 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             loadStateFromURL();
             updateStats(allDrivers);
-            applyFiltersAndSort();
+            
+            // IMPORTANT: First apply filters and sort to know the final list
+            applyFiltersAndSort(false); // Pass false to avoid rendering yet
+
+            // SMART DEEP LINKING: Find if the hash driver is on a different page
+            const hash = window.location.hash;
+            if (hash.startsWith('#driver-')) {
+                const targetVersion = hash.replace('#driver-', '');
+                const driverIndex = filteredDrivers.findIndex(d => d.version === targetVersion);
+                
+                if (driverIndex !== -1) {
+                    // Calculate which page this driver is on
+                    const targetPage = Math.floor(driverIndex / itemsPerPage) + 1;
+                    currentPage = targetPage;
+                }
+            }
+
+            // Now render everything and scroll
+            renderDrivers();
+            renderPagination();
+            updateURL();
             scrollToDriverFromHash();
         })
         .catch(err => console.error('Error loading data:', err));
@@ -152,26 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
         statFixedRate.textContent = `${rate}%`;
     }
 
-    function applyFiltersAndSort() {
+    function applyFiltersAndSort(shouldRender = true) {
         const query = searchInput.value.toLowerCase().trim();
         
-        // 1. Filtering by search and status
         filteredDrivers = allDrivers.filter(driver => {
             const versionText = `driver ${formatVersion(driver.version)}`.toLowerCase();
-            
-            // Filter internal bugs based on selected status
             const bugsMatchingStatus = driver.bugs.filter(bug => {
                 if (currentFilter === 'pending') return bug.fixed_in === null;
                 if (currentFilter === 'fixed') return bug.fixed_in !== null;
                 return true;
             });
 
-            // If status filter removes all bugs, driver only appears if version matches
             if (bugsMatchingStatus.length === 0 && currentFilter !== 'all') {
                 return versionText.includes(query);
             }
 
-            // Check if version or any bug (matching status) matches search
             const hasMatchingBug = bugsMatchingStatus.some(bug => {
                 const desc = (bug.description || "").toLowerCase();
                 const status = (bug.fixed_in || "Pending").toLowerCase();
@@ -181,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return versionText.includes(query) || hasMatchingBug;
         });
 
-        // 2. Sorting
         filteredDrivers.sort((a, b) => {
             switch (currentSort) {
                 case 'version-asc': return compareVersions(a.version, b.version);
@@ -192,10 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        currentPage = 1;
-        renderDrivers();
-        renderPagination();
-        updateURL();
+        if (shouldRender) {
+            currentPage = 1;
+            renderDrivers();
+            renderPagination();
+            updateURL();
+        }
     }
 
     function renderDrivers() {
@@ -217,8 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         driversToRender.forEach(driver => {
             const versionDisplay = formatVersion(driver.version);
-            
-            // Deep linking: Unique ID per version
             const card = document.createElement('div');
             card.className = 'driver-card';
             card.id = `driver-${driver.version}`;
@@ -245,17 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const bugList = document.createElement('ul');
             bugList.className = 'bug-list';
 
-            // Show only bugs matching status filter and search
             const query = searchInput.value.toLowerCase().trim();
             const bugsToShow = driver.bugs.filter(bug => {
                 const matchesStatus = (currentFilter === 'all') || 
                                      (currentFilter === 'pending' && bug.fixed_in === null) || 
                                      (currentFilter === 'fixed' && bug.fixed_in !== null);
-                
                 const matchesSearch = !query || 
                                      (bug.description || "").toLowerCase().includes(query) || 
                                      (bug.fixed_in || "Pending").toLowerCase().includes(query);
-                
                 return matchesStatus && matchesSearch;
             });
 
@@ -282,10 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function scrollToDriverFromHash() {
         const hash = window.location.hash;
         if (hash.startsWith('#driver-')) {
+            // Small delay to ensure DOM is fully painted
             setTimeout(() => {
                 const el = document.querySelector(hash);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
         }
     }
 
@@ -346,8 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateChipUI();
         applyFiltersAndSort();
     }
-
-    // --- Event Listeners ---
 
     searchInput.addEventListener('input', () => {
         searchClearBtn.classList.toggle('hidden', !searchInput.value);
