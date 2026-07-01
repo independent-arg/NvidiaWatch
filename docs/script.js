@@ -4,42 +4,133 @@ document.addEventListener('DOMContentLoaded', () => {
     const statTotalBugs = document.getElementById('stat-total-bugs');
     const statFixedRate = document.getElementById('stat-fixed-rate');
     const searchInput = document.getElementById('search-input');
+    const searchClearBtn = document.getElementById('search-clear');
     const themeBtn = document.getElementById('theme-toggle');
+    const viewModeBtn = document.getElementById('view-mode-toggle');
+    const sortSelect = document.getElementById('sort-select');
+    const statusChips = document.querySelectorAll('.chip');
     const htmlEl = document.documentElement;
     const paginationContainer = document.querySelector('.pagination-container');
 
     let allDrivers = [];
-    let filteredDrivers = []; // For search results
+    let filteredDrivers = [];
     let currentPage = 1;
-    const itemsPerPage = 9; // Adjust for masonry layout (3 cols * 3 rows approx)
-    let isSearchActive = false;
+    const itemsPerPage = 9;
+    
+    // Filter and sort state
+    let currentFilter = 'all'; // all, pending, fixed
+    let currentSort = 'version-desc';
 
-    // --- Theme Toggle Logic ---
+    // --- Helpers ---
+
+    function formatVersion(version) {
+        const verNum = parseFloat(version);
+        return !isNaN(verNum) ? verNum.toFixed(2) : version;
+    }
+
+    // Robust version comparator (handles dots and potential suffixes)
+    function compareVersions(a, b) {
+        const splitA = a.split('.').map(n => parseFloat(n) || 0);
+        const splitB = b.split('.').map(n => parseFloat(n) || 0);
+        const len = Math.max(splitA.length, splitB.length);
+        
+        for (let i = 0; i < len; i++) {
+            const valA = splitA[i] || 0;
+            const valB = splitB[i] || 0;
+            if (valA !== valB) return valA - valB;
+        }
+        return 0;
+    }
+
+    function updateURL() {
+        const params = new URLSearchParams();
+        if (searchInput.value) params.set('q', searchInput.value);
+        if (currentPage > 1) params.set('page', currentPage);
+        if (currentFilter !== 'all') params.set('filter', currentFilter);
+        if (currentSort !== 'version-desc') params.set('sort', currentSort);
+        
+        const newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        history.pushState(null, '', newRelativePathQuery);
+    }
+
+    function loadStateFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('q')) searchInput.value = params.get('q');
+        if (params.has('page')) currentPage = parseInt(params.get('page'));
+        if (params.has('filter')) {
+            currentFilter = params.get('filter');
+            updateChipUI();
+        }
+        if (params.has('sort')) {
+            currentSort = params.get('sort');
+            sortSelect.value = currentSort;
+        }
+    }
+
+    function updateChipUI() {
+        statusChips.forEach(chip => {
+            chip.classList.toggle('active', chip.dataset.filter === currentFilter);
+        });
+    }
+
+    // --- Appearance Persistence ---
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         htmlEl.setAttribute('data-theme', savedTheme);
+        themeBtn.setAttribute('aria-pressed', savedTheme === 'light');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        htmlEl.setAttribute('data-theme', 'light');
+        themeBtn.setAttribute('aria-pressed', 'true');
+    }
+
+    const savedView = localStorage.getItem('view') || 'masonry';
+    htmlEl.setAttribute('data-view', savedView);
+    viewModeBtn.setAttribute('aria-pressed', savedView === 'timeline');
+    
+    if (savedView === 'masonry') {
+        driverContainer.classList.replace('grid-layout', 'masonry-layout');
     } else {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            htmlEl.setAttribute('data-theme', 'light');
-        }
+        driverContainer.classList.replace('masonry-layout', 'grid-layout');
     }
 
     themeBtn.addEventListener('click', () => {
         const currentTheme = htmlEl.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         htmlEl.setAttribute('data-theme', newTheme);
+        themeBtn.setAttribute('aria-pressed', newTheme === 'light');
         localStorage.setItem('theme', newTheme);
+    });
+
+    viewModeBtn.addEventListener('click', () => {
+        const currentView = htmlEl.getAttribute('data-view');
+        const newView = currentView === 'timeline' ? 'masonry' : 'timeline';
+        htmlEl.setAttribute('data-view', newView);
+        viewModeBtn.setAttribute('aria-pressed', newView === 'timeline');
+        localStorage.setItem('view', newView);
+
+        if (newView === 'masonry') {
+            driverContainer.classList.replace('grid-layout', 'masonry-layout');
+        } else {
+            driverContainer.classList.replace('masonry-layout', 'grid-layout');
+        }
     });
 
     // --- Data Fetching ---
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            allDrivers = data.sort((a, b) => parseFloat(b.version) - parseFloat(a.version));
-            filteredDrivers = allDrivers; // Initial state
+            allDrivers = data;
+            
+            // Dynamic title with the latest version
+            const latest = data.sort((a, b) => compareVersions(b.version, a.version))[0];
+            if (latest) {
+                document.title = `NvidiaWatch | Latest Driver ${formatVersion(latest.version)}`;
+            }
+
+            loadStateFromURL();
             updateStats(allDrivers);
-            renderDrivers();
-            renderPagination();
+            applyFiltersAndSort();
+            scrollToDriverFromHash();
         })
         .catch(err => console.error('Error loading data:', err));
 
@@ -52,86 +143,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
         drivers.forEach(d => {
             totalBugs += d.bugs.length;
-            fixedBugs += d.bugs.filter(b => b.status === 'fixed').length;
+            fixedBugs += d.bugs.filter(b => b.fixed_in !== null).length;
         });
 
         const rate = totalBugs > 0 ? Math.round((fixedBugs / totalBugs) * 100) : 0;
-
         statTotalDrivers.textContent = totalDrivers;
         statTotalBugs.textContent = totalBugs;
         statFixedRate.textContent = `${rate}%`;
     }
 
-    function getPaginatedData() {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return filteredDrivers.slice(startIndex, endIndex);
+    function applyFiltersAndSort() {
+        const query = searchInput.value.toLowerCase().trim();
+        
+        // 1. Filtering by search and status
+        filteredDrivers = allDrivers.filter(driver => {
+            const versionText = `driver ${formatVersion(driver.version)}`.toLowerCase();
+            
+            // Filter internal bugs based on selected status
+            const bugsMatchingStatus = driver.bugs.filter(bug => {
+                if (currentFilter === 'pending') return bug.fixed_in === null;
+                if (currentFilter === 'fixed') return bug.fixed_in !== null;
+                return true;
+            });
+
+            // If status filter removes all bugs, driver only appears if version matches
+            if (bugsMatchingStatus.length === 0 && currentFilter !== 'all') {
+                return versionText.includes(query);
+            }
+
+            // Check if version or any bug (matching status) matches search
+            const hasMatchingBug = bugsMatchingStatus.some(bug => {
+                const desc = (bug.description || "").toLowerCase();
+                const status = (bug.fixed_in || "Pending").toLowerCase();
+                return desc.includes(query) || status.includes(query);
+            });
+
+            return versionText.includes(query) || hasMatchingBug;
+        });
+
+        // 2. Sorting
+        filteredDrivers.sort((a, b) => {
+            switch (currentSort) {
+                case 'version-asc': return compareVersions(a.version, b.version);
+                case 'version-desc': return compareVersions(b.version, a.version);
+                case 'bugs-asc': return a.bugs.length - b.bugs.length;
+                case 'bugs-desc': return b.bugs.length - a.bugs.length;
+                default: return 0;
+            }
+        });
+
+        currentPage = 1;
+        renderDrivers();
+        renderPagination();
+        updateURL();
     }
 
     function renderDrivers() {
         driverContainer.innerHTML = '';
-        const driversToRender = getPaginatedData();
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const driversToRender = filteredDrivers.slice(startIndex, startIndex + itemsPerPage);
 
         if (driversToRender.length === 0) {
-             driverContainer.innerHTML = `
-                <div style="column-span: all; text-align: center; padding: 4rem; color: var(--text-secondary);">
-                    <ion-icon name="search-outline" style="font-size: 3rem; margin-bottom: 1rem;"></ion-icon>
-                    <p>No results found.</p>
+            driverContainer.innerHTML = `
+                <div class="no-results" role="status">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <p>No results found for your current filters.</p>
+                    <button class="clear-search-btn" id="empty-clear-btn">Clear all filters</button>
                 </div>
             `;
+            document.getElementById('empty-clear-btn')?.addEventListener('click', clearAllFilters);
             return;
         }
 
         driversToRender.forEach(driver => {
-            // Version Formatting
-            let versionDisplay = driver.version;
-            const verNum = parseFloat(driver.version);
-            if (!isNaN(verNum)) {
-                versionDisplay = verNum.toFixed(2);
-            }
-
-            // In search mode, filter bugs. In normal mode, show all.
-            // Note: If user wants to see "cards with their own length", 
-            // we should show all matching bugs if searching, or all bugs if not.
+            const versionDisplay = formatVersion(driver.version);
             
-            const searchTerm = searchInput.value.toLowerCase();
-            let bugsToShow = driver.bugs;
-
-            if (isSearchActive) {
-                // Filter bugs within the card if searching
-                bugsToShow = driver.bugs.filter(bug => {
-                    const desc = (bug.description || "").toLowerCase();
-                    const status = (bug.original_status_text || "").toLowerCase();
-                    const ver = `driver ${versionDisplay}`.toLowerCase();
-                    return desc.includes(searchTerm) || status.includes(searchTerm) || ver.includes(searchTerm);
-                });
-            }
-
-            // Create Card
+            // Deep linking: Unique ID per version
             const card = document.createElement('div');
             card.className = 'driver-card';
-            card.style.animation = 'fadeIn 0.5s ease forwards';
+            card.id = `driver-${driver.version}`;
             
             const header = document.createElement('div');
             header.className = 'driver-header';
             header.innerHTML = `<div class="driver-version">Driver ${versionDisplay}</div>`;
+            header.style.cursor = 'pointer';
+            header.setAttribute('role', 'button');
+            header.setAttribute('tabindex', '0');
+            header.addEventListener('click', () => {
+                const version = driver.version;
+                history.pushState(null, '', `#driver-${version}`);
+                document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth' });
+            });
+            header.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    header.click();
+                }
+            });
             card.appendChild(header);
 
             const bugList = document.createElement('ul');
             bugList.className = 'bug-list';
 
+            // Show only bugs matching status filter and search
+            const query = searchInput.value.toLowerCase().trim();
+            const bugsToShow = driver.bugs.filter(bug => {
+                const matchesStatus = (currentFilter === 'all') || 
+                                     (currentFilter === 'pending' && bug.fixed_in === null) || 
+                                     (currentFilter === 'fixed' && bug.fixed_in !== null);
+                
+                const matchesSearch = !query || 
+                                     (bug.description || "").toLowerCase().includes(query) || 
+                                     (bug.fixed_in || "Pending").toLowerCase().includes(query);
+                
+                return matchesStatus && matchesSearch;
+            });
+
             bugsToShow.forEach(bug => {
                 const li = document.createElement('li');
                 li.className = 'bug-item';
-                
-                const isFixed = bug.status === 'fixed';
-                const statusClass = isFixed ? 'status-fixed' : 'status-pending';
-                const statusLabel = bug.original_status_text || (isFixed ? 'Fixed' : 'Pending');
-
+                const isFixed = bug.fixed_in !== null;
                 li.innerHTML = `
                     <div class="bug-desc">${bug.description}</div>
                     <div class="bug-footer">
-                        <span class="status-badge ${statusClass}">${statusLabel}</span>
+                        <span class="status-badge ${isFixed ? 'status-fixed' : 'status-pending'}">
+                            ${bug.fixed_in || 'Pending'}
+                        </span>
                     </div>
                 `;
                 bugList.appendChild(li);
@@ -142,114 +279,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function scrollToDriverFromHash() {
+        const hash = window.location.hash;
+        if (hash.startsWith('#driver-')) {
+            setTimeout(() => {
+                const el = document.querySelector(hash);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }
+
     function renderPagination() {
         paginationContainer.innerHTML = '';
-        
-        const totalItems = filteredDrivers.length;
-        const totalPages = Math.ceil(totalItems / itemsPerPage);
-
+        const totalPages = Math.ceil(filteredDrivers.length / itemsPerPage);
         if (totalPages <= 1) return;
 
-        // Previous Button
-        const prevBtn = document.createElement('button');
-        prevBtn.className = 'page-btn';
-        prevBtn.innerHTML = '<ion-icon name="chevron-back-outline"></ion-icon>';
-        prevBtn.disabled = currentPage === 1;
-        prevBtn.addEventListener('click', () => changePage(currentPage - 1));
-        paginationContainer.appendChild(prevBtn);
+        const createBtn = (content, page, active = false, disabled = false) => {
+            const btn = document.createElement('button');
+            btn.className = `page-btn ${active ? 'active' : ''}`;
+            btn.innerHTML = content;
+            btn.disabled = disabled;
+            if (!disabled) btn.addEventListener('click', () => changePage(page));
+            return btn;
+        };
 
-        // Page Numbers logic (Simple version: 1 2 3 ... Last)
-        // For simplicity in vanilla JS without complex logic, let's show a sliding window or simplified list
-        
-        let pagesToRender = [];
+        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-back-outline"></ion-icon>', currentPage - 1, false, currentPage === 1));
+
+        let pages = [];
         if (totalPages <= 7) {
-            pagesToRender = Array.from({length: totalPages}, (_, i) => i + 1);
+            pages = Array.from({length: totalPages}, (_, i) => i + 1);
         } else {
-            if (currentPage <= 4) {
-                pagesToRender = [1, 2, 3, 4, 5, '...', totalPages];
-            } else if (currentPage >= totalPages - 3) {
-                pagesToRender = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-            } else {
-                pagesToRender = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
-            }
+            if (currentPage <= 4) pages = [1, 2, 3, 4, 5, '...', totalPages];
+            else if (currentPage >= totalPages - 3) pages = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            else pages = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
         }
 
-        pagesToRender.forEach(p => {
-            const btn = document.createElement('button');
-            btn.className = 'page-btn';
-            
+        pages.forEach(p => {
             if (p === '...') {
-                btn.textContent = '...';
-                btn.disabled = true;
-                btn.style.border = 'none';
-                btn.style.backgroundColor = 'transparent';
+                const dot = document.createElement('span');
+                dot.textContent = '...';
+                dot.className = 'page-btn';
+                dot.style.border = 'none';
+                dot.style.backgroundColor = 'transparent';
+                paginationContainer.appendChild(dot);
             } else {
-                btn.textContent = p;
-                if (p === currentPage) btn.classList.add('active');
-                btn.addEventListener('click', () => changePage(p));
+                paginationContainer.appendChild(createBtn(p, p, p === currentPage));
             }
-            
-            paginationContainer.appendChild(btn);
         });
 
-        // Next Button
-        const nextBtn = document.createElement('button');
-        nextBtn.className = 'page-btn';
-        nextBtn.innerHTML = '<ion-icon name="chevron-forward-outline"></ion-icon>';
-        nextBtn.disabled = currentPage === totalPages;
-        nextBtn.addEventListener('click', () => changePage(currentPage + 1));
-        paginationContainer.appendChild(nextBtn);
+        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-forward-outline"></ion-icon>', currentPage + 1, false, currentPage === totalPages));
     }
 
     function changePage(newPage) {
         currentPage = newPage;
-        // Scroll to top of grid
-        const main = document.querySelector('main');
-        if (main) main.scrollIntoView({ behavior: 'smooth' });
-        
+        document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' });
         renderDrivers();
         renderPagination();
+        updateURL();
     }
 
-    // --- Search Logic ---
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim().toLowerCase();
-        isSearchActive = query.length > 0;
-        currentPage = 1; // Reset to page 1 on search
+    function clearAllFilters() {
+        searchInput.value = '';
+        currentFilter = 'all';
+        currentSort = 'version-desc';
+        sortSelect.value = 'version-desc';
+        updateChipUI();
+        applyFiltersAndSort();
+    }
 
-        if (isSearchActive) {
-            filteredDrivers = allDrivers.filter(driver => {
-                // Format version for search
-                let versionDisplay = driver.version;
-                const verNum = parseFloat(driver.version);
-                if (!isNaN(verNum)) versionDisplay = verNum.toFixed(2);
-                
-                const versionText = `driver ${versionDisplay}`.toLowerCase();
-                
-                // Check bugs
-                const hasMatchingBug = driver.bugs.some(bug => {
-                    const desc = (bug.description || "").toLowerCase();
-                    const status = (bug.original_status_text || "").toLowerCase();
-                    return desc.includes(query) || status.includes(query);
-                });
+    // --- Event Listeners ---
 
-                return versionText.includes(query) || hasMatchingBug;
-            });
-        } else {
-            filteredDrivers = allDrivers;
-        }
-
-        renderDrivers();
-        renderPagination();
+    searchInput.addEventListener('input', () => {
+        searchClearBtn.classList.toggle('hidden', !searchInput.value);
+        applyFiltersAndSort();
     });
 
-    // Add keyframes for fade in if not in CSS
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    `;
-    document.head.appendChild(styleSheet);
+    searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClearBtn.classList.add('hidden');
+        applyFiltersAndSort();
+        searchInput.focus();
+    });
+
+    sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        applyFiltersAndSort();
+    });
+
+    statusChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            currentFilter = chip.dataset.filter;
+            updateChipUI();
+            applyFiltersAndSort();
+        });
+    });
+
+    window.addEventListener('hashchange', scrollToDriverFromHash);
 });
