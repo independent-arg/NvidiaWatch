@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'all'; 
     let currentSort = 'version-desc';
 
-    // --- Helpers ---
-
     function formatVersion(version) {
         const verNum = parseFloat(version);
         return !isNaN(verNum) ? verNum.toFixed(2) : version;
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const splitA = a.split('.').map(n => parseFloat(n) || 0);
         const splitB = b.split('.').map(n => parseFloat(n) || 0);
         const len = Math.max(splitA.length, splitB.length);
-        
         for (let i = 0; i < len; i++) {
             const valA = splitA[i] || 0;
             const valB = splitB[i] || 0;
@@ -46,9 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage > 1) params.set('page', currentPage);
         if (currentFilter !== 'all') params.set('filter', currentFilter);
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
-        
         const newRelativePathQuery = window.location.pathname + '?' + params.toString();
-        // Keep the hash if it exists
         const hash = window.location.hash;
         history.pushState(null, '', newRelativePathQuery + hash);
     }
@@ -73,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Appearance Persistence ---
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         htmlEl.setAttribute('data-theme', savedTheme);
@@ -107,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         htmlEl.setAttribute('data-view', newView);
         viewModeBtn.setAttribute('aria-pressed', newView === 'timeline');
         localStorage.setItem('view', newView);
-
         if (newView === 'masonry') {
             driverContainer.classList.replace('grid-layout', 'masonry-layout');
         } else {
@@ -115,37 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Data Fetching ---
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
             allDrivers = data;
-            
             const latest = data.sort((a, b) => compareVersions(b.version, a.version))[0];
             if (latest) {
                 document.title = `NvidiaWatch | Latest Driver ${formatVersion(latest.version)}`;
             }
-
             loadStateFromURL();
             updateStats(allDrivers);
-            
-            // IMPORTANT: First apply filters and sort to know the final list
-            applyFiltersAndSort(false); // Pass false to avoid rendering yet
-
-            // SMART DEEP LINKING: Find if the hash driver is on a different page
+            applyFiltersAndSort(false);
             const hash = window.location.hash;
             if (hash.startsWith('#driver-')) {
                 const targetVersion = hash.replace('#driver-', '');
                 const driverIndex = filteredDrivers.findIndex(d => d.version === targetVersion);
-                
                 if (driverIndex !== -1) {
-                    // Calculate which page this driver is on
-                    const targetPage = Math.floor(driverIndex / itemsPerPage) + 1;
-                    currentPage = targetPage;
+                    currentPage = Math.floor(driverIndex / itemsPerPage) + 1;
                 }
             }
-
-            // Now render everything and scroll
             renderDrivers();
             renderPagination();
             updateURL();
@@ -153,18 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => console.error('Error loading data:', err));
 
-    // --- Core Logic ---
-
     function updateStats(drivers) {
         let totalDrivers = drivers.length;
         let totalBugs = 0;
         let fixedBugs = 0;
-
         drivers.forEach(d => {
             totalBugs += d.bugs.length;
             fixedBugs += d.bugs.filter(b => b.fixed_in !== null).length;
         });
-
         const rate = totalBugs > 0 ? Math.round((fixedBugs / totalBugs) * 100) : 0;
         statTotalDrivers.textContent = totalDrivers;
         statTotalBugs.textContent = totalBugs;
@@ -173,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFiltersAndSort(shouldRender = true) {
         const query = searchInput.value.toLowerCase().trim();
-        
         filteredDrivers = allDrivers.filter(driver => {
             const versionText = `driver ${formatVersion(driver.version)}`.toLowerCase();
             const bugsMatchingStatus = driver.bugs.filter(bug => {
@@ -181,17 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentFilter === 'fixed') return bug.fixed_in !== null;
                 return true;
             });
-
             if (bugsMatchingStatus.length === 0 && currentFilter !== 'all') {
                 return versionText.includes(query);
             }
-
             const hasMatchingBug = bugsMatchingStatus.some(bug => {
                 const desc = (bug.description || "").toLowerCase();
                 const status = (bug.fixed_in || "Pending").toLowerCase();
                 return desc.includes(query) || status.includes(query);
             });
-
             return versionText.includes(query) || hasMatchingBug;
         });
 
@@ -230,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const fragment = document.createDocumentFragment();
         driversToRender.forEach(driver => {
             const versionDisplay = formatVersion(driver.version);
             const card = document.createElement('div');
@@ -245,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             header.addEventListener('click', () => {
                 const version = driver.version;
                 history.pushState(null, '', `#driver-${version}`);
-                document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
             header.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -285,20 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             card.appendChild(bugList);
-            driverContainer.appendChild(card);
+            fragment.appendChild(card);
         });
+        driverContainer.appendChild(fragment);
     }
 
     function scrollToDriverFromHash() {
         const hash = window.location.hash;
         if (hash.startsWith('#driver-')) {
-            // Small delay to ensure DOM is fully painted
             setTimeout(() => {
                 const el = document.querySelector(hash);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 100);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
         }
     }
 
@@ -307,16 +279,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPages = Math.ceil(filteredDrivers.length / itemsPerPage);
         if (totalPages <= 1) return;
 
-        const createBtn = (content, page, active = false, disabled = false) => {
+        const createBtn = (content, page, label, active = false, disabled = false) => {
             const btn = document.createElement('button');
             btn.className = `page-btn ${active ? 'active' : ''}`;
             btn.innerHTML = content;
+            btn.setAttribute('aria-label', label);
             btn.disabled = disabled;
             if (!disabled) btn.addEventListener('click', () => changePage(page));
             return btn;
         };
 
-        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-back-outline"></ion-icon>', currentPage - 1, false, currentPage === 1));
+        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-back-outline"></ion-icon>', currentPage - 1, 'Previous page', false, currentPage === 1));
 
         let pages = [];
         if (totalPages <= 7) {
@@ -336,11 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.style.backgroundColor = 'transparent';
                 paginationContainer.appendChild(dot);
             } else {
-                paginationContainer.appendChild(createBtn(p, p, p === currentPage));
+                paginationContainer.appendChild(createBtn(p, p, `Go to page ${p}`, p === currentPage));
             }
         });
 
-        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-forward-outline"></ion-icon>', currentPage + 1, false, currentPage === totalPages));
+        paginationContainer.appendChild(createBtn('<ion-icon name="chevron-forward-outline"></ion-icon>', currentPage + 1, 'Next page', false, currentPage === totalPages));
     }
 
     function changePage(newPage) {

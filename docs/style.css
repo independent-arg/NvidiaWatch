@@ -1,27 +1,24 @@
 :root {
-    /* New Aesthetic - Dark Theme (Default) */
+    /* Dark Theme (Default) */
     --bg-body: #1a1714;
     --bg-surface: #222018;
     --bg-surface-hover: #2a2720;
     --text-primary: #f5ede0;
-    --text-secondary: #a89a88;
-    --accent-color: #e8c97a; /* Gold */
+    --text-secondary: #b8ae9c;
+    --accent-color: #e8c97a;
     --accent-hover: #f0d896;
-    --border-color: rgba(255, 245, 220, 0.08);
+    --border-color: rgba(255, 245, 220, 0.12);
     
-    /* Status Colors */
     --status-fixed-bg: rgba(122, 196, 154, 0.15);
     --status-fixed-text: #7ac49a;
     --status-pending-bg: rgba(224, 122, 106, 0.15);
     --status-pending-text: #e07a6a;
 
-    /* Spacing & Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.4);
     --radius-md: 0px; 
     --radius-full: 0px;
 
-    /* Typography */
     --ff-hand: 'Caveat', cursive;
     --ff-mono: 'DM Mono', monospace;
     --ff-sans: 'Inter', sans-serif;
@@ -32,10 +29,10 @@
     --bg-surface: #efe7d8;
     --bg-surface-hover: #e8dfcc;
     --text-primary: #1a1714;
-    --text-secondary: #7a7060;
+    --text-secondary: #5a5040;
     --accent-color: #c4a656;
     --accent-hover: #b3954a;
-    --border-color: rgba(0, 0, 0, 0.08);
+    --border-color: rgba(0, 0, 0, 0.12);
 
     --status-fixed-bg: rgba(122, 196, 154, 0.2);
     --status-fixed-text: #4a8c6a;
@@ -43,6 +40,18 @@
     --status-pending-text: #a64a3a;
 
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 * {
@@ -77,7 +86,6 @@ body::before {
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-content {
@@ -120,7 +128,7 @@ body::before {
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .theme-btn:hover {
@@ -230,7 +238,7 @@ body::before {
     color: var(--text-primary);
     font-family: var(--ff-hand);
     font-size: 1.25rem;
-    transition: all 0.2s;
+    transition: border-color 0.2s;
 }
 
 #search-input:focus {
@@ -263,7 +271,6 @@ body::before {
     display: none !important;
 }
 
-/* Filter Controls */
 .filter-controls {
     display: flex;
     justify-content: center;
@@ -402,12 +409,13 @@ main {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
     display: grid;
     grid-template-columns: 120px 1fr;
     position: relative;
     box-shadow: var(--shadow-sm);
     animation: fadeIn 0.5s ease forwards;
+    will-change: transform;
 }
 
 @keyframes fadeIn {
@@ -647,7 +655,6 @@ footer p {
     color: var(--accent-color);
 }
 
-/* Empty State Styles */
 .no-results {
     column-span: all;
     text-align: center;

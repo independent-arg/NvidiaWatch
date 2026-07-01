@@ -21,7 +21,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Font weight optimization -->
+    <!-- Added display=swap to prevent invisible text during load (FCP improvement) -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
@@ -83,6 +83,7 @@
                     </div>
                 </div>
                 <div class="filter-group">
+                    <label for="sort-select" class="sr-only">Sort drivers by</label>
                     <span class="filter-label">Sort by:</span>
                     <select id="sort-select" class="sort-dropdown">
                         <option value="version-desc">Version (newest)</option>
@@ -111,7 +112,7 @@
             </div>
         </div>
 
-        <div id="driver-container" class="masonry-layout" aria-live="polite">
+        <div id="driver-container" class="masonry-layout" aria-live="polite" style="min-height: 600px;">
             <!-- Driver cards will be injected here -->
         </div>
 
