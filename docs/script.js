@@ -19,10 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentFilter = 'all'; 
     let currentSort = 'version-desc';
+    let searchDebounceTimer = null;
 
     function formatVersion(version) {
         const verNum = parseFloat(version);
         return !isNaN(verNum) ? verNum.toFixed(2) : version;
+    }
+
+    function escapeHTML(str) {
+        return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     function compareVersions(a, b) {
@@ -37,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return 0;
     }
 
-    function updateURL() {
+    function updateURL(replace = false) {
         const params = new URLSearchParams();
         if (searchInput.value) params.set('q', searchInput.value);
         if (currentPage > 1) params.set('page', currentPage);
@@ -45,13 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
         const newRelativePathQuery = window.location.pathname + '?' + params.toString();
         const hash = window.location.hash;
-        history.pushState(null, '', newRelativePathQuery + hash);
+        if (replace) {
+            history.replaceState(null, '', newRelativePathQuery + hash);
+        } else {
+            history.pushState(null, '', newRelativePathQuery + hash);
+        }
     }
 
     function loadStateFromURL() {
         const params = new URLSearchParams(window.location.search);
         if (params.has('q')) searchInput.value = params.get('q');
-        if (params.has('page')) currentPage = parseInt(params.get('page'));
+        if (params.has('page')) {
+            const parsedPage = parseInt(params.get('page'), 10);
+            currentPage = (Number.isFinite(parsedPage) && parsedPage > 0) ? parsedPage : 1;
+        }
         if (params.has('filter')) {
             currentFilter = params.get('filter');
             updateChipUI();
@@ -64,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateChipUI() {
         statusChips.forEach(chip => {
-            chip.classList.toggle('active', chip.dataset.filter === currentFilter);
+            const isActive = chip.dataset.filter === currentFilter;
+            chip.classList.toggle('active', isActive);
+            chip.setAttribute('aria-pressed', isActive);
         });
     }
 
@@ -132,7 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
             updateURL();
             scrollToDriverFromHash();
         })
-        .catch(err => console.error('Error loading data:', err));
+        .catch(err => {
+            console.error('Error loading data:', err);
+            driverContainer.innerHTML = `
+                <div class="no-results" role="status">
+                    <ion-icon name="alert-circle-outline"></ion-icon>
+                    <p>Couldn't load driver data. Please try refreshing the page.</p>
+                </div>
+            `;
+        });
 
     function updateStats(drivers) {
         let totalDrivers = drivers.length;
@@ -148,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statFixedRate.textContent = `${rate}%`;
     }
 
-    function applyFiltersAndSort(shouldRender = true) {
+    function applyFiltersAndSort(shouldRender = true, replaceHistory = false) {
         const query = searchInput.value.toLowerCase().trim();
         filteredDrivers = allDrivers.filter(driver => {
             const versionText = `driver ${formatVersion(driver.version)}`.toLowerCase();
@@ -178,11 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        const totalPages = Math.max(1, Math.ceil(filteredDrivers.length / itemsPerPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
         if (shouldRender) {
             currentPage = 1;
             renderDrivers();
             renderPagination();
-            updateURL();
+            updateURL(replaceHistory);
         }
     }
 
@@ -248,10 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.className = 'bug-item';
                 const isFixed = bug.fixed_in !== null;
                 li.innerHTML = `
-                    <div class="bug-desc">${bug.description}</div>
+                    <div class="bug-desc">${escapeHTML(bug.description)}</div>
                     <div class="bug-footer">
                         <span class="status-badge ${isFixed ? 'status-fixed' : 'status-pending'}">
-                            ${bug.fixed_in || 'Pending'}
+                            ${escapeHTML(bug.fixed_in || 'Pending')}
                         </span>
                     </div>
                 `;
@@ -268,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash;
         if (hash.startsWith('#driver-')) {
             setTimeout(() => {
-                const el = document.querySelector(hash);
+                const el = document.getElementById(hash.slice(1));
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 150);
         }
@@ -335,7 +366,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', () => {
         searchClearBtn.classList.toggle('hidden', !searchInput.value);
-        applyFiltersAndSort();
+        clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = setTimeout(() => {
+            applyFiltersAndSort(true, true);
+        }, 300);
     });
 
     searchClearBtn.addEventListener('click', () => {
