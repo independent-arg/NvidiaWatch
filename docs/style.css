@@ -19,9 +19,8 @@
     --radius-md: 0px; 
     --radius-full: 0px;
 
-    --ff-hand: 'Caveat', cursive;
+    --ff-display: 'Space Grotesk', sans-serif;
     --ff-mono: 'DM Mono', monospace;
-    --ff-sans: 'Inter', sans-serif;
 }
 
 [data-theme="light"] {
@@ -109,12 +108,15 @@ body::before {
 .logo-icon {
     font-size: 1.75rem;
     color: var(--accent-color);
+    display: flex;
+    align-items: center;
 }
 
 .logo h1 {
-    font-family: var(--ff-hand);
-    font-size: 1.75rem;
+    font-family: var(--ff-display);
+    font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .theme-btn {
@@ -169,11 +171,12 @@ body::before {
 }
 
 .hero h2 {
-    font-family: var(--ff-hand);
-    font-size: clamp(48px, 8vw, 64px);
+    font-family: var(--ff-display);
+    font-size: clamp(40px, 6vw, 56px);
     font-weight: 700;
     color: var(--accent-color);
-    line-height: .95;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
 }
 
@@ -209,6 +212,10 @@ body::before {
     letter-spacing: 1px;
 }
 
+.link-btn ion-icon {
+    font-size: 1.125rem;
+}
+
 .link-btn:hover {
     background: var(--bg-surface-hover);
     color: var(--text-primary);
@@ -236,8 +243,8 @@ body::before {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    font-family: var(--ff-hand);
-    font-size: 1.25rem;
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
     transition: border-color 0.2s;
 }
 
@@ -358,8 +365,10 @@ body::before {
 }
 
 .stat-num {
-    font-family: var(--ff-hand);
+    font-family: var(--ff-display);
     font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
     line-height: 1;
 }
@@ -456,9 +465,10 @@ main {
 }
 
 .driver-version {
-    font-family: var(--ff-hand);
-    font-size: 1.75rem;
+    font-family: var(--ff-display);
+    font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--accent-color);
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -649,6 +659,11 @@ footer p {
     gap: 0.5rem;
     transition: color 0.2s;
     font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.footer-links a ion-icon {
+    font-size: 1.125rem;
 }
 
 .footer-links a:hover {
