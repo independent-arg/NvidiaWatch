@@ -2246,5 +2246,14 @@
                 "fixed_in": "Fixed (610.62)"
             }
         ]
+    },
+    {
+        "version": "610.74",
+        "bugs": [
+            {
+                "description": "Tencent Meeting: Flickering may be observed when Smooth Motion is enabled globally [6329207]",
+                "fixed_in": "Fixed (610.74)"
+            }
+        ]
     }
 ]
