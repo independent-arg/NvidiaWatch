@@ -2286,6 +2286,14 @@
             {
                 "description": "Paint.NET may crash during launch when NVIDIA Surround is enabled [5366537]",
                 "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Chaos Vantage: Broken gaussian splat rendering when SER (Shader Execution  Reordering) is enabled [6060019]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Adobe Substance: Sampler crash at exit with 610 drivers. [6237191]",
+                "fixed_in": "Fixed (610.88)"
             }
         ]
     }
