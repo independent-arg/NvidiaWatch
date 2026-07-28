@@ -2255,5 +2255,38 @@
                 "fixed_in": "Fixed (610.74)"
             }
         ]
+    },
+    {
+        "version": "610.88",
+        "bugs": [
+            {
+                "description": "[Halo: Campaign Evolved]: Resolved game crashes observed on RTX 50 Series GPUs with R610 drivers. [6259837]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Path of Exile 2: Fixed intermittent long pauses that could occur after extended gameplay sessions in DX12 mode [5090018]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Silent Hill F: Gaming stability improvements [6432954]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "[Strange Brigade/Zombie Army 4:Dead War]: Game may crash when exiting if NVIDIA App In-Game Overlay is enabled [6392324]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Improves frame pacing in certain DX11 games when Smooth Motion is used while GSYNC is enabled [6300603]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "RTX Dynamic Vibrance is incorrectly applied to Wallpaper Engine [6244021]",
+                "fixed_in": "Fixed (610.88)"
+            },
+            {
+                "description": "Paint.NET may crash during launch when NVIDIA Surround is enabled [5366537]",
+                "fixed_in": "Fixed (610.88)"
+            }
+        ]
     }
 ]
