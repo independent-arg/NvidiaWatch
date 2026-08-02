@@ -91,9 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         htmlEl.setAttribute('data-theme', savedTheme);
         themeBtn.setAttribute('aria-pressed', savedTheme === 'light');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        htmlEl.setAttribute('data-theme', 'light');
-        themeBtn.setAttribute('aria-pressed', 'true');
     }
 
     const savedView = localStorage.getItem('view') || 'masonry';
