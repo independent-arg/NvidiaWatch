@@ -2197,7 +2197,7 @@
                 "fixed_in": "Fixed (610.47)"
             },
             {
-                "description": "Prefer Maximum Performance” Power Management Mode may not be applied correctly [6007998]",
+                "description": "*Prefer Maximum Performance* Power Management Mode may not be applied correctly [6007998]",
                 "fixed_in": null
             }
         ]
