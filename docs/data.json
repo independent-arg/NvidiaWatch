@@ -2248,16 +2248,16 @@
         ]
     },
     {
-        "version": "610.74",
+        "version": "610.7",
         "bugs": [
             {
                 "description": "Tencent Meeting: Flickering may be observed when Smooth Motion is enabled globally [6329207]",
-                "fixed_in": "Fixed (610.74)"
+                "fixed_in":
             }
         ]
     },
     {
-        "version": "610.88",
+        "": "610.88",
         "bugs": [
             {
                 "description": "[Halo: Campaign Evolved]: Resolved game crashes observed on RTX 50 Series GPUs with R610 drivers. [6259837]",
