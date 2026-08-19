@@ -688,7 +688,8 @@ main {
     background: var(--accent-color);
 }
 
-.page-btn.active {
+.page-btn.active,
+.page-btn.active:hover {
     border-color: var(--accent-color);
     color: var(--accent-contrast);
     background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
