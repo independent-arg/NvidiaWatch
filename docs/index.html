@@ -30,6 +30,11 @@
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
+    <noscript>
+        <div style="padding: 2rem; text-align: center; font-family: sans-serif; background: #1e1c21; color: #f2f2f2;">
+            NvidiaWatch needs JavaScript enabled to load and display driver data. Please enable JavaScript and reload the page.
+        </div>
+    </noscript>
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
@@ -114,7 +119,10 @@
         </div>
 
         <div id="driver-container" class="masonry-layout" aria-live="polite" style="min-height: 600px;">
-            <!-- Driver cards will be injected here -->
+            <div class="loading-state">
+                <ion-icon name="hourglass-outline"></ion-icon>
+                <p>Loading driver data...</p>
+            </div>
         </div>
 
         <div class="pagination-container">
@@ -132,6 +140,7 @@
         </div>
     </footer>
 
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
     <script src="script.js"></script>
 </body>
 </html>
