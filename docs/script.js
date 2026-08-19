@@ -35,6 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
         .replace(/'/g, '&#39;');
     }
 
+    function highlightText(text, query) {
+        const escapedText = escapeHTML(text);
+        if (!query) return escapedText;
+        const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${safeQuery})`, 'gi');
+        return escapedText.replace(regex, '<mark class="highlight">$1</mark>');
+    }
+
+    let toastTimeout = null;
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.remove('hidden');
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.classList.add('hidden'), 300);
+        }, 2500);
+    }
+
     function compareVersions(a, b) {
         const splitA = a.split('.').map(n => parseFloat(n) || 0);
         const splitB = b.split('.').map(n => parseFloat(n) || 0);
@@ -125,7 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fetch('data.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        })
         .then(data => {
             allDrivers = data;
             const latest = data.sort((a, b) => compareVersions(b.version, a.version))[0];
@@ -145,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             renderDrivers();
             renderPagination();
-            updateURL();
+            updateURL(true);
             scrollToDriverFromHash();
         })
         .catch(err => {
@@ -232,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const fragment = document.createDocumentFragment();
+        const query = searchInput.value.toLowerCase().trim();
+
         driversToRender.forEach(driver => {
             const versionDisplay = formatVersion(driver.version);
             const card = document.createElement('div');
@@ -240,16 +267,36 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const header = document.createElement('div');
             header.className = 'driver-header';
-            header.innerHTML = `<div class="driver-version">Driver ${versionDisplay}</div>`;
+
+            const versionHighlighted = highlightText(`Driver ${versionDisplay}`, query);
+            header.innerHTML = `
+                <div class="driver-version">${versionHighlighted}</div>
+                <button class="copy-link-btn" aria-label="Copy link to Driver ${versionDisplay}" title="Copy link to driver">
+                    <ion-icon name="link-outline"></ion-icon>
+                </button>
+            `;
+            
+            const copyBtn = header.querySelector('.copy-link-btn');
+            copyBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const url = new URL(window.location.href);
+                url.hash = `driver-${driver.version}`;
+                navigator.clipboard.writeText(url.toString())
+                    .then(() => showToast(`Link to Driver ${versionDisplay} copied!`))
+                    .catch(() => showToast('Failed to copy link.'));
+            });
+
             header.style.cursor = 'pointer';
             header.setAttribute('role', 'button');
             header.setAttribute('tabindex', '0');
-            header.addEventListener('click', () => {
+            header.addEventListener('click', (e) => {
+                if (e.target.closest('.copy-link-btn')) return;
                 const version = driver.version;
                 history.pushState(null, '', `#driver-${version}`);
                 document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
             header.addEventListener('keydown', (e) => {
+                if (e.target.closest('.copy-link-btn')) return;
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     header.click();
@@ -260,7 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const bugList = document.createElement('ul');
             bugList.className = 'bug-list';
 
-            const query = searchInput.value.toLowerCase().trim();
             const bugsToShow = driver.bugs.filter(bug => {
                 const matchesStatus = (currentFilter === 'all') || 
                                      (currentFilter === 'pending' && bug.fixed_in === null) || 
@@ -275,16 +321,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 const li = document.createElement('li');
                 li.className = 'bug-item';
                 const isFixed = bug.fixed_in !== null;
+                const descHighlighted = highlightText(bug.description, query);
+                const statusHighlighted = highlightText(bug.fixed_in || 'Pending', query);
+
                 li.innerHTML = `
-                    <div class="bug-desc">${escapeHTML(bug.description)}</div>
+                    <div class="bug-desc">${descHighlighted}</div>
                     <div class="bug-footer">
                         <span class="status-badge ${isFixed ? 'status-fixed' : 'status-pending'}">
-                            ${escapeHTML(bug.fixed_in || 'Pending')}
+                            ${statusHighlighted}
                         </span>
                     </div>
                 `;
                 bugList.appendChild(li);
             });
+
+            if (bugsToShow.length === 0) {
+                const emptyLi = document.createElement('li');
+                emptyLi.className = 'bug-item';
+                emptyLi.innerHTML = `<div class="bug-desc" style="color: var(--text-secondary); font-style: italic;">No bugs match the current filter.</div>`;
+                bugList.appendChild(emptyLi);
+            }
 
             card.appendChild(bugList);
             fragment.appendChild(card);
@@ -390,4 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('hashchange', scrollToDriverFromHash);
+
 });

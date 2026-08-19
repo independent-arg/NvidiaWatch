@@ -158,9 +158,70 @@ body::before {
 .theme-btn:focus-visible,
 .search-clear-btn:focus-visible,
 .link-btn:focus-visible,
-.page-btn:focus-visible {
+.page-btn:focus-visible,
+.copy-link-btn:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
+}
+
+mark.highlight {
+    background-color: color-mix(in srgb, var(--accent-color) 35%, transparent);
+    color: var(--text-primary);
+    padding: 0 3px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.copy-link-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+
+.masonry-layout .copy-link-btn {
+    margin-top: 0;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.copy-link-btn:hover {
+    color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--accent-color) 15%, transparent);
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-color);
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    font-family: var(--ff-mono);
+    font-size: 0.85rem;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 [data-theme="dark"] .icon-sun { display: block; }
@@ -688,7 +749,8 @@ footer p {
     color: var(--accent-color);
 }
 
-.no-results {
+.no-results,
+.loading-state {
     column-span: all;
     text-align: center;
     padding: 4rem;
@@ -699,7 +761,8 @@ footer p {
     gap: 1rem;
 }
 
-.no-results ion-icon {
+.no-results ion-icon,
+.loading-state ion-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--accent-color);
