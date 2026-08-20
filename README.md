@@ -2,37 +2,38 @@
  
 **Live:** [independent-arg.github.io/NvidiaWatch](https://independent-arg.github.io/NvidiaWatch/)
  
-I got tired of not knowing whether a new NVIDIA driver was going to break something before I installed it, so I built this: a simple tracker of known Game Ready / Studio driver issues, searchable by game, bug, or version, so you can check if the one you're about to install is safe.
- 
-No account, no backend, no analytics beyond what GitHub Pages does on its own. Just static HTML/CSS/JS reading from a JSON file.
- 
-## What it does
- 
-- Search across games, bugs and driver versions
-- Filter by status — pending or fixed
-- Sort by version or by how many bugs a driver racked up
-- Two view modes (masonry / timeline) and a dark/light toggle
-- Quick stats up top: how many drivers, how many issues, fix rate
+I built this simple tracker to log bugs found in NVIDIA drivers (Game Ready & Studio) and create a searchable database of known issues - whether they're fixed, pending, or simply forgotten. Yes, sometimes bugs just disappear in the next driver release with no explanation: was it actually fixed? Was it an external issue? Does it still exist? No one knows.
+
+This database can help in several ways. For example, we can analyze which driver branches were hit hardest by bugs and which were the most stable. All data is sourced from official NVIDIA releases.
+
+## Features
+
+- Search across games, driver versions, and known issues
+- Filter by status (pending or fixed)
+- Sort by driver version or number of bugs
+- Multiple view modes (masonry/timeline) and theme toggle
+- Quick overview: total drivers tracked, issues logged, and fix rate
+
 ## How it's built
- 
-Plain HTML, CSS and JS — no framework, no build step. Icons from Ionicons, fonts from Google Fonts. Runs entirely on GitHub Pages.
+
+The site runs entirely on GitHub Pages - plain HTML, CSS, and JavaScript (no framework, no build step). Icons from Ionicons, fonts from Google Fonts. Data comes from `docs/data.json`, which you can update or contribute to.
  
 ```
 docs/
 ├── index.html
 ├── style.css
 ├── script.js
-└── data.json   # the actual driver/bug data the site reads from
+└── data.json   # driver and issue data
 ```
  
-## Data
- 
-Comes from a mix of user reports and NVIDIA's own release notes. If you think something's wrong or missing, open an issue.
+## Contributing
+
+Found a bug in a driver or know of an issue that's missing? Open an issue or submit a PR with the driver version, affected games/apps, and details.
 
 ## License
 
-MIT — see [LICENSE](LICENSE). You're free to reuse or fork this.
+MIT - see [LICENSE](LICENSE). You're free to reuse or fork this.
 
 ## Credit
 
-Built by [independent-arg](https://github.com/independent-arg) for the community. Data is sourced from user reports and official NVIDIA release notes.
+Built by [independent-arg](https://github.com/independent-arg) for the community. Data is sourced from official NVIDIA release notes.
