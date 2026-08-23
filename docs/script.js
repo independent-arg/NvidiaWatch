@@ -8,9 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeBtn = document.getElementById('theme-toggle');
     const viewModeBtn = document.getElementById('view-mode-toggle');
     const sortSelect = document.getElementById('sort-select');
-    const statusChips = document.querySelectorAll('.chip');
+    // Scoped to #status-filters so the trends-range chips (added below) don't
+    // get swept into the status-filter logic just because they share `.chip`.
+    const statusChips = document.querySelectorAll('#status-filters .chip');
     const htmlEl = document.documentElement;
     const paginationContainer = document.querySelector('.pagination-container');
+    const trendsChartSvg = document.getElementById('trends-chart');
+    const trendsTooltip = document.getElementById('trends-tooltip');
+    const trendsRangeChips = document.querySelectorAll('#trends-range .chip');
 
     let allDrivers = [];
     let filteredDrivers = [];
@@ -20,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'all'; 
     let currentSort = 'version-desc';
     let searchDebounceTimer = null;
+    let trendsRange = 'recent';
+    let resizeDebounceTimer = null;
 
     function formatVersion(version) {
         const verNum = parseFloat(version);
@@ -159,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             loadStateFromURL();
             updateStats(allDrivers);
+            renderTrendsChart();
             applyFiltersAndSort(false);
             const hash = window.location.hash;
             if (hash.startsWith('#driver-')) {
@@ -195,6 +203,139 @@ document.addEventListener('DOMContentLoaded', () => {
         statTotalDrivers.textContent = totalDrivers;
         statTotalBugs.textContent = totalBugs;
         statFixedRate.textContent = `${rate}%`;
+    }
+
+    function getTrendSeries(range) {
+        const chronological = [...allDrivers]
+            .sort((a, b) => compareVersions(a.version, b.version))
+            .map(d => {
+                const total = d.bugs.length;
+                const fixed = d.bugs.filter(b => b.fixed_in !== null).length;
+                return { version: d.version, total, fixed, pending: total - fixed };
+            });
+
+        if (range === 'recent') return chronological.slice(-20);
+        if (range === 'worst') {
+            return [...chronological]
+                .sort((a, b) => b.total - a.total)
+                .slice(0, 15)
+                .sort((a, b) => compareVersions(a.version, b.version));
+        }
+        return chronological; // 'all'
+    }
+
+    function rangeLabel(range) {
+        if (range === 'recent') return 'last 20 versions';
+        if (range === 'worst') return 'most affected versions';
+        return 'all tracked versions';
+    }
+
+    function resetTrendsTooltip(series, range) {
+        trendsTooltip.textContent = `Showing ${rangeLabel(range)} (${series.length}) — hover or tap a bar for details.`;
+    }
+
+    function goToDriver(version) {
+        searchInput.value = '';
+        searchClearBtn.classList.add('hidden');
+        currentFilter = 'all';
+        updateChipUI();
+        applyFiltersAndSort(false);
+        const idx = filteredDrivers.findIndex(d => d.version === version);
+        if (idx !== -1) currentPage = Math.floor(idx / itemsPerPage) + 1;
+        renderDrivers();
+        renderPagination();
+        updateURL();
+        history.pushState(null, '', `#driver-${version}`);
+        scrollToDriverFromHash();
+    }
+
+    function renderTrendsChart(range = trendsRange) {
+        if (!trendsChartSvg || allDrivers.length === 0) return;
+        trendsRange = range;
+        const series = getTrendSeries(range);
+        const ns = 'http://www.w3.org/2000/svg';
+        trendsChartSvg.innerHTML = '';
+        if (series.length === 0) return;
+
+        const containerWidth = trendsChartSvg.parentElement.clientWidth || 800;
+        const minBarWidth = range === 'all' ? 6 : 22;
+        const gap = range === 'all' ? 1.5 : 6;
+        const naturalWidth = series.length * (minBarWidth + gap);
+        const width = Math.max(containerWidth, naturalWidth);
+        const height = 240;
+        const padTop = 8;
+        const padBottom = 4;
+        const plotH = height - padTop - padBottom;
+        const barW = Math.max(minBarWidth, (width - gap * (series.length - 1)) / series.length);
+        const maxTotal = Math.max(...series.map(s => s.total), 1);
+
+        trendsChartSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        trendsChartSvg.setAttribute('preserveAspectRatio', 'none');
+        trendsChartSvg.style.width = `${width}px`;
+        trendsChartSvg.style.height = `${height}px`;
+
+        const frag = document.createDocumentFragment();
+
+        series.forEach((item, i) => {
+            const x = i * (barW + gap);
+            const baseY = padTop + plotH;
+            const fixedH = (item.fixed / maxTotal) * plotH;
+            const pendingH = (item.pending / maxTotal) * plotH;
+            const versionDisplay = formatVersion(item.version);
+
+            const g = document.createElementNS(ns, 'g');
+            g.setAttribute('class', 'trend-bar-group');
+            g.setAttribute('tabindex', '0');
+            g.setAttribute('role', 'button');
+            g.setAttribute('aria-label', `Driver ${versionDisplay}: ${item.total} bugs, ${item.fixed} fixed, ${item.pending} pending. Jump to this driver.`);
+
+            // Wider invisible hit area so thin bars stay easy to hover/tap.
+            const hit = document.createElementNS(ns, 'rect');
+            hit.setAttribute('x', x - gap / 2);
+            hit.setAttribute('y', padTop);
+            hit.setAttribute('width', barW + gap);
+            hit.setAttribute('height', plotH);
+            hit.setAttribute('class', 'trend-bar-hit');
+            g.appendChild(hit);
+
+            if (item.fixed > 0) {
+                const rFixed = document.createElementNS(ns, 'rect');
+                rFixed.setAttribute('x', x);
+                rFixed.setAttribute('y', baseY - fixedH);
+                rFixed.setAttribute('width', barW);
+                rFixed.setAttribute('height', fixedH);
+                rFixed.setAttribute('class', 'trend-bar-fixed');
+                g.appendChild(rFixed);
+            }
+            if (item.pending > 0) {
+                const rPending = document.createElementNS(ns, 'rect');
+                rPending.setAttribute('x', x);
+                rPending.setAttribute('y', baseY - fixedH - pendingH);
+                rPending.setAttribute('width', barW);
+                rPending.setAttribute('height', pendingH);
+                rPending.setAttribute('class', 'trend-bar-pending');
+                g.appendChild(rPending);
+            }
+
+            const showDetail = () => {
+                trendsTooltip.textContent = `Driver ${versionDisplay} — ${item.total} bug${item.total === 1 ? '' : 's'} (${item.fixed} fixed, ${item.pending} pending)`;
+            };
+            g.addEventListener('mouseenter', showDetail);
+            g.addEventListener('focus', showDetail);
+            g.addEventListener('click', () => goToDriver(item.version));
+            g.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goToDriver(item.version);
+                }
+            });
+
+            frag.appendChild(g);
+        });
+
+        trendsChartSvg.appendChild(frag);
+        trendsChartSvg.addEventListener('mouseleave', () => resetTrendsTooltip(series, range));
+        resetTrendsTooltip(series, range);
     }
 
     function applyFiltersAndSort(shouldRender = true, replaceHistory = false) {
@@ -443,6 +584,22 @@ document.addEventListener('DOMContentLoaded', () => {
             updateChipUI();
             applyFiltersAndSort();
         });
+    });
+
+    trendsRangeChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            trendsRangeChips.forEach(c => {
+                const isActive = c === chip;
+                c.classList.toggle('active', isActive);
+                c.setAttribute('aria-pressed', isActive);
+            });
+            renderTrendsChart(chip.dataset.range);
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeDebounceTimer);
+        resizeDebounceTimer = setTimeout(() => renderTrendsChart(), 200);
     });
 
     window.addEventListener('hashchange', scrollToDriverFromHash);

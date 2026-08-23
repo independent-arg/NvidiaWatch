@@ -1,7 +1,31 @@
 [
     {
-        "version": "526.98",
+        "version": "526.47",
         "bugs": [
+            {
+                "description": "[Cyberpunk 2077] In game map may display corruption [3829994]",
+                "fixed_in": "Fixed (526.47)"
+            },
+            {
+                "description": "Dell XPS 9560 may crash and reboot when using desktop applications [3737715]",
+                "fixed_in": "Fixed (526.47)"
+            },
+            {
+                "description": "[RTX 30 series] Lower performance in Minecraft Java Edition [3702953]",
+                "fixed_in": "Fixed (526.47)"
+            },
+            {
+                "description": "165Hz refresh rate option not available on Samsung Odyssey Ark monitor [3840122]",
+                "fixed_in": "Fixed (526.47)"
+            },
+            {
+                "description": "When using two or more monitors, GeForce Experience Shadowplay/Gamestream may select the wrong monitor [200633408]",
+                "fixed_in": "Fixed (526.47)"
+            },
+            {
+                "description": "Videos played back in Microsoft Edge may appear green if NVIDIA Image Scaling is enabled upon resuming from hibernate or booting with fastboot. [3624218]",
+                "fixed_in": "Fixed (526.47)"
+            },
             {
                 "description": "Toggling HDR on and off in-game causes game stability issues when non-native resolution is used [3624030]",
                 "fixed_in": null
@@ -11,24 +35,94 @@
                 "fixed_in": "Fixed (528.02)"
             },
             {
-                "description": "Older versions of Minecraft Java Edition show corruption on screen [3870232]",
-                "fixed_in": "Fixed (527.56)"
+                "description": "Monitor may briefly flicker on waking from display sleep if DSR/DLDSR is enabled [3592260]",
+                "fixed_in": "Fixed (535.98)"
             },
             {
-                "description": "MSI Afterburner is not prioritizing GPU temp limit over power when selected in app [3858911]",
-                "fixed_in": "Fixed (527.37)"
+                "description": "Maxon - Cinema4D + Redshift3D vidmemory allocations cause TDR or Driver Crash [3659104]",
+                "fixed_in": "Fixed (526.98)"
+            },
+            {
+                "description": "RedCine-X Pro potential crash while working with effects during video playback [3809401]",
+                "fixed_in": null
+            },
+            {
+                "description": "Desktop Window Manager (dwm.exe) service may report significantly higher GPU usage on certain PC configurations [3830387/3739997]",
+                "fixed_in": "Fixed (526.98)"
+            },
+            {
+                "description": "VTube Studio crashes to black screen after driver update [3838158]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "[Forza Horizon 5] Some PC configurations may see rainbow-like artifacts in game after extended gameplay [3685123]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "[Daz Studio] Application crashes after updating to latest driver when trying to run simulation [3838022]",
+                "fixed_in": "Fixed (526.98)"
+            },
+            {
+                "description": "[Call of Duty: Modern Warfare II] Flashing corruption can be seen randomly while playing the game. [3835099][3829010]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "GPU may get stuck in P0 state after exiting certain games [3846389]",
+                "fixed_in": "Fixed (526.86)"
             },
             {
                 "description": "[RTX 40 series] Metro Exodus Enhanced Edition may show random screen flash during gameplay [3793355]",
                 "fixed_in": "Fixed (527.37)"
             },
             {
-                "description": "[GeForce RTX 4090] Watch Dogs 2 may display flickering when staring at the sky [3858016]",
-                "fixed_in": null
+                "description": "Uncharted: Legacy of Thieves Collection may crash when launched on a GeForce GTX 10 series GPU [3841379]",
+                "fixed_in": "Fixed (526.98)"
             },
             {
-                "description": "Monitor may briefly flicker on waking from display sleep if DSR/DLDSR is enabled [3592260]",
-                "fixed_in": "Fixed (535.98)"
+                "description": "G-SYNC logo is not displayed in the LG OLED TV menu when connected to GeForce RTX 40 series GPUs [3849595]",
+                "fixed_in": "Fixed (526.98)"
+            },
+            {
+                "description": "Halo Infinite crashes shortly after starting a match [3850630]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "[GeForce RTX 4090] Watch Dogs 2 may display flickering when staring at the sky [3858016]",
+                "fixed_in": null
+            }
+        ]
+    },
+    {
+        "version": "526.86",
+        "bugs": [
+            {
+                "description": "[Call of Duty: Vanguard] Game may randomly crash after extended gameplay [3841398]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "[Anvil Engine Games] Environment flickering [3843932]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "Drop in 8K60 AV1 decoding performance on RTX 4090 [3835745]",
+                "fixed_in": "Fixed (526.86)"
+            },
+            {
+                "description": "MSI Afterburner is not prioritizing GPU temp limit over power when selected in app [3858911]",
+                "fixed_in": "Fixed (527.37)"
+            },
+            {
+                "description": "Older versions of Minecraft Java Edition show corruption on screen [3870232]",
+                "fixed_in": "Fixed (527.56)"
+            }
+        ]
+    },
+    {
+        "version": "526.98",
+        "bugs": [
+            {
+                "description": "[QNIX QX2710/Fujitsu Siemens SL23T-1/Dell UP2715K/ HP Z27q] Unable to select the native resolution of certain monitors from the Windows display settings [3833829][3833632][3689061]",
+                "fixed_in": "Fixed (526.98)"
             },
             {
                 "description": "Driver 526.98 fails to install on certain GeForce GTX 3060 Ti graphics cards [3872912]",
@@ -2197,7 +2291,7 @@
                 "fixed_in": "Fixed (610.47)"
             },
             {
-                "description": "*Prefer Maximum Performance* Power Management Mode may not be applied correctly [6007998]",
+                "description": "\"Prefer Maximum Performance\" Power Management Mode may not be applied correctly [6007998]",
                 "fixed_in": null
             }
         ]

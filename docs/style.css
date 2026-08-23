@@ -481,6 +481,123 @@ mark.highlight {
 
 .stat.done .stat-num { color: var(--status-fixed-text); }
 
+.trends {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trends-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+}
+
+.trends-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.trends-title ion-icon {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+
+.trends-title h3 {
+    font-family: var(--ff-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.trends-hint {
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.2px;
+    margin-bottom: 1.1rem;
+}
+
+.trends-chart-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+}
+
+.trends-chart {
+    display: block;
+    width: 100%;
+    height: 240px;
+}
+
+.trend-bar-hit {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.trend-bar-fixed,
+.trend-bar-pending {
+    pointer-events: none;
+    transition: filter 0.15s ease;
+}
+
+.trend-bar-fixed {
+    fill: var(--status-fixed-text);
+}
+
+.trend-bar-pending {
+    fill: var(--status-pending-text);
+}
+
+.trend-bar-group:hover .trend-bar-fixed,
+.trend-bar-group:hover .trend-bar-pending,
+.trend-bar-group:focus-visible .trend-bar-fixed,
+.trend-bar-group:focus-visible .trend-bar-pending {
+    filter: brightness(1.2);
+}
+
+.trend-bar-group:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.trends-tooltip {
+    margin-top: 0.85rem;
+    padding: 0.6rem 1rem;
+    background-color: var(--bg-surface-hover);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    color: var(--text-primary);
+    min-height: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trend-bar-fixed,
+    .trend-bar-pending {
+        transition: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .trends {
+        padding: 1.1rem;
+    }
+}
+
 main {
     position: relative;
     z-index: 1;
