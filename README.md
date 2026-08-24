@@ -10,7 +10,7 @@ This database can help in several ways. For example, we can analyze which driver
 
 <img alt="Bugs by driver, fixed vs pending" src="docs/assets/bugs-chart-dark.svg" width="100%">
 
-Fixed vs. pending bugs per driver, generated from `docs/data.json` by [`scripts/generate_chart.py`](scripts/generate_chart.py) and refreshed automatically by CI. See [`#trends`](https://independent-arg.github.io/NvidiaWatch/#trends) on the live site for the interactive, filterable version (latest 20 / most affected / all time) — clicking a bar there jumps straight to that driver.
+---
 
 ## Features
 
