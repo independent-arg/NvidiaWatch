@@ -8,7 +8,7 @@ This database can help in several ways. For example, we can analyze which driver
 
 ## Bug trends
 
-<img alt="Bugs by driver, fixed vs pending" src="docs/assets/bugs-chart-dark.svg" width="100%">
+<img alt="Bugs by driver, fixed vs pending" src="docs/assets/bugs-chart-dark.svg">
 
 ---
 
