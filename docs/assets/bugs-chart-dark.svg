@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Bugs by driver, fixed vs pending">
+<rect x="0" y="0" width="1200" height="400" rx="14" fill="#1e1c21" stroke="#3a3740"/>
+<text x="44" y="34" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-weight="700" font-size="20" fill="#f2f2f2">Bugs by driver</text>
+<text x="44" y="54" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="12" fill="#a3a0a8">84 driver versions &#183; 526.47 &#8594; 610.88 &#183; auto-generated from data.json</text>
+<text x="1176" y="34" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="12" fill="#a3a0a8"><tspan fill="#8fc7ab">&#9679;</tspan> Fixed &#160;&#160;<tspan fill="#e08276">&#9679;</tspan> Pending</text>
+<line x1="44" y1="340.0" x2="1176" y2="340.0" stroke="#332f38" stroke-width="1"/>
+<text x="36" y="343.0" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="10" fill="#a3a0a8">0</text>
+<line x1="44" y1="204.0" x2="1176" y2="204.0" stroke="#332f38" stroke-width="1"/>
+<text x="36" y="207.0" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="10" fill="#a3a0a8">25</text>
+<line x1="44" y1="68.0" x2="1176" y2="68.0" stroke="#332f38" stroke-width="1"/>
+<text x="36" y="71.0" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="10" fill="#a3a0a8">50</text>
+<rect x="44.00" y="236.6" width="11.99" height="103.4" fill="#8fc7ab"/>
+<rect x="44.00" y="220.3" width="11.99" height="16.3" fill="#e08276"/>
+<title>526.47: 22 bugs (19 fixed, 3 pending)</title>
+<rect x="57.49" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<title>526.86: 5 bugs (5 fixed, 0 pending)</title>
+<rect x="70.99" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>526.98: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="84.48" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<rect x="84.48" y="296.5" width="11.99" height="16.3" fill="#e08276"/>
+<title>527.37: 8 bugs (5 fixed, 3 pending)</title>
+<rect x="97.98" y="334.6" width="11.99" height="5.4" fill="#e08276"/>
+<title>527.56: 1 bugs (0 fixed, 1 pending)</title>
+<rect x="111.47" y="296.5" width="11.99" height="43.5" fill="#8fc7ab"/>
+<title>528.02: 8 bugs (8 fixed, 0 pending)</title>
+<rect x="124.96" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<rect x="124.96" y="307.4" width="11.99" height="5.4" fill="#e08276"/>
+<title>528.24: 6 bugs (5 fixed, 1 pending)</title>
+<rect x="138.46" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>528.49: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="151.95" y="291.0" width="11.99" height="49.0" fill="#8fc7ab"/>
+<title>531.18: 9 bugs (9 fixed, 0 pending)</title>
+<rect x="165.45" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>531.29: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="178.94" y="285.6" width="11.99" height="54.4" fill="#8fc7ab"/>
+<rect x="178.94" y="263.8" width="11.99" height="21.8" fill="#e08276"/>
+<title>531.41: 14 bugs (10 fixed, 4 pending)</title>
+<rect x="192.43" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>531.61: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="205.93" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<title>531.68: 7 bugs (7 fixed, 0 pending)</title>
+<rect x="219.42" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>532.03: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="232.92" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<rect x="232.92" y="296.5" width="11.99" height="5.4" fill="#e08276"/>
+<title>535.98: 8 bugs (7 fixed, 1 pending)</title>
+<rect x="246.41" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>536.23: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="259.90" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>536.40: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="273.40" y="307.4" width="11.99" height="32.6" fill="#8fc7ab"/>
+<title>536.67: 6 bugs (6 fixed, 0 pending)</title>
+<rect x="286.89" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>536.99: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="300.39" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<rect x="300.39" y="318.2" width="11.99" height="5.4" fill="#e08276"/>
+<title>537.13: 4 bugs (3 fixed, 1 pending)</title>
+<rect x="313.88" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>537.34: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="327.38" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>537.42: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="340.87" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>537.58: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="354.36" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<title>545.84: 5 bugs (5 fixed, 0 pending)</title>
+<rect x="367.86" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>545.92: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="381.35" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<rect x="381.35" y="291.0" width="11.99" height="10.9" fill="#e08276"/>
+<title>546.01: 9 bugs (7 fixed, 2 pending)</title>
+<rect x="394.85" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<title>546.17: 7 bugs (7 fixed, 0 pending)</title>
+<rect x="408.34" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<rect x="408.34" y="329.1" width="11.99" height="5.4" fill="#e08276"/>
+<title>546.29: 2 bugs (1 fixed, 1 pending)</title>
+<rect x="421.83" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>546.33: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="435.33" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>546.65: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="448.82" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<rect x="448.82" y="301.9" width="11.99" height="16.3" fill="#e08276"/>
+<title>551.23: 7 bugs (4 fixed, 3 pending)</title>
+<rect x="462.32" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>551.52: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="475.81" y="307.4" width="11.99" height="32.6" fill="#8fc7ab"/>
+<title>551.61: 6 bugs (6 fixed, 0 pending)</title>
+<rect x="489.30" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>551.76: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="502.80" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<title>551.86: 7 bugs (7 fixed, 0 pending)</title>
+<rect x="516.29" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<rect x="516.29" y="312.8" width="11.99" height="10.9" fill="#e08276"/>
+<title>552.12: 5 bugs (3 fixed, 2 pending)</title>
+<rect x="529.79" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<rect x="529.79" y="307.4" width="11.99" height="5.4" fill="#e08276"/>
+<title>552.22: 6 bugs (5 fixed, 1 pending)</title>
+<rect x="543.28" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>552.44: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="556.77" y="307.4" width="11.99" height="32.6" fill="#8fc7ab"/>
+<rect x="556.77" y="296.5" width="11.99" height="10.9" fill="#e08276"/>
+<title>555.85: 8 bugs (6 fixed, 2 pending)</title>
+<rect x="570.27" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<rect x="570.27" y="301.9" width="11.99" height="10.9" fill="#e08276"/>
+<title>555.99: 7 bugs (5 fixed, 2 pending)</title>
+<rect x="583.76" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>556.12: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="597.26" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<rect x="597.26" y="307.4" width="11.99" height="10.9" fill="#e08276"/>
+<title>560.70: 6 bugs (4 fixed, 2 pending)</title>
+<rect x="610.75" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>560.81: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="624.24" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<rect x="624.24" y="323.7" width="11.99" height="5.4" fill="#e08276"/>
+<title>560.94: 3 bugs (2 fixed, 1 pending)</title>
+<rect x="637.74" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>561.09: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="651.23" y="291.0" width="11.99" height="49.0" fill="#8fc7ab"/>
+<rect x="651.23" y="274.7" width="11.99" height="16.3" fill="#e08276"/>
+<title>565.90: 12 bugs (9 fixed, 3 pending)</title>
+<rect x="664.73" y="329.1" width="11.99" height="10.9" fill="#e08276"/>
+<title>566.03: 2 bugs (0 fixed, 2 pending)</title>
+<rect x="678.22" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>566.14: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="691.71" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<rect x="691.71" y="323.7" width="11.99" height="5.4" fill="#e08276"/>
+<title>566.36: 3 bugs (2 fixed, 1 pending)</title>
+<rect x="705.21" y="274.7" width="11.99" height="65.3" fill="#8fc7ab"/>
+<rect x="705.21" y="242.1" width="11.99" height="32.6" fill="#e08276"/>
+<title>572.16: 18 bugs (12 fixed, 6 pending)</title>
+<rect x="718.70" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>572.42: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="732.20" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>572.47: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="745.69" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>572.60: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="759.18" y="291.0" width="11.99" height="49.0" fill="#8fc7ab"/>
+<title>572.70: 9 bugs (9 fixed, 0 pending)</title>
+<rect x="772.68" y="291.0" width="11.99" height="49.0" fill="#8fc7ab"/>
+<rect x="772.68" y="285.6" width="11.99" height="5.4" fill="#e08276"/>
+<title>572.83: 10 bugs (9 fixed, 1 pending)</title>
+<rect x="786.17" y="171.4" width="11.99" height="168.6" fill="#8fc7ab"/>
+<rect x="786.17" y="155.0" width="11.99" height="16.3" fill="#e08276"/>
+<title>576.02: 34 bugs (31 fixed, 3 pending)</title>
+<rect x="799.67" y="258.4" width="11.99" height="81.6" fill="#8fc7ab"/>
+<rect x="799.67" y="253.0" width="11.99" height="5.4" fill="#e08276"/>
+<title>576.28: 16 bugs (15 fixed, 1 pending)</title>
+<rect x="813.16" y="285.6" width="11.99" height="54.4" fill="#8fc7ab"/>
+<rect x="813.16" y="280.2" width="11.99" height="5.4" fill="#e08276"/>
+<title>576.40: 11 bugs (10 fixed, 1 pending)</title>
+<rect x="826.65" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<rect x="826.65" y="323.7" width="11.99" height="10.9" fill="#e08276"/>
+<title>576.52: 3 bugs (1 fixed, 2 pending)</title>
+<rect x="840.15" y="247.5" width="11.99" height="92.5" fill="#8fc7ab"/>
+<title>576.80: 17 bugs (17 fixed, 0 pending)</title>
+<rect x="853.64" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>576.88: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="867.14" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>577.00: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="880.63" y="247.5" width="11.99" height="92.5" fill="#8fc7ab"/>
+<title>580.88: 17 bugs (17 fixed, 0 pending)</title>
+<rect x="894.12" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>580.97: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="907.62" y="296.5" width="11.99" height="43.5" fill="#8fc7ab"/>
+<title>581.08: 8 bugs (8 fixed, 0 pending)</title>
+<rect x="921.11" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>581.15: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="934.61" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<title>581.42: 7 bugs (7 fixed, 0 pending)</title>
+<rect x="948.10" y="280.2" width="11.99" height="59.8" fill="#8fc7ab"/>
+<title>581.57: 11 bugs (11 fixed, 0 pending)</title>
+<rect x="961.60" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>581.80: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="975.09" y="280.2" width="11.99" height="59.8" fill="#8fc7ab"/>
+<title>591.44: 11 bugs (11 fixed, 0 pending)</title>
+<rect x="988.58" y="312.8" width="11.99" height="27.2" fill="#8fc7ab"/>
+<title>591.59: 5 bugs (5 fixed, 0 pending)</title>
+<rect x="1002.08" y="307.4" width="11.99" height="32.6" fill="#8fc7ab"/>
+<title>591.74: 6 bugs (6 fixed, 0 pending)</title>
+<rect x="1015.57" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>591.86: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="1029.07" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>595.59: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="1042.56" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>595.71: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="1056.05" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<title>595.79: 7 bugs (7 fixed, 0 pending)</title>
+<rect x="1069.55" y="323.7" width="11.99" height="16.3" fill="#8fc7ab"/>
+<title>595.97: 3 bugs (3 fixed, 0 pending)</title>
+<rect x="1083.04" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>596.21: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="1096.54" y="318.2" width="11.99" height="21.8" fill="#8fc7ab"/>
+<title>596.36: 4 bugs (4 fixed, 0 pending)</title>
+<rect x="1110.03" y="329.1" width="11.99" height="10.9" fill="#8fc7ab"/>
+<title>596.49: 2 bugs (2 fixed, 0 pending)</title>
+<rect x="1123.52" y="301.9" width="11.99" height="38.1" fill="#8fc7ab"/>
+<rect x="1123.52" y="296.5" width="11.99" height="5.4" fill="#e08276"/>
+<title>610.47: 8 bugs (7 fixed, 1 pending)</title>
+<rect x="1137.02" y="285.6" width="11.99" height="54.4" fill="#8fc7ab"/>
+<title>610.62: 10 bugs (10 fixed, 0 pending)</title>
+<rect x="1150.51" y="334.6" width="11.99" height="5.4" fill="#8fc7ab"/>
+<title>610.74: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="1164.01" y="291.0" width="11.99" height="49.0" fill="#8fc7ab"/>
+<title>610.88: 9 bugs (9 fixed, 0 pending)</title>
+<line x1="44" y1="340" x2="1176" y2="340" stroke="#3a3740" stroke-width="1"/>
+<text x="50.0" y="360" text-anchor="start" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="11" fill="#a3a0a8">526.47</text>
+<text x="1170.0" y="360" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="11" fill="#a3a0a8">610.88</text>
+<line x1="792.2" y1="141.0" x2="792.2" y2="155.0" stroke="#c99aff" stroke-width="1" stroke-dasharray="2,2"/>
+<circle cx="792.2" cy="141.0" r="3" fill="#c99aff"/>
+<text x="786.2" y="133.0" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-weight="500" font-size="11" fill="#c99aff">576.02 &#183; 34 bugs, worst branch</text>
+<text x="600.0" y="382" text-anchor="middle" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="11" fill="#a3a0a8">Live &amp; interactive: https://independent-arg.github.io/NvidiaWatch/#trends</text>
+</svg>

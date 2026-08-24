@@ -6,6 +6,12 @@ I built this simple tracker to log bugs found in NVIDIA drivers (Game Ready & St
 
 This database can help in several ways. For example, we can analyze which driver branches were hit hardest by bugs and which were the most stable. All data is sourced from official NVIDIA releases.
 
+## Bug trends
+
+<img alt="Bugs by driver, fixed vs pending" src="docs/assets/bugs-chart-dark.svg">
+
+---
+
 ## Features
 
 - Search across games, driver versions, and known issues
@@ -23,7 +29,9 @@ docs/
 ├── index.html
 ├── style.css
 ├── script.js
-└── data.json   # driver and issue data
+├── data.json                 # driver and issue data
+└── assets/
+    └── bugs-chart-dark.svg   # auto-generated, see scripts/generate_chart.py
 ```
  
 ## Contributing
