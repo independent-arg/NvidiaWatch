@@ -2,6 +2,16 @@
 <html lang="en" data-theme="dark" data-view="masonry">
 <head>
     <meta charset="UTF-8">
+
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', saved);
+            }
+        })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Metadata -->
@@ -117,6 +127,25 @@
                 <div class="stat-label">Fix rate</div>
             </div>
         </div>
+
+        <section class="trends" id="trends" aria-labelledby="trends-title">
+            <div class="trends-header">
+                <div class="trends-title">
+                    <ion-icon name="stats-chart-outline"></ion-icon>
+                    <h3 id="trends-title">Bugs by driver</h3>
+                </div>
+                <div class="filter-chips" id="trends-range" role="group" aria-label="Chart range">
+                    <button class="chip active" data-range="recent" aria-pressed="true">Latest 20</button>
+                    <button class="chip" data-range="worst" aria-pressed="false">Most affected</button>
+                    <button class="chip" data-range="all" aria-pressed="false">All time</button>
+                </div>
+            </div>
+            <p class="trends-hint">Click a bar to view the driver. Green shows fixed bugs - Red shows pending.</p>
+            <div class="trends-chart-wrapper">
+                <svg id="trends-chart" class="trends-chart" role="img" aria-label="Bar chart of fixed and pending bugs by driver"></svg>
+            </div>
+            <div id="trends-tooltip" class="trends-tooltip" role="status" aria-live="polite">Loading chart…</div>
+        </section>
 
         <div id="driver-container" class="masonry-layout" aria-live="polite" style="min-height: 600px;">
             <div class="loading-state">
