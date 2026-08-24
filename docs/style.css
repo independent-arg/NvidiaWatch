@@ -18,6 +18,7 @@
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
     --shadow-md: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
     --shadow-accent: 0 12px 24px -10px rgba(201, 154, 255, 0.45);
+    --accent-glow-rgb: 201, 154, 255;
     --radius-md: 14px;
     --radius-full: 9999px;
 
@@ -44,6 +45,7 @@
     --shadow-sm: 0 1px 2px 0 rgba(33, 31, 38, 0.08);
     --shadow-md: 0 12px 24px -8px rgba(33, 31, 38, 0.15);
     --shadow-accent: 0 12px 24px -10px rgba(120, 56, 123, 0.25);
+    --accent-glow-rgb: 120, 56, 123;
 }
 
 .sr-only {
@@ -641,6 +643,27 @@ main {
     border-color: var(--accent-color);
     transform: translateY(-6px);
     box-shadow: var(--shadow-accent);
+}
+
+/* Applied briefly after jumping to a card via the trends chart, a copied
+   link, or any #driver-<version> deep link, so the destination stands out
+   among the rest of the list instead of just silently scrolling into view. */
+.driver-card.highlight-pulse {
+    animation: driver-highlight-pulse 1.3s ease-out 2;
+    border-color: var(--accent-color);
+}
+
+@keyframes driver-highlight-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(var(--accent-glow-rgb), 0.55); }
+    70% { box-shadow: 0 0 0 16px rgba(var(--accent-glow-rgb), 0); }
+    100% { box-shadow: 0 0 0 0 rgba(var(--accent-glow-rgb), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .driver-card.highlight-pulse {
+        animation: none;
+        box-shadow: 0 0 0 3px rgba(var(--accent-glow-rgb), 0.4);
+    }
 }
 
 .driver-header {

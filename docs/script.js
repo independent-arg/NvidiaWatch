@@ -334,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         trendsChartSvg.appendChild(frag);
-        trendsChartSvg.addEventListener('mouseleave', () => resetTrendsTooltip(series, range));
         resetTrendsTooltip(series, range);
     }
 
@@ -489,12 +488,27 @@ document.addEventListener('DOMContentLoaded', () => {
         driverContainer.appendChild(fragment);
     }
 
+    function highlightDriverCard(el) {
+        if (!el) return;
+        // Force a reflow before re-adding so the animation restarts even if
+        // the same card was already highlighted a moment ago (e.g. clicking
+        // the same bar twice in a row).
+        el.classList.remove('highlight-pulse');
+        void el.offsetWidth;
+        el.classList.add('highlight-pulse');
+        clearTimeout(el._highlightTimeout);
+        el._highlightTimeout = setTimeout(() => el.classList.remove('highlight-pulse'), 2600);
+    }
+
     function scrollToDriverFromHash() {
         const hash = window.location.hash;
         if (hash.startsWith('#driver-')) {
             setTimeout(() => {
                 const el = document.getElementById(hash.slice(1));
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    highlightDriverCard(el);
+                }
             }, 150);
         }
     }
@@ -600,6 +614,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         clearTimeout(resizeDebounceTimer);
         resizeDebounceTimer = setTimeout(() => renderTrendsChart(), 200);
+    });
+
+    // Bound once (not per-render) to avoid piling up duplicate listeners
+    // every time the chart re-draws (range switch, resize, initial load).
+    trendsChartSvg?.addEventListener('mouseleave', () => {
+        resetTrendsTooltip(getTrendSeries(trendsRange), trendsRange);
     });
 
     window.addEventListener('hashchange', scrollToDriverFromHash);

@@ -2,6 +2,16 @@
 <html lang="en" data-theme="dark" data-view="masonry">
 <head>
     <meta charset="UTF-8">
+
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', saved);
+            }
+        })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Metadata -->

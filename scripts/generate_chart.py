@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Generate the "bugs per driver version" trend chart as two standalone SVGs
-(dark and light) for embedding in README.md via a <picture> element.
+Generate the "bugs by driver" trend chart as a standalone dark-theme SVG for
+embedding in README.md. Dark-only because GitHub's file viewer renders
+README images on a dark surface for the vast majority of viewers (default
+GitHub theme), so a light variant added complexity without real benefit.
 
 This script is read-only with respect to docs/data.json: it never edits
 driver/bug data, it only reads it to draw a chart. Colors below mirror the
@@ -20,7 +22,7 @@ DATA_PATH = REPO_ROOT / "docs" / "data.json"
 OUTPUT_DIR = REPO_ROOT / "docs" / "assets"
 SITE_URL = "https://independent-arg.github.io/NvidiaWatch/#trends"
 
-# Design tokens mirrored from docs/style.css (:root and [data-theme="light"])
+# Design tokens mirrored from docs/style.css :root (dark theme)
 THEMES = {
     "dark": {
         "bg": "#1e1c21",
@@ -31,16 +33,6 @@ THEMES = {
         "fixed": "#8fc7ab",
         "pending": "#e08276",
         "grid": "#332f38",
-    },
-    "light": {
-        "bg": "#ffffff",
-        "border": "#e4e1ea",
-        "text_primary": "#211f26",
-        "text_secondary": "#6b6773",
-        "accent": "#78387b",
-        "fixed": "#4a8c6a",
-        "pending": "#a64a3a",
-        "grid": "#ece9f1",
     },
 }
 
@@ -116,7 +108,7 @@ def build_svg(series, theme_name):
     parts.append(
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" '
         f'width="{WIDTH}" height="{HEIGHT}" role="img" '
-        f'aria-label="Bugs per driver version, fixed vs pending">'
+        f'aria-label="Bugs by driver, fixed vs pending">'
     )
     parts.append(f'<rect x="0" y="0" width="{WIDTH}" height="{HEIGHT}" rx="14" fill="{t["bg"]}" stroke="{t["border"]}"/>')
 
