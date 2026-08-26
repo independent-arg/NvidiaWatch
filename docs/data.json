@@ -2390,5 +2390,38 @@
                 "fixed_in": "Fixed (610.88)"
             }
         ]
+    },
+    {
+        "version": "616.56",
+        "bugs": [
+            {
+                "description": "DOOM: The Dark Ages & Indiana Jones and the Great Circle: Frame rate may exceed VSYNC when DLSS Frame Generation 3x or higher is used [6061475]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Outer Worlds: Texture flicker may be observed while playing Outer Worlds after updating to R595 and R610 drivers [6238668]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Asus Armory Crate: GameVisual color profiles are not getting applied when using R590 drivers [5860581]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Chief Architect: 610.47 driver crash on Geforce RTX 4000 series cards [6226227]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Claude Desktop: Driver incorrectly detects application as a 3D app [6468260]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Resolves issue that some instances can cause a driver crash with 32-bit DirectX 12 apps [5725350]",
+                "fixed_in": "Fixed (616.56)"
+            },
+            {
+                "description": "Tycho Tracker: Unable to create individual OpenCL buffers greater than 2GB [6538978]",
+                "fixed_in": "Fixed (616.56)"
+            }
+        ]
     }
 ]
