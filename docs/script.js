@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'all'; 
     let currentSort = 'version-desc';
     let searchDebounceTimer = null;
-    let trendsRange = 'recent';
+    let trendsRange = 'all';
     let resizeDebounceTimer = null;
 
     // data.json versions are already 2-decimal strings (e.g. "581.80"), but
