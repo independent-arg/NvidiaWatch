@@ -1,3 +1,12 @@
+// No framework, no build step, no charting library on purpose: docs/ is served
+// as-is by GitHub Pages, so keeping this dependency-free means it works if
+// someone forks the repo and opens index.html directly.
+//
+// `allDrivers` is fetched once from data.json and never mutated; every filter,
+// sort, search, and pagination is a UI-only derivation into `filteredDrivers`.
+// Search/filter/sort/page state is also mirrored into the URL query string
+// (see updateURL/loadStateFromURL) so a link someone shares reopens to the
+// same view instead of just the driver list from scratch.
 document.addEventListener('DOMContentLoaded', () => {
     const driverContainer = document.getElementById('driver-container');
     const statTotalDrivers = document.getElementById('stat-total-drivers');
@@ -28,11 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let trendsRange = 'recent';
     let resizeDebounceTimer = null;
 
+    // data.json versions are already 2-decimal strings (e.g. "581.80"), but
+    // this normalizes anything entered without the trailing zero (e.g. "581.8")
+    // so the UI never shows an inconsistent number of decimals. Falls back to
+    // the raw string for anything non-numeric rather than showing "NaN".
     function formatVersion(version) {
         const verNum = parseFloat(version);
         return !isNaN(verNum) ? verNum.toFixed(2) : version;
     }
 
+    // Bug descriptions come from data.json, which the maintainer edits by hand -
+    // escaping before any innerHTML use keeps a stray "<" or "&" in a bug report
+    // from breaking the layout (and is cheap insurance against future contributor edits).
     function escapeHTML(str) {
         return String(str)
         .replace(/&/g, '&amp;')
@@ -42,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .replace(/'/g, '&#39;');
     }
 
+    // Wraps every match of the current search query in <mark>. Text is escaped
+    // first so the highlighting regex runs on safe HTML, and the query itself is
+    // escaped separately (safeQuery) so regex metacharacters typed by the user
+    // (e.g. searching "DLSS 4.0 (beta)") are treated as literal text, not regex syntax.
     function highlightText(text, query) {
         const escapedText = escapeHTML(text);
         if (!query) return escapedText;
@@ -64,6 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2500);
     }
 
+    // Driver versions sort by number, not by string: a plain string/localeCompare
+    // sort would put "581.9" after "581.10" alphabetically, which is backwards.
+    // Splitting on "." and comparing each segment as a number handles that correctly.
     function compareVersions(a, b) {
         const splitA = a.split('.').map(n => parseFloat(n) || 0);
         const splitB = b.split('.').map(n => parseFloat(n) || 0);
@@ -76,6 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return 0;
     }
 
+    // Mirrors search/page/filter/sort into the URL (only when they differ from
+    // the default) so a copied link reopens to the same view. `replace` uses
+    // history.replaceState instead of pushState for updates that shouldn't add
+    // a new back-button entry, e.g. the initial load or a debounced search
+    // keystroke - only "real" navigation actions (page change, filter click)
+    // should be undoable with the browser back button.
     function updateURL(replace = false) {
         const params = new URLSearchParams();
         if (searchInput.value) params.set('q', searchInput.value);
@@ -91,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // The reverse of updateURL - runs once, right after data.json loads, so an
+    // incoming shared link restores its search/page/filter/sort before the
+    // first render instead of flashing the default view first.
     function loadStateFromURL() {
         const params = new URLSearchParams(window.location.search);
         if (params.has('q')) searchInput.value = params.get('q');
@@ -116,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // The <html data-theme> attribute itself is already set by the inline
+    // script in index.html <head> (before first paint, to avoid a dark->light
+    // flash on reload). This block runs after DOMContentLoaded just to sync
+    // the toggle button's aria-pressed state to match, since the button
+    // doesn't exist yet when the inline script runs.
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         htmlEl.setAttribute('data-theme', savedTheme);
@@ -205,6 +242,15 @@ document.addEventListener('DOMContentLoaded', () => {
         statFixedRate.textContent = `${rate}%`;
     }
 
+    // Builds the per-driver bug-count series behind the trends chart, for one
+    // of three ranges the user can pick via the chip buttons:
+    //   - 'recent': the 20 newest versions, chart's default so it loads fast
+    //     and stays readable without horizontal scrolling.
+    //   - 'worst': the 15 versions with the most bugs regardless of when they
+    //     shipped, then re-sorted back into version order so the x-axis still
+    //     reads chronologically instead of jumbled by bug count.
+    //   - 'all': every version ever tracked (can be wide - renderTrendsChart
+    //     lets this range grow past the container width and scroll).
     function getTrendSeries(range) {
         const chronological = [...allDrivers]
             .sort((a, b) => compareVersions(a.version, b.version))
@@ -234,6 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
         trendsTooltip.textContent = `Showing ${rangeLabel(range)} (${series.length}) — hover or tap a bar for details.`;
     }
 
+    // Used by the trends chart (clicking a bar) to jump straight to a driver
+    // card. Clears any active search/filter first, since the target driver's
+    // bugs could otherwise be hidden by whatever filter was active when the
+    // chart was clicked.
     function goToDriver(version) {
         searchInput.value = '';
         searchClearBtn.classList.add('hidden');
@@ -249,6 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToDriverFromHash();
     }
 
+    // Builds the stacked bar chart by hand with raw SVG DOM nodes rather than
+    // a charting library, to keep the site dependency-free (see the file-level
+    // note at the top). Re-run on range switch, window resize, and initial load.
     function renderTrendsChart(range = trendsRange) {
         if (!trendsChartSvg || allDrivers.length === 0) return;
         trendsRange = range;
@@ -257,6 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
         trendsChartSvg.innerHTML = '';
         if (series.length === 0) return;
 
+        // Bars get a fixed minimum width per range so they stay tappable/legible;
+        // 'all' can have far more bars than fit the container, so once the natural
+        // width exceeds the container the SVG grows past it and the wrapper scrolls
+        // horizontally instead of squeezing every bar down to nothing.
         const containerWidth = trendsChartSvg.parentElement.clientWidth || 800;
         const minBarWidth = range === 'all' ? 6 : 22;
         const gap = range === 'all' ? 1.5 : 6;
@@ -337,6 +394,12 @@ document.addEventListener('DOMContentLoaded', () => {
         resetTrendsTooltip(series, range);
     }
 
+    // A driver card survives the filter+search pass if either its version
+    // number matches the search text, or at least one of its bugs matches
+    // *both* the active status filter (all/pending/fixed) and the search text.
+    // Status filtering happens on the bug list first so that, e.g., searching
+    // "DLSS" under the "Fixed" filter only counts a driver as a match when it
+    // has a *fixed* DLSS bug - not just any DLSS bug regardless of status.
     function applyFiltersAndSort(shouldRender = true, replaceHistory = false) {
         const query = searchInput.value.toLowerCase().trim();
         filteredDrivers = allDrivers.filter(driver => {
@@ -379,6 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Renders one page of driver cards. `filteredDrivers` already reflects
+    // search/status/sort (see applyFiltersAndSort); this only slices out the
+    // current page and, per card, re-applies the status filter + search
+    // highlighting to its bug list so a card that matched via its version
+    // number still only lists the bugs relevant to the active filter.
     function renderDrivers() {
         driverContainer.innerHTML = '';
         const startIndex = (currentPage - 1) * itemsPerPage;
@@ -572,6 +640,10 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFiltersAndSort();
     }
 
+    // Debounced so re-filtering (and the URL update it triggers) runs once
+    // after the user pauses typing, not on every keystroke. `replaceHistory:
+    // true` keeps rapid typing from spamming the browser history with one
+    // entry per keystroke.
     searchInput.addEventListener('input', () => {
         searchClearBtn.classList.toggle('hidden', !searchInput.value);
         clearTimeout(searchDebounceTimer);
@@ -611,6 +683,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // The chart's width is computed from the container's pixel width (see
+    // renderTrendsChart), so it needs a full re-render on resize, not just a
+    // CSS reflow. Debounced so dragging a window edge doesn't rebuild the SVG
+    // on every intermediate frame.
     window.addEventListener('resize', () => {
         clearTimeout(resizeDebounceTimer);
         resizeDebounceTimer = setTimeout(() => renderTrendsChart(), 200);

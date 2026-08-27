@@ -1,3 +1,8 @@
+/* Every color, shadow, radius, and font used below reads from one of these
+   custom properties rather than being hardcoded in a rule. That's what lets
+   the [data-theme="light"] block just below override the whole site's
+   palette by redefining the same variable names - no per-component light-mode
+   rules needed anywhere else in this file. */
 :root {
     /* Dark Theme (Default) */
     --bg-body: #141316;
@@ -75,6 +80,11 @@ body {
     min-height: 100vh;
 }
 
+/* A very faint (opacity .5 of an already .03-opacity noise layer) fixed grain
+   texture over the whole page, generated inline as an SVG data URI so it
+   needs no separate image file. Purely decorative - it's what keeps the flat
+   background colors from looking like a plain gradient/solid fill. Every
+   piece of real content sets z-index: 1 to sit above it. */
 body::before {
     content: '';
     position: fixed;
@@ -84,6 +94,10 @@ body::before {
     z-index: 0;
     opacity: .5;
 }
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
 
 .navbar {
     background-color: var(--bg-surface);
@@ -235,6 +249,10 @@ mark.highlight {
 [data-view="timeline"] .icon-masonry { display: none; }
 [data-view="masonry"] .icon-timeline { display: none; }
 [data-view="masonry"] .icon-masonry { display: block; }
+
+/* ==========================================================================
+   Hero, quick links, search bar, and status/sort filter chips
+   ========================================================================== */
 
 .hero {
     position: relative;
@@ -438,6 +456,10 @@ mark.highlight {
     border-color: var(--accent-color);
 }
 
+/* ==========================================================================
+   Summary stats (total drivers / issues / fix rate)
+   ========================================================================== */
+
 .stats {
     position: relative;
     z-index: 1;
@@ -483,6 +505,13 @@ mark.highlight {
 
 .stat.done .stat-num { color: var(--status-fixed-text); }
 
+/* ==========================================================================
+   Trends chart ("Bugs by driver")
+   The <rect> bars themselves (.trend-bar-fixed / .trend-bar-pending /
+   .trend-bar-hit) don't exist in index.html - script.js builds the whole SVG
+   at runtime in renderTrendsChart(), these rules just style whatever it emits.
+   ========================================================================== */
+
 .trends {
     position: relative;
     z-index: 1;
@@ -512,11 +541,6 @@ mark.highlight {
     gap: 0.6rem;
 }
 
-.trends-title ion-icon {
-    font-size: 1.3rem;
-    color: var(--accent-color);
-}
-
 .trends-title h3 {
     font-family: var(--ff-display);
     font-size: 1.05rem;
@@ -525,11 +549,45 @@ mark.highlight {
     color: var(--text-primary);
 }
 
-.trends-hint {
+/* Color legend for the chart below, replacing what used to be a full written
+   sentence ("Green shows fixed bugs - Red shows pending"). Swatches carry the
+   color meaning visually; the chip colors already match .trend-bar-fixed /
+   .trend-bar-pending in the SVG itself. */
+.trends-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    margin-bottom: 1.1rem;
     font-size: 11px;
     color: var(--text-secondary);
     letter-spacing: 0.2px;
-    margin-bottom: 1.1rem;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.legend-swatch--fixed {
+    background-color: var(--status-fixed-text);
+}
+
+.legend-swatch--pending {
+    background-color: var(--status-pending-text);
+}
+
+.legend-hint {
+    margin-left: auto;
+    opacity: 0.75;
 }
 
 .trends-chart-wrapper {
@@ -608,6 +666,14 @@ main {
     padding: 0 1.5rem;
 }
 
+/* ==========================================================================
+   Driver cards - shared rules for both view modes.
+   The two view modes (toggled via the button in the navbar, persisted in
+   localStorage and applied through [data-view] on <html> - see script.js)
+   share these markup/class names and only diverge in the .masonry-layout
+   overrides further down.
+   ========================================================================== */
+
 .grid-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -682,6 +748,12 @@ main {
     display: none;
 }
 
+/* In the default (list) view the header column is narrow and tall, so the
+   version number is rotated to read bottom-to-top rather than being squeezed
+   or wrapped. writing-mode does the rotation; the extra 180deg transform flips
+   it so the text still reads top-to-bottom instead of upside down. The
+   masonry view (below) resets both back to normal horizontal text, since that
+   header is wide and short instead. */
 .driver-version {
     font-family: var(--ff-display);
     font-size: 1.4rem;
@@ -702,6 +774,11 @@ main {
     background-color: var(--border-color);
 }
 
+/* Masonry is plain CSS multi-column (column-count), not JS-positioned - cards
+   are laid out in DOM order and simply flow into whichever column has room,
+   which is what gives the staggered "masonry" look for cards of different
+   heights. break-inside: avoid stops a single card from being split across
+   two columns. */
 .masonry-layout {
     display: block;
     column-count: 3;
@@ -795,6 +872,12 @@ main {
     color: var(--status-pending-text);
 }
 
+/* ==========================================================================
+   Pagination
+   Buttons are generated by renderPagination() in script.js, including the
+   ellipsis "..." spacer for large page counts - not present in index.html.
+   ========================================================================== */
+
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -840,6 +923,10 @@ main {
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+/* ==========================================================================
+   Footer, empty/loading states, and responsive breakpoints
+   ========================================================================== */
 
 footer {
     position: relative;
