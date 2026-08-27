@@ -67,7 +67,7 @@
     <header class="hero">
         <div class="hero-content">
             <h2>Community Bug Tracker</h2>
-            <p>Check which drivers are safe to use and stay on top of the latest known issues.</p>
+            <p>A searchable log of NVIDIA driver bugs, pulled from release notes and tracked until they're actually fixed.</p>
             
             <div class="quick-links">
                 <a href="https://www.reddit.com/r/nvidia/comments/1vyxagw/game_ready_studio_driver_61656_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
@@ -131,16 +131,19 @@
         <section class="trends" id="trends" aria-labelledby="trends-title">
             <div class="trends-header">
                 <div class="trends-title">
-                    <ion-icon name="stats-chart-outline"></ion-icon>
                     <h3 id="trends-title">Bugs by driver</h3>
                 </div>
                 <div class="filter-chips" id="trends-range" role="group" aria-label="Chart range">
-                    <button class="chip active" data-range="recent" aria-pressed="true">Latest 20</button>
+                    <button class="chip" data-range="recent" aria-pressed="false">Latest 20</button>
                     <button class="chip" data-range="worst" aria-pressed="false">Most affected</button>
-                    <button class="chip" data-range="all" aria-pressed="false">All time</button>
+                    <button class="chip active" data-range="all" aria-pressed="true">All time</button>
                 </div>
             </div>
-            <p class="trends-hint">Click a bar to view the driver. Green shows fixed bugs - Red shows pending.</p>
+            <div class="trends-legend">
+                <span class="legend-item"><span class="legend-swatch legend-swatch--fixed"></span>Fixed</span>
+                <span class="legend-item"><span class="legend-swatch legend-swatch--pending"></span>Pending</span>
+                <span class="legend-hint">Click a bar for details</span>
+            </div>
             <div class="trends-chart-wrapper">
                 <svg id="trends-chart" class="trends-chart" role="img" aria-label="Bar chart of fixed and pending bugs by driver"></svg>
             </div>

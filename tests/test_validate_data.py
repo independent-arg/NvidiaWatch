@@ -1,3 +1,8 @@
+"""
+Unit tests for scripts/validate_data.py. Most cases build a throwaway temp
+JSON file with one thing wrong and assert validate_data() rejects it, to
+pin down exactly which malformed shapes the validator is supposed to catch.
+"""
 import unittest
 import json
 import tempfile
@@ -47,6 +52,10 @@ class TestValidateData(unittest.TestCase):
         path = self._create_temp_json(valid_json)
         self.assertTrue(validate_data(path))
 
+    # Unlike the other tests, which use synthetic temp files, this runs the
+    # validator against the real docs/data.json - a regression guard so a
+    # future manual edit to the live data file fails CI immediately instead
+    # of shipping a broken driver card to the site.
     def test_actual_docs_data_json(self):
         docs_data_path = Path(__file__).parent.parent / "docs" / "data.json"
         self.assertTrue(validate_data(docs_data_path))

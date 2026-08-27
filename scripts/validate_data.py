@@ -1,13 +1,38 @@
 #!/usr/bin/env python3
+"""
+Validate docs/data.json against the schema the site (script.js) and the
+chart generator (generate_chart.py) both assume. Run by CI on every push/PR
+(see .github/workflows/validate-and-deploy.yml) so a malformed hand-edit to
+data.json fails the build instead of silently breaking the live site.
+
+This intentionally rejects unexpected keys, not just missing required ones -
+data.json is edited by hand, so a typo'd key (e.g. "fixed" instead of
+"fixed_in") should be caught here rather than becoming a silently-ignored
+field that quietly does nothing on the site.
+
+Usage:
+    python scripts/validate_data.py [path/to/data.json]
+"""
 import json
 import re
 import sys
 import argparse
 from pathlib import Path
 
+# NVIDIA driver versions always have exactly two decimal digits (e.g.
+# "581.80", not "581.8"). Enforcing that here keeps formatVersion() in
+# script.js from ever needing to reformat a value at display time.
 VERSION_REGEX = re.compile(r"^\d+\.\d{2}$")
 
 def validate_data(filepath):
+    """
+    Check that `filepath` is a JSON array of driver entries, where each entry
+    has exactly {"version": "X.YY", "bugs": [...]}, and each bug has exactly
+    {"description": str, "fixed_in": str or null}. Prints every problem found
+    (rather than stopping at the first one) so a contributor can fix a whole
+    PR's worth of issues in one pass instead of one CI run per typo. Returns
+    True only if the whole file is valid.
+    """
     path = Path(filepath)
     if not path.exists():
         print(f"Error: File '{filepath}' does not exist.")
@@ -58,6 +83,9 @@ def validate_data(filepath):
                 print(f"Error at {location}: 'version' '{version}' is invalid. Must be digits with exactly 2 decimal places (e.g. '581.80').")
                 has_errors = True
 
+            # Two entries for the same driver version would silently merge or
+            # shadow each other on the site (script.js keys cards by version),
+            # so catch it here instead of debugging a "missing" driver later.
             if version in seen_versions:
                 print(f"Error at {location}: Duplicate version '{version}' detected.")
                 has_errors = True
@@ -92,6 +120,10 @@ def validate_data(filepath):
                     print(f"Error at {bug_location}: 'description' must be a non-empty string.")
                     has_errors = True
 
+                # fixed_in is required but nullable: null means "still pending",
+                # a string (typically "Fixed (X.YY)") means resolved. The site
+                # (script.js) and the chart (generate_chart.py) both treat
+                # `fixed_in !== null` as the sole "is this fixed?" check.
                 if "fixed_in" not in bug:
                     print(f"Error at {bug_location}: Missing required field 'fixed_in'.")
                     has_errors = True
