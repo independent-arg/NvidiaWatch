@@ -1,14 +1,25 @@
-NvidiaWatch Data License
+Creative Commons Attribution 4.0 International
 
-The data compilation, structure, and crowdsourced information contained in 'docs/data.json' 
-are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+Copyright (c) 2026 independent-arg
 
-You are free to:
-- Share: Copy and redistribute the material in any medium or format.
-- Adapt: Remix, transform, and build upon the material for any purpose, even commercially.
+The bug database and all collected logs contained within the 
+'docs/data.json' file are licensed under the Creative Commons Attribution 
+4.0 International License (CC BY 4.0).
 
-Under the following terms:
-- Attribution: You must give appropriate credit to independent-arg (NvidiaWatch), 
-  provide a link to the license, and indicate if changes were made. You may do so 
-  in any reasonable manner, but not in any way that suggests the licensor endorses 
-  you or your use.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this JSON file and the bugs collected within it, to deal in the data without 
+restriction, including without limitation the rights to use, copy, modify, 
+merge, publish, distribute, sublicense, and/or sell copies of the data, 
+subject to the following conditions:
+
+Any project, script, or website using this data must include the above copyright 
+notice and a visible, active hyperlink back to the original source repository:
+https://github.com/independent-arg/NvidiaWatch/
+
+THE BUG DATABASE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+DATA.
