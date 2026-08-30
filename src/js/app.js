@@ -1,17 +1,22 @@
-// No framework, no build step, no charting library on purpose: docs/ is served
-// as-is by GitHub Pages, so keeping this dependency-free means it works if
-// someone forks the repo and opens index.html directly.
+// No charting library, still dependency-free at runtime - the only thing
+// that changed from the original is *when* data.json turns into this page.
+// Eleventy reads it once at build time (src/_data/drivers.js, stats.js,
+// trends.js) and this file picks up the already-parsed, already-sorted
+// result from window.__NVIDIAWATCH_DATA__ / __NVIDIAWATCH_TRENDS__ instead
+// of fetching and parsing it here.
 //
-// `allDrivers` is fetched once from data.json and never mutated; every filter,
-// sort, search, and pagination is a UI-only derivation into `filteredDrivers`.
+// Everything below this point - search, sort, status filter, pagination,
+// the trends chart, theme/view toggles, deep-linking - is unchanged from
+// the original script.js. That's all real runtime interactivity a static
+// build can't remove; it still has to run in the visitor's browser.
+//
+// `allDrivers` is set once, on load, and never mutated; every filter, sort,
+// search, and pagination is a UI-only derivation into `filteredDrivers`.
 // Search/filter/sort/page state is also mirrored into the URL query string
 // (see updateURL/loadStateFromURL) so a link someone shares reopens to the
 // same view instead of just the driver list from scratch.
 document.addEventListener('DOMContentLoaded', () => {
     const driverContainer = document.getElementById('driver-container');
-    const statTotalDrivers = document.getElementById('stat-total-drivers');
-    const statTotalBugs = document.getElementById('stat-total-bugs');
-    const statFixedRate = document.getElementById('stat-fixed-rate');
     const searchInput = document.getElementById('search-input');
     const searchClearBtn = document.getElementById('search-clear');
     const themeBtn = document.getElementById('theme-toggle');
@@ -111,7 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage > 1) params.set('page', currentPage);
         if (currentFilter !== 'all') params.set('filter', currentFilter);
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
-        const newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        // Only attach "?" when there's actually a query string - the
+        // original always appended '?' + params.toString(), which left a
+        // bare trailing "?" (e.g. "/?#driver-526.47") whenever every filter
+        // was at its default. That was a pre-existing bug, not something
+        // this migration introduced.
+        const query = params.toString();
+        const newRelativePathQuery = window.location.pathname + (query ? "?" + query : "");
         const hash = window.location.hash;
         if (replace) {
             history.replaceState(null, '', newRelativePathQuery + hash);
@@ -162,11 +173,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedView = localStorage.getItem('view') || 'masonry';
     htmlEl.setAttribute('data-view', savedView);
     viewModeBtn.setAttribute('aria-pressed', savedView === 'timeline');
-    
-    if (savedView === 'masonry') {
-        driverContainer.classList.replace('grid-layout', 'masonry-layout');
-    } else {
-        driverContainer.classList.replace('masonry-layout', 'grid-layout');
+
+    // driverContainer only exists on the home page. Guarded so this (and
+    // everything below it in this file) can't throw on a page that doesn't
+    // have it - an unguarded throw here used to run before themeBtn's own
+    // click listener was even registered, which is why toggling theme did
+    // nothing at all on /stats/.
+    if (driverContainer) {
+        if (savedView === 'masonry') {
+            driverContainer.classList.replace('grid-layout', 'masonry-layout');
+        } else {
+            driverContainer.classList.replace('masonry-layout', 'grid-layout');
+        }
     }
 
     themeBtn.addEventListener('click', () => {
@@ -183,63 +201,45 @@ document.addEventListener('DOMContentLoaded', () => {
         htmlEl.setAttribute('data-view', newView);
         viewModeBtn.setAttribute('aria-pressed', newView === 'timeline');
         localStorage.setItem('view', newView);
-        if (newView === 'masonry') {
-            driverContainer.classList.replace('grid-layout', 'masonry-layout');
-        } else {
-            driverContainer.classList.replace('masonry-layout', 'grid-layout');
+        if (driverContainer) {
+            if (newView === 'masonry') {
+                driverContainer.classList.replace('grid-layout', 'masonry-layout');
+            } else {
+                driverContainer.classList.replace('masonry-layout', 'grid-layout');
+            }
         }
     });
 
-    fetch('data.json')
-        .then(response => {
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return response.json();
-        })
-        .then(data => {
-            allDrivers = data;
-            const latest = data.sort((a, b) => compareVersions(b.version, a.version))[0];
-            if (latest) {
-                document.title = `NvidiaWatch | Latest Driver ${formatVersion(latest.version)}`;
+    // Everything from here down (data load, rendering, search/sort/filter/
+    // pagination wiring, the trends chart) is home-page-only. Guarded on
+    // driverContainer, the one element every home-page control depends on
+    // either directly or transitively, so /stats/ - which shares this same
+    // file for the navbar's theme/view buttons - doesn't try to wire up
+    // controls it doesn't have.
+    if (driverContainer) {
+        // The full dataset ships inline (see base.njk), already sorted
+        // newest-first at build time by src/_data/drivers.js - no fetch, no
+        // "Loading driver data..." state, no network-failure branch.
+        allDrivers = window.__NVIDIAWATCH_DATA__ || [];
+        const latest = allDrivers[0];
+        if (latest) {
+            document.title = `NvidiaWatch | Latest Driver ${formatVersion(latest.version)}`;
+        }
+        loadStateFromURL();
+        applyFiltersAndSort(false);
+        const initialHash = window.location.hash;
+        if (initialHash.startsWith('#driver-')) {
+            const targetVersion = initialHash.replace('#driver-', '');
+            const driverIndex = filteredDrivers.findIndex(d => d.version === targetVersion);
+            if (driverIndex !== -1) {
+                currentPage = Math.floor(driverIndex / itemsPerPage) + 1;
             }
-            loadStateFromURL();
-            updateStats(allDrivers);
-            renderTrendsChart();
-            applyFiltersAndSort(false);
-            const hash = window.location.hash;
-            if (hash.startsWith('#driver-')) {
-                const targetVersion = hash.replace('#driver-', '');
-                const driverIndex = filteredDrivers.findIndex(d => d.version === targetVersion);
-                if (driverIndex !== -1) {
-                    currentPage = Math.floor(driverIndex / itemsPerPage) + 1;
-                }
-            }
-            renderDrivers();
-            renderPagination();
-            updateURL(true);
-            scrollToDriverFromHash();
-        })
-        .catch(err => {
-            console.error('Error loading data:', err);
-            driverContainer.innerHTML = `
-                <div class="no-results" role="status">
-                    <ion-icon name="alert-circle-outline"></ion-icon>
-                    <p>Couldn't load driver data. Please try refreshing the page.</p>
-                </div>
-            `;
-        });
-
-    function updateStats(drivers) {
-        let totalDrivers = drivers.length;
-        let totalBugs = 0;
-        let fixedBugs = 0;
-        drivers.forEach(d => {
-            totalBugs += d.bugs.length;
-            fixedBugs += d.bugs.filter(b => b.fixed_in !== null).length;
-        });
-        const rate = totalBugs > 0 ? Math.round((fixedBugs / totalBugs) * 100) : 0;
-        statTotalDrivers.textContent = totalDrivers;
-        statTotalBugs.textContent = totalBugs;
-        statFixedRate.textContent = `${rate}%`;
+        }
+        renderDrivers();
+        renderPagination();
+        renderTrendsChart();
+        updateURL(true);
+        scrollToDriverFromHash();
     }
 
     // Builds the per-driver bug-count series behind the trends chart, for one
@@ -251,23 +251,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //     reads chronologically instead of jumbled by bug count.
     //   - 'all': every version ever tracked (can be wide - renderTrendsChart
     //     lets this range grow past the container width and scroll).
+    // The 3 ranges are precomputed at build time (src/_data/trends.js)
+    // instead of re-sorting/re-filtering the full driver list here on every
+    // range switch, resize, and initial render.
     function getTrendSeries(range) {
-        const chronological = [...allDrivers]
-            .sort((a, b) => compareVersions(a.version, b.version))
-            .map(d => {
-                const total = d.bugs.length;
-                const fixed = d.bugs.filter(b => b.fixed_in !== null).length;
-                return { version: d.version, total, fixed, pending: total - fixed };
-            });
-
-        if (range === 'recent') return chronological.slice(-20);
-        if (range === 'worst') {
-            return [...chronological]
-                .sort((a, b) => b.total - a.total)
-                .slice(0, 15)
-                .sort((a, b) => compareVersions(a.version, b.version));
-        }
-        return chronological; // 'all'
+        const trends = window.__NVIDIAWATCH_TRENDS__ || {};
+        return trends[range] || trends.all || [];
     }
 
     function rangeLabel(range) {
@@ -640,64 +629,67 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFiltersAndSort();
     }
 
-    // Debounced so re-filtering (and the URL update it triggers) runs once
-    // after the user pauses typing, not on every keystroke. `replaceHistory:
-    // true` keeps rapid typing from spamming the browser history with one
-    // entry per keystroke.
-    searchInput.addEventListener('input', () => {
-        searchClearBtn.classList.toggle('hidden', !searchInput.value);
-        clearTimeout(searchDebounceTimer);
-        searchDebounceTimer = setTimeout(() => {
-            applyFiltersAndSort(true, true);
-        }, 300);
-    });
+    if (driverContainer) {
+        // Debounced so re-filtering (and the URL update it triggers) runs
+        // once after the user pauses typing, not on every keystroke.
+        // `replaceHistory: true` keeps rapid typing from spamming the
+        // browser history with one entry per keystroke.
+        searchInput.addEventListener('input', () => {
+            searchClearBtn.classList.toggle('hidden', !searchInput.value);
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+                applyFiltersAndSort(true, true);
+            }, 300);
+        });
 
-    searchClearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        searchClearBtn.classList.add('hidden');
-        applyFiltersAndSort();
-        searchInput.focus();
-    });
+        searchClearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchClearBtn.classList.add('hidden');
+            applyFiltersAndSort();
+            searchInput.focus();
+        });
 
-    sortSelect.addEventListener('change', (e) => {
-        currentSort = e.target.value;
-        applyFiltersAndSort();
-    });
-
-    statusChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            currentFilter = chip.dataset.filter;
-            updateChipUI();
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
             applyFiltersAndSort();
         });
-    });
 
-    trendsRangeChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            trendsRangeChips.forEach(c => {
-                const isActive = c === chip;
-                c.classList.toggle('active', isActive);
-                c.setAttribute('aria-pressed', isActive);
+        statusChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                currentFilter = chip.dataset.filter;
+                updateChipUI();
+                applyFiltersAndSort();
             });
-            renderTrendsChart(chip.dataset.range);
         });
-    });
 
-    // The chart's width is computed from the container's pixel width (see
-    // renderTrendsChart), so it needs a full re-render on resize, not just a
-    // CSS reflow. Debounced so dragging a window edge doesn't rebuild the SVG
-    // on every intermediate frame.
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeDebounceTimer);
-        resizeDebounceTimer = setTimeout(() => renderTrendsChart(), 200);
-    });
+        trendsRangeChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                trendsRangeChips.forEach(c => {
+                    const isActive = c === chip;
+                    c.classList.toggle('active', isActive);
+                    c.setAttribute('aria-pressed', isActive);
+                });
+                renderTrendsChart(chip.dataset.range);
+            });
+        });
 
-    // Bound once (not per-render) to avoid piling up duplicate listeners
-    // every time the chart re-draws (range switch, resize, initial load).
-    trendsChartSvg?.addEventListener('mouseleave', () => {
-        resetTrendsTooltip(getTrendSeries(trendsRange), trendsRange);
-    });
+        // The chart's width is computed from the container's pixel width
+        // (see renderTrendsChart), so it needs a full re-render on resize,
+        // not just a CSS reflow. Debounced so dragging a window edge
+        // doesn't rebuild the SVG on every intermediate frame.
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeDebounceTimer);
+            resizeDebounceTimer = setTimeout(() => renderTrendsChart(), 200);
+        });
 
-    window.addEventListener('hashchange', scrollToDriverFromHash);
+        // Bound once (not per-render) to avoid piling up duplicate
+        // listeners every time the chart re-draws (range switch, resize,
+        // initial load).
+        trendsChartSvg?.addEventListener('mouseleave', () => {
+            resetTrendsTooltip(getTrendSeries(trendsRange), trendsRange);
+        });
+
+        window.addEventListener('hashchange', scrollToDriverFromHash);
+    }
 
 });

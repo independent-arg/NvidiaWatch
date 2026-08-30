@@ -1,0 +1,15 @@
+{
+  "name": "nvidiawatch",
+  "version": "1.0.0",
+  "description": "NvidiaWatch static site, built with Eleventy",
+  "author": "independent-arg",
+  "license": "MIT",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "watch": "eleventy --watch"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}

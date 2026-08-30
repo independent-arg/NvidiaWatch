@@ -171,6 +171,79 @@ body::before {
     gap: 0.5rem;
 }
 
+/* New with the Eleventy migration: Bugs/Stats are real pages now instead of
+   sections on one page, so they need an actual nav element. Text links with
+   an underline on the current page, not another rounded pill, to match the
+   flatter direction the rest of the retheme took. */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a[aria-current="page"] {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-color);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Stats page per-driver breakdown */
+.driver-breakdown-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+}
+
+.driver-breakdown-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+}
+
+.driver-breakdown-version {
+    font-family: var(--ff-mono);
+    color: var(--text-primary);
+    text-decoration: none;
+    width: 4.5rem;
+    flex-shrink: 0;
+}
+
+.driver-breakdown-version:hover {
+    color: var(--accent-color);
+}
+
+.driver-breakdown-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border-color);
+    display: block;
+}
+
+.driver-breakdown-bar span {
+    display: block;
+    height: 100%;
+}
+
+.driver-breakdown-count {
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    font-size: 0.78rem;
+}
+
 .theme-btn:focus-visible,
 .search-clear-btn:focus-visible,
 .link-btn:focus-visible,
@@ -442,14 +515,39 @@ mark.highlight {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 6px 12px;
+    padding: 6px 30px 6px 14px;
     font-size: 11px;
     font-family: var(--ff-mono);
     cursor: pointer;
     outline: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
     transition: border-color 0.2s;
+    /* Without this, the browser keeps its native OS chrome for the widget
+       (arrow, corners, and often the font too) regardless of the rules
+       above - which is why the radius fix alone didn't visibly change
+       anything and the text looked like a different font from the rest of
+       the page. */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.filter-group:has(.sort-dropdown) {
+    position: relative;
+}
+
+.filter-group:has(.sort-dropdown)::after {
+    content: "";
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-secondary);
+    border-bottom: 1.5px solid var(--text-secondary);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
 }
 
 .sort-dropdown:focus {

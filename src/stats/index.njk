@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: NvidiaWatch | Stats
+---
+<header class="hero">
+    <div class="hero-content">
+        <h2>Stats</h2>
+        <p>Totals across every driver tracked, computed once at build time from data.json.</p>
+    </div>
+</header>
+
+<main>
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num">{{ stats.totalDrivers }}</div>
+            <div class="stat-label">Total drivers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">{{ stats.totalBugs }}</div>
+            <div class="stat-label">Issues tracked</div>
+        </div>
+        <div class="stat done">
+            <div class="stat-num">{{ stats.fixRate }}%</div>
+            <div class="stat-label">Fix rate</div>
+        </div>
+    </div>
+
+    <section class="trends" aria-labelledby="breakdown-title">
+        <div class="trends-header">
+            <div class="trends-title">
+                <h3 id="breakdown-title">Fixed vs. pending, by driver</h3>
+            </div>
+        </div>
+        <div class="trends-legend">
+            <span class="legend-item"><span class="legend-swatch legend-swatch--fixed"></span>Fixed</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch--pending"></span>Pending</span>
+        </div>
+
+        <ul class="driver-breakdown-list">
+            {% for row in stats.byDriver %}
+            <li class="driver-breakdown-row">
+                <a href="/#driver-{{ row.version }}" class="driver-breakdown-version">{{ row.version | formatVersion }}</a>
+                <span class="driver-breakdown-bar">
+                    <span style="width: {{ (row.fixed / (row.fixed + row.pending) * 100) if (row.fixed + row.pending) > 0 else 0 }}%; background: var(--status-fixed-text);"></span>
+                </span>
+                <span class="driver-breakdown-count">{{ row.fixed }} fixed &middot; {{ row.pending }} pending</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>

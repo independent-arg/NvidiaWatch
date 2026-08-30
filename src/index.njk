@@ -1,0 +1,121 @@
+---
+layout: base.njk
+title: NvidiaWatch | Community Driver Tracker
+---
+<header class="hero">
+    <div class="hero-content">
+        <h2>Community Bug Tracker</h2>
+        <p>A searchable log of NVIDIA driver bugs, pulled from release notes and tracked until they're actually fixed.</p>
+
+        <div class="quick-links">
+            <a href="https://www.reddit.com/r/nvidia/comments/1vyxagw/game_ready_studio_driver_61656_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
+                <ion-icon name="logo-reddit"></ion-icon>
+                <span>Join the Reddit Talk</span>
+            </a>
+            <a href="https://www.nvidia.com/en-us/geforce/forums/game-ready-drivers/13/589348/geforce-grd-61656-feedback-thread-released-82626/" target="_blank" rel="noopener noreferrer" class="link-btn nvidia">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+                <span>Official Feedback</span>
+            </a>
+        </div>
+
+        <div class="search-wrapper">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+            <input type="text" id="search-input" placeholder="Search for a game, bug, or driver version..." aria-label="Search drivers and issues">
+            <button id="search-clear" class="search-clear-btn hidden" aria-label="Clear search">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
+        </div>
+
+        <div class="filter-controls">
+            <div class="filter-group">
+                <span class="filter-label">Status:</span>
+                <div class="filter-chips" id="status-filters">
+                    <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="chip" data-filter="pending" aria-pressed="false">Pending</button>
+                    <button class="chip" data-filter="fixed" aria-pressed="false">Fixed</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label for="sort-select" class="sr-only">Sort drivers by</label>
+                <span class="filter-label">Sort by:</span>
+                <select id="sort-select" class="sort-dropdown">
+                    <option value="version-desc">Version (newest)</option>
+                    <option value="version-asc">Version (oldest)</option>
+                    <option value="bugs-desc">Most bugs</option>
+                    <option value="bugs-asc">Fewest bugs</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num" id="stat-total-drivers">{{ stats.totalDrivers }}</div>
+            <div class="stat-label">Total drivers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" id="stat-total-bugs">{{ stats.totalBugs }}</div>
+            <div class="stat-label">Issues tracked</div>
+        </div>
+        <div class="stat done">
+            <div class="stat-num" id="stat-fixed-rate">{{ stats.fixRate }}%</div>
+            <div class="stat-label">Fix rate</div>
+        </div>
+    </div>
+
+    <section class="trends" id="trends" aria-labelledby="trends-title">
+        <div class="trends-header">
+            <div class="trends-title">
+                <h3 id="trends-title">Bugs by driver</h3>
+            </div>
+            <div class="filter-chips" id="trends-range" role="group" aria-label="Chart range">
+                <button class="chip" data-range="recent" aria-pressed="false">Latest 20</button>
+                <button class="chip" data-range="worst" aria-pressed="false">Most affected</button>
+                <button class="chip active" data-range="all" aria-pressed="true">All time</button>
+            </div>
+        </div>
+        <div class="trends-legend">
+            <span class="legend-item"><span class="legend-swatch legend-swatch--fixed"></span>Fixed</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch--pending"></span>Pending</span>
+            <span class="legend-hint">Click a bar for details</span>
+        </div>
+        <div class="trends-chart-wrapper">
+            <svg id="trends-chart" class="trends-chart" role="img" aria-label="Bar chart of fixed and pending bugs by driver"></svg>
+        </div>
+        <div id="trends-tooltip" class="trends-tooltip" role="status" aria-live="polite">Loading chart…</div>
+    </section>
+
+    {# The first page (default sort/filter) is rendered here for real, so the
+       driver and bug list is visible without JS and crawlable by search
+       engines. app.js re-renders this same markup on load so it's already
+       wired for search/filter/sort/pagination - see the comment at the top
+       of app.js for why that re-render still has to happen client-side. #}
+    <div id="driver-container" class="masonry-layout" aria-live="polite" style="min-height: 600px;">
+        {% for driver in drivers.slice(0, 9) %}
+        <div class="driver-card" id="driver-{{ driver.version }}">
+            <div class="driver-header" role="button" tabindex="0">
+                <div class="driver-version">Driver {{ driver.version | formatVersion }}</div>
+                <button class="copy-link-btn" aria-label="Copy link to Driver {{ driver.version | formatVersion }}" title="Copy link to driver">
+                    <ion-icon name="link-outline"></ion-icon>
+                </button>
+            </div>
+            <ul class="bug-list">
+                {% for bug in driver.bugs %}
+                <li class="bug-item">
+                    <div class="bug-desc">{{ bug.description }}</div>
+                    <div class="bug-footer">
+                        <span class="status-badge {{ 'status-fixed' if bug.fixed_in else 'status-pending' }}">
+                            {{ bug.fixed_in or 'Pending' }}
+                        </span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination-container"></div>
+</main>

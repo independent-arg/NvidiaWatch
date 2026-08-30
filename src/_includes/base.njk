@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-view="masonry">
+<head>
+    <meta charset="UTF-8">
+
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', saved);
+            }
+        })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title or "NvidiaWatch" }}</title>
+    <meta name="description" content="Track known issues and stability of NVIDIA Game Ready and Studio drivers. Community-driven bug reports to help you find the safest driver version.">
+    <meta name="keywords" content="Nvidia, GPU Drivers, Bug Tracker, Game Ready, Studio Driver, Stability, GPU Issues">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://independent-arg.github.io/NvidiaWatch/">
+    <meta property="og:title" content="{{ title or 'NvidiaWatch | Community Driver Tracker' }}">
+    <meta property="og:description" content="Check which drivers are safe to use and stay on top of the latest known issues.">
+    <meta property="og:image" content="https://independent-arg.github.io/NvidiaWatch/og-image.jpg">
+
+    <link rel="icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <noscript>
+        <div style="padding: 2rem; text-align: center; font-family: sans-serif; background: #1e1c21; color: #f2f2f2;">
+            Search, filtering, and the chart need JavaScript enabled — but the driver and bug list below is already visible without it.
+        </div>
+    </noscript>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-icon"><ion-icon name="bug-outline"></ion-icon></span>
+                <h1>NvidiaWatch</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Bugs</a>
+                <a href="/stats/" {% if page.url == "/stats/" %}aria-current="page"{% endif %}>Stats</a>
+            </div>
+            <div class="nav-controls">
+                <button id="view-mode-toggle" class="theme-btn" aria-label="Switch view mode" aria-pressed="false">
+                    <ion-icon name="list-outline" class="icon-timeline"></ion-icon>
+                    <ion-icon name="apps-outline" class="icon-masonry"></ion-icon>
+                </button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode" aria-pressed="true">
+                    <ion-icon name="moon-outline" class="icon-moon"></ion-icon>
+                    <ion-icon name="sunny-outline" class="icon-sun"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    {{ content | safe }}
+
+    <footer>
+        <p>This is a community-run project. Data is sourced from user reports and official notes.</p>
+        <p class="credit">Built with ❤️ by <strong>independent-arg</strong> for the community.</p>
+        <div class="footer-links">
+            <a href="https://github.com/independent-arg/NvidiaWatch" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-github"></ion-icon> GitHub Repository
+            </a>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <script>
+      window.__NVIDIAWATCH_DATA__ = {{ drivers | dump | safe }};
+      window.__NVIDIAWATCH_TRENDS__ = {{ trends | dump | safe }};
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
