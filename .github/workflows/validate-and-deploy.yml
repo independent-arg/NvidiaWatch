@@ -67,6 +67,18 @@ jobs:
             echo "Chart unchanged, nothing to commit."
           fi
 
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site with Eleventy
+        run: npm run build
+        
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
