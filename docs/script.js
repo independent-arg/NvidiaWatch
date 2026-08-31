@@ -111,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage > 1) params.set('page', currentPage);
         if (currentFilter !== 'all') params.set('filter', currentFilter);
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
-        const newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        const query = params.toString();
+        const newRelativePathQuery = window.location.pathname + (query ? "?" + query : "");
         const hash = window.location.hash;
         if (replace) {
             history.replaceState(null, '', newRelativePathQuery + hash);
