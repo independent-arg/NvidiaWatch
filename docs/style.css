@@ -442,14 +442,35 @@ mark.highlight {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 6px 12px;
+    padding: 6px 30px 6px 14px;
     font-size: 11px;
     font-family: var(--ff-mono);
     cursor: pointer;
     outline: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
     transition: border-color 0.2s;
+    appearance: none;
+    webkit-appearance: none;
+    moz-appearance: none;
+   
+}
+
+.filter-group:has(.sort-dropdown) {
+    position: relative;
+}
+
+.filter-group:has(.sort-dropdown)::after {
+    content: "";
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-secondary);
+    border-bottom: 1.5px solid var(--text-secondary);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
 }
 
 .sort-dropdown:focus {
