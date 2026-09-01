@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Validate docs/data.json against the schema the site (script.js) and the
-chart generator (generate_chart.py) both assume. Run by CI on every push/PR
-(see .github/workflows/validate-and-deploy.yml) so a malformed hand-edit to
-data.json fails the build instead of silently breaking the live site.
+Validate drivers.json against the schema the site (Eleventy templates) and
+the chart generator (generate_chart.py) both assume. Run by CI on every
+push/PR (see .github/workflows/validate-and-deploy.yml) so a malformed
+hand-edit to the data fails the build instead of silently breaking the live
+site.
 
 This intentionally rejects unexpected keys, not just missing required ones -
-data.json is edited by hand, so a typo'd key (e.g. "fixed" instead of
+drivers.json is edited by hand, so a typo'd key (e.g. "fixed" instead of
 "fixed_in") should be caught here rather than becoming a silently-ignored
 field that quietly does nothing on the site.
 
 Usage:
-    python scripts/validate_data.py [path/to/data.json]
+    python scripts/validate_data.py [path/to/drivers.json]
 """
 import json
 import re
@@ -140,8 +141,8 @@ def validate_data(filepath):
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="Validate data.json structure and formatting.")
-    parser.add_argument("file", nargs="?", default="docs/data.json", help="Path to data.json file to validate (default: docs/data.json)")
+    parser = argparse.ArgumentParser(description="Validate drivers.json structure and formatting.")
+    parser.add_argument("file", nargs="?", default="src/_data/drivers.json", help="Path to drivers.json file to validate (default: src/_data/drivers.json)")
     args = parser.parse_args()
 
     success = validate_data(args.file)

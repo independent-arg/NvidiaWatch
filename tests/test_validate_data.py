@@ -53,12 +53,12 @@ class TestValidateData(unittest.TestCase):
         self.assertTrue(validate_data(path))
 
     # Unlike the other tests, which use synthetic temp files, this runs the
-    # validator against the real docs/data.json - a regression guard so a
+    # validator against the real drivers.json - a regression guard so a
     # future manual edit to the live data file fails CI immediately instead
     # of shipping a broken driver card to the site.
-    def test_actual_docs_data_json(self):
-        docs_data_path = Path(__file__).parent.parent / "docs" / "data.json"
-        self.assertTrue(validate_data(docs_data_path))
+    def test_actual_drivers_json(self):
+        drivers_data_path = Path(__file__).parent.parent / "src" / "_data" / "drivers.json"
+        self.assertTrue(validate_data(drivers_data_path))
 
     def test_invalid_json_syntax(self):
         path = self._create_temp_json("[{ invalid json")

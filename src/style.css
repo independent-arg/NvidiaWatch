@@ -42,10 +42,14 @@
     --accent-contrast: #ffffff;
     --border-color: rgba(33, 31, 38, 0.1);
 
+    /* Darker than the bg tint's source color (unlike the dark theme, where
+       a pastel text color already has enough contrast against a near-black
+       surface) - needed to clear WCAG AA's 4.5:1 minimum against a
+       near-white badge background. */
     --status-fixed-bg: rgba(74, 140, 106, 0.14);
-    --status-fixed-text: #4a8c6a;
+    --status-fixed-text: #305c46;
     --status-pending-bg: rgba(166, 74, 58, 0.14);
-    --status-pending-text: #a64a3a;
+    --status-pending-text: #8d3f31;
 
     --shadow-sm: 0 1px 2px 0 rgba(33, 31, 38, 0.08);
     --shadow-md: 0 12px 24px -8px rgba(33, 31, 38, 0.15);
@@ -63,6 +67,26 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+/* Controls that only do anything once script.js runs are marked .js-only so
+   a no-JS visitor gets the plain, fully-populated page instead of dead
+   buttons; .no-js-only is the inverse, for fallbacks like the static trends
+   chart image. The <html> class itself flips from no-js to js in an inline
+   <head> script (see base.njk), before first paint, so there's no flash. */
+.no-js .js-only {
+    display: none !important;
+}
+
+.js .no-js-only {
+    display: none !important;
+}
+
+.trends-chart-fallback {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
 }
 
 * {
@@ -185,7 +209,7 @@ mark.highlight {
     color: var(--text-primary);
     padding: 0 3px;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .copy-link-btn {
@@ -299,7 +323,7 @@ mark.highlight {
     border: 1px solid var(--border-color);
     background: var(--bg-surface);
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     transition: all 0.25s ease;
     color: var(--text-secondary);
@@ -451,9 +475,8 @@ mark.highlight {
     box-shadow: var(--shadow-sm);
     transition: border-color 0.2s;
     appearance: none;
-    webkit-appearance: none;
-    moz-appearance: none;
-   
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .filter-group:has(.sort-dropdown) {
@@ -707,6 +730,12 @@ main {
     display: none;
 }
 
+#driver-container {
+    /* Matches .driver-card's scroll-margin-top so paging (changePage in
+       script.js) also clears the sticky navbar when it scrolls here. */
+    scroll-margin-top: 90px;
+}
+
 .driver-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -719,6 +748,10 @@ main {
     border-radius: var(--radius-md);
     animation: fadeIn 0.5s ease forwards;
     will-change: transform;
+    /* Keeps the sticky navbar from covering the card header when
+       script.js scrolls a card to the top of the viewport (deep links,
+       trends chart jumps, clicking a card header). */
+    scroll-margin-top: 90px;
 }
 
 @keyframes fadeIn {
@@ -875,7 +908,7 @@ main {
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.85rem;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
@@ -920,7 +953,7 @@ main {
     cursor: pointer;
     font-family: var(--ff-mono);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.2s;
     text-transform: uppercase;
     border-radius: var(--radius-full);

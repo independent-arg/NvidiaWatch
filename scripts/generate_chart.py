@@ -5,10 +5,10 @@ embedding in README.md. Dark-only because GitHub's file viewer renders
 README images on a dark surface for the vast majority of viewers (default
 GitHub theme), so a light variant added complexity without real benefit.
 
-This script is read-only with respect to docs/data.json: it never edits
-driver/bug data, it only reads it to draw a chart. Colors below mirror the
-CSS custom properties in docs/style.css so the static README image matches
-the live, interactive chart on the site.
+This script is read-only with respect to src/_data/drivers.json: it never
+edits driver/bug data, it only reads it to draw a chart. Colors below mirror
+the CSS custom properties in src/style.css so the static README image
+matches the live, interactive chart on the site.
 
 Usage:
     python scripts/generate_chart.py
@@ -18,11 +18,11 @@ import math
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-DATA_PATH = REPO_ROOT / "docs" / "data.json"
-OUTPUT_DIR = REPO_ROOT / "docs" / "assets"
+DATA_PATH = REPO_ROOT / "src" / "_data" / "drivers.json"
+OUTPUT_DIR = REPO_ROOT / "src" / "assets"
 SITE_URL = "https://independent-arg.github.io/NvidiaWatch/#trends"
 
-# Design tokens mirrored from docs/style.css :root (dark theme)
+# Design tokens mirrored from src/style.css :root (dark theme)
 THEMES = {
     "dark": {
         "bg": "#1e1c21",
