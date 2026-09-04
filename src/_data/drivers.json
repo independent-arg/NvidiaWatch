@@ -2423,5 +2423,14 @@
                 "fixed_in": "Fixed (616.56)"
             }
         ]
+    },
+    {
+        "version": "616.64",
+        "bugs": [
+            {
+                "description": "Intermittent flicker may be observed in browsers when navigating to certain websites [6673430]",
+                "fixed_in": null
+            }
+        ]
     }
 ]
