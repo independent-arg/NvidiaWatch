@@ -293,7 +293,7 @@ mark.highlight {
 
 .hero p {
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 0.8125rem;
     letter-spacing: .3px;
     margin-bottom: 2rem;
 }
@@ -466,9 +466,8 @@ mark.highlight {
     box-shadow: var(--shadow-sm);
     transition: border-color 0.2s;
     appearance: none;
-    webkit-appearance: none;
-    moz-appearance: none;
-   
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .filter-group:has(.sort-dropdown) {
@@ -560,6 +559,7 @@ mark.highlight {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    scroll-margin-top: 88px;
 }
 
 .trends-header {
@@ -700,6 +700,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    scroll-margin-top: 88px;
 }
 
 /* ==========================================================================
@@ -716,10 +717,6 @@ main {
     gap: 1.25rem;
     margin-bottom: 3rem;
     position: relative;
-}
-
-.grid-layout::before {
-    display: none;
 }
 
 .driver-card {
@@ -779,10 +776,6 @@ main {
     justify-content: center;
     text-align: center;
     position: relative;
-}
-
-.driver-header::after {
-    display: none;
 }
 
 /* In the default (list) view the header column is narrow and tall, so the
