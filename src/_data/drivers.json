@@ -2432,5 +2432,31 @@
                 "fixed_in": null
             }
         ]
+    },
+    {
+        "version": "616.92",
+        "bugs": [
+            {
+                "description": "Intermittent flicker may be observed in browsers when navigating to certain websites [6673430]",
+                "fixed_in": "Fixed (616.92)"
+            },
+            {
+                "description": "Fixed an issue where virtual displays could not be created after updating to driver 616.56 [6674464]",
+                "fixed_in": "Fixed (616.92)"
+            },
+            {
+                "description": "Remote Desktop Protocol (RDP) sessions may display a black screen after updating to driver 616.56 [6687328]",
+                "fixed_in": "Fixed (616.92)"
+            },
+            {
+                "description": "Assassin's Creed Shadows may crash to desktop after extended gameplay after updating to driver 616.56 [6685219]",
+                "fixed_in": null
+            },
+            {
+                "description": "Judgement/Lost Judgement/ Virtua Fighter 5 R.E.V.O. may fail to launch after updating to driver 616.56 [6681537]",
+                "fixed_in": null
+            }
+        ]
     }
+]
 ]
