@@ -203,11 +203,11 @@
 <title>610.88: 9 bugs (9 fixed, 0 pending)</title>
 <rect x="1138.41" y="301.9" width="11.53" height="38.1" fill="#8fc7ab"/>
 <title>616.56: 7 bugs (7 fixed, 0 pending)</title>
-<rect x="1151.44" y="334.6" width="11.53" height="5.4" fill="#e08276"/>
-<title>616.64: 1 bugs (0 fixed, 1 pending)</title>
-<rect x="1164.47" y="323.7" width="11.53" height="16.3" fill="#8fc7ab"/>
-<rect x="1164.47" y="312.8" width="11.53" height="10.9" fill="#e08276"/>
-<title>616.92: 5 bugs (3 fixed, 2 pending)</title>
+<rect x="1151.44" y="334.6" width="11.53" height="5.4" fill="#8fc7ab"/>
+<title>616.64: 1 bugs (1 fixed, 0 pending)</title>
+<rect x="1164.47" y="329.1" width="11.53" height="10.9" fill="#8fc7ab"/>
+<rect x="1164.47" y="318.2" width="11.53" height="10.9" fill="#e08276"/>
+<title>616.92: 4 bugs (2 fixed, 2 pending)</title>
 <line x1="44" y1="340" x2="1176" y2="340" stroke="#3a3740" stroke-width="1"/>
 <text x="49.8" y="360" text-anchor="start" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="11" fill="#a3a0a8">526.47</text>
 <text x="1170.2" y="360" text-anchor="end" font-family="'DM Mono', 'SFMono-Regular', Consolas, monospace" font-size="11" fill="#a3a0a8">616.92</text>
