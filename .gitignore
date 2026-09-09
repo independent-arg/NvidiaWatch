@@ -2,7 +2,3 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
-
-node_modules/
-_site/
-.cache/

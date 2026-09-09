@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Validate drivers.json against the schema the site (Eleventy templates) and
-the chart generator (generate_chart.py) both assume. Run by CI on every
-push/PR (see .github/workflows/validate-and-deploy.yml) so a malformed
-hand-edit to the data fails the build instead of silently breaking the live
-site.
+Validate docs/drivers.json against the schema the site (script.js) and the
+chart generator (generate_chart.py) both assume. Run by CI on every push/PR
+(see .github/workflows/validate-and-deploy.yml) so a malformed hand-edit to
+drivers.json fails the build instead of silently breaking the live site.
 
 This intentionally rejects unexpected keys, not just missing required ones -
 drivers.json is edited by hand, so a typo'd key (e.g. "fixed" instead of
@@ -142,7 +141,7 @@ def validate_data(filepath):
 
 def main():
     parser = argparse.ArgumentParser(description="Validate drivers.json structure and formatting.")
-    parser.add_argument("file", nargs="?", default="src/_data/drivers.json", help="Path to drivers.json file to validate (default: src/_data/drivers.json)")
+    parser.add_argument("file", nargs="?", default="docs/drivers.json", help="Path to drivers.json file to validate (default: docs/drivers.json)")
     args = parser.parse_args()
 
     success = validate_data(args.file)

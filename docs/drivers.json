@@ -2450,7 +2450,7 @@
             },
             {
                 "description": "Judgement/Lost Judgement/ Virtua Fighter 5 R.E.V.O. may fail to launch after updating to driver 616.56 [6681537]",
-                "fixed_in": null
+                "fixed_in": "Fixed (OTA profile update)"
             }
         ]
     }
