@@ -2429,17 +2429,13 @@
         "bugs": [
             {
                 "description": "Intermittent flicker may be observed in browsers when navigating to certain websites [6673430]",
-                "fixed_in": null
+                "fixed_in": "Fixed (616.92)"
             }
         ]
     },
     {
         "version": "616.92",
         "bugs": [
-            {
-                "description": "Intermittent flicker may be observed in browsers when navigating to certain websites [6673430]",
-                "fixed_in": "Fixed (616.92)"
-            },
             {
                 "description": "Fixed an issue where virtual displays could not be created after updating to driver 616.56 [6674464]",
                 "fixed_in": "Fixed (616.92)"
