@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-view="masonry">
+<html lang="en" data-theme="dark" data-view="masonry" class="no-js">
 <head>
     <meta charset="UTF-8">
 
     <script>
         (function () {
+            document.documentElement.classList.replace('no-js', 'js');
             var saved = localStorage.getItem('theme');
             if (saved === 'light' || saved === 'dark') {
                 document.documentElement.setAttribute('data-theme', saved);
@@ -40,18 +41,13 @@
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <noscript>
-        <div style="padding: 2rem; text-align: center; font-family: sans-serif; background: #1e1c21; color: #f2f2f2;">
-            NvidiaWatch needs JavaScript enabled to load and display driver data. Please enable JavaScript and reload the page.
-        </div>
-    </noscript>
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
                 <span class="logo-icon"><ion-icon name="bug-outline"></ion-icon></span>
                 <h1>NvidiaWatch</h1>
             </div>
-            <div class="nav-controls">
+            <div class="nav-controls js-only">
                 <button id="view-mode-toggle" class="theme-btn" aria-label="Switch view mode" aria-pressed="false">
                     <ion-icon name="list-outline" class="icon-timeline"></ion-icon>
                     <ion-icon name="apps-outline" class="icon-masonry"></ion-icon>
@@ -70,17 +66,17 @@
             <p>A searchable log of NVIDIA driver bugs, pulled from release notes and tracked until they're actually fixed.</p>
             
             <div class="quick-links">
-                <a href="https://www.reddit.com/r/nvidia/comments/1vyxagw/game_ready_studio_driver_61656_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
+                <a href="https://www.reddit.com/r/nvidia/comments/1wbl39w/game_ready_studio_driver_61692_faqdiscussion/" target="_blank" rel="noopener noreferrer" class="link-btn reddit">
                     <ion-icon name="logo-reddit"></ion-icon>
                     <span>Join the Reddit Talk</span>
                 </a>
-                <a href="https://www.nvidia.com/en-us/geforce/forums/game-ready-drivers/13/589348/geforce-grd-61656-feedback-thread-released-82626/" target="_blank" rel="noopener noreferrer" class="link-btn nvidia">
+                <a href="https://www.nvidia.com/en-us/geforce/forums/game-ready-drivers/13/590373/geforce-grd-61692-feedback-thread-released-9926/" target="_blank" rel="noopener noreferrer" class="link-btn nvidia">
                     <ion-icon name="chatbubbles-outline"></ion-icon>
                     <span>Official Feedback</span>
                 </a>
             </div>
 
-            <div class="search-wrapper">
+            <div class="search-wrapper js-only">
                 <ion-icon name="search-outline" class="search-icon"></ion-icon>
                 <input type="text" id="search-input" placeholder="Search for a game, bug, or driver version..." aria-label="Search drivers and issues">
                 <button id="search-clear" class="search-clear-btn hidden" aria-label="Clear search">
@@ -88,8 +84,7 @@
                 </button>
             </div>
 
-            <!-- New UX Controls: Filters and Sorting -->
-            <div class="filter-controls">
+            <div class="filter-controls js-only">
                 <div class="filter-group">
                     <span class="filter-label">Status:</span>
                     <div class="filter-chips" id="status-filters">
@@ -133,7 +128,7 @@
                 <div class="trends-title">
                     <h3 id="trends-title">Bugs by driver</h3>
                 </div>
-                <div class="filter-chips" id="trends-range" role="group" aria-label="Chart range">
+                <div class="filter-chips js-only" id="trends-range" role="group" aria-label="Chart range">
                     <button class="chip" data-range="recent" aria-pressed="false">Latest 20</button>
                     <button class="chip" data-range="worst" aria-pressed="false">Most affected</button>
                     <button class="chip active" data-range="all" aria-pressed="true">All time</button>
@@ -142,24 +137,30 @@
             <div class="trends-legend">
                 <span class="legend-item"><span class="legend-swatch legend-swatch--fixed"></span>Fixed</span>
                 <span class="legend-item"><span class="legend-swatch legend-swatch--pending"></span>Pending</span>
-                <span class="legend-hint">Click a bar for details</span>
+                <span class="legend-hint js-only">Click a bar for details</span>
             </div>
             <div class="trends-chart-wrapper">
-                <svg id="trends-chart" class="trends-chart" role="img" aria-label="Bar chart of fixed and pending bugs by driver"></svg>
+                <img class="trends-chart-fallback no-js-only" src="assets/bugs-chart-dark.svg" alt="Bar chart of fixed and pending bugs by driver" width="1200" height="400" loading="lazy">
+                <svg id="trends-chart" class="trends-chart js-only" role="img" aria-label="Bar chart of fixed and pending bugs by driver"></svg>
             </div>
-            <div id="trends-tooltip" class="trends-tooltip" role="status" aria-live="polite">Loading chart…</div>
+            <div id="trends-tooltip" class="trends-tooltip js-only" role="status" aria-live="polite">Loading chart…</div>
         </section>
 
-        <div id="driver-container" class="masonry-layout" aria-live="polite" style="min-height: 600px;">
-            <div class="loading-state">
+        <div id="results-status" class="sr-only" aria-live="polite"></div>
+
+        <div id="driver-container" class="masonry-layout" style="min-height: 600px;">
+            <div class="loading-state js-only">
                 <ion-icon name="hourglass-outline"></ion-icon>
                 <p>Loading driver data...</p>
             </div>
+            <div class="no-results no-js-only">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <p>NvidiaWatch needs JavaScript to load and browse the driver list.</p>
+                <a class="clear-search-btn" href="https://github.com/independent-arg/NvidiaWatch/blob/main/docs/drivers.json" target="_blank" rel="noopener noreferrer">View the raw data on GitHub</a>
+            </div>
         </div>
 
-        <div class="pagination-container">
-            <!-- Pagination injected by script.js -->
-        </div>
+        <div class="pagination-container js-only"></div>
     </main>
 
     <footer>

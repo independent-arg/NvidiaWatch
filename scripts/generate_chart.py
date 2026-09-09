@@ -5,7 +5,7 @@ embedding in README.md. Dark-only because GitHub's file viewer renders
 README images on a dark surface for the vast majority of viewers (default
 GitHub theme), so a light variant added complexity without real benefit.
 
-This script is read-only with respect to docs/data.json: it never edits
+This script is read-only with respect to docs/drivers.json: it never edits
 driver/bug data, it only reads it to draw a chart. Colors below mirror the
 CSS custom properties in docs/style.css so the static README image matches
 the live, interactive chart on the site.
@@ -18,7 +18,7 @@ import math
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-DATA_PATH = REPO_ROOT / "docs" / "data.json"
+DATA_PATH = REPO_ROOT / "docs" / "drivers.json"
 OUTPUT_DIR = REPO_ROOT / "docs" / "assets"
 SITE_URL = "https://independent-arg.github.io/NvidiaWatch/#trends"
 
@@ -120,7 +120,7 @@ def build_svg(series, theme_name):
     )
     parts.append(
         f'<text x="{PAD_LEFT}" y="54" font-family="{FONT_MONO}" font-size="12" '
-        f'fill="{t["text_secondary"]}">{n} driver versions &#183; {esc(first_v)} &#8594; {esc(last_v)} &#183; auto-generated from data.json</text>'
+        f'fill="{t["text_secondary"]}">{n} driver versions &#183; {esc(first_v)} &#8594; {esc(last_v)} &#183; auto-generated from drivers.json</text>'
     )
 
     # Legend, top-right

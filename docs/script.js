@@ -2,7 +2,7 @@
 // as-is by GitHub Pages, so keeping this dependency-free means it works if
 // someone forks the repo and opens index.html directly.
 //
-// `allDrivers` is fetched once from data.json and never mutated; every filter,
+// `allDrivers` is fetched once from drivers.json and never mutated; every filter,
 // sort, search, and pagination is a UI-only derivation into `filteredDrivers`.
 // Search/filter/sort/page state is also mirrored into the URL query string
 // (see updateURL/loadStateFromURL) so a link someone shares reopens to the
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusChips = document.querySelectorAll('#status-filters .chip');
     const htmlEl = document.documentElement;
     const paginationContainer = document.querySelector('.pagination-container');
+    const resultsStatus = document.getElementById('results-status');
     const trendsChartSvg = document.getElementById('trends-chart');
     const trendsTooltip = document.getElementById('trends-tooltip');
     const trendsRangeChips = document.querySelectorAll('#trends-range .chip');
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let trendsRange = 'all';
     let resizeDebounceTimer = null;
 
-    // data.json versions are already 2-decimal strings (e.g. "581.80"), but
+    // drivers.json versions are already 2-decimal strings (e.g. "581.80"), but
     // this normalizes anything entered without the trailing zero (e.g. "581.8")
     // so the UI never shows an inconsistent number of decimals. Falls back to
     // the raw string for anything non-numeric rather than showing "NaN".
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return !isNaN(verNum) ? verNum.toFixed(2) : version;
     }
 
-    // Bug descriptions come from data.json, which the maintainer edits by hand -
+    // Bug descriptions come from drivers.json, which the maintainer edits by hand -
     // escaping before any innerHTML use keeps a stray "<" or "&" in a bug report
     // from breaking the layout (and is cheap insurance against future contributor edits).
     function escapeHTML(str) {
@@ -111,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage > 1) params.set('page', currentPage);
         if (currentFilter !== 'all') params.set('filter', currentFilter);
         if (currentSort !== 'version-desc') params.set('sort', currentSort);
-        const newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        const query = params.toString();
+        const newRelativePathQuery = window.location.pathname + (query ? "?" + query : "");
         const hash = window.location.hash;
         if (replace) {
             history.replaceState(null, '', newRelativePathQuery + hash);
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // The reverse of updateURL - runs once, right after data.json loads, so an
+    // The reverse of updateURL - runs once, right after drivers.json loads, so an
     // incoming shared link restores its search/page/filter/sort before the
     // first render instead of flashing the default view first.
     function loadStateFromURL() {
@@ -190,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    fetch('data.json')
+    fetch('drivers.json')
         .then(response => {
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             return response.json();
@@ -452,6 +454,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const driversToRender = filteredDrivers.slice(startIndex, startIndex + itemsPerPage);
 
+        resultsStatus.textContent = `${filteredDrivers.length} driver${filteredDrivers.length === 1 ? '' : 's'} found`;
+
         if (driversToRender.length === 0) {
             driverContainer.innerHTML = `
                 <div class="no-results" role="status">
@@ -501,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.target.closest('.copy-link-btn')) return;
                 const version = driver.version;
                 history.pushState(null, '', `#driver-${version}`);
-                document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById(`driver-${version}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
             header.addEventListener('keydown', (e) => {
                 if (e.target.closest('.copy-link-btn')) return;
@@ -574,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const el = document.getElementById(hash.slice(1));
                 if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     highlightDriverCard(el);
                 }
             }, 150);

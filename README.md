@@ -22,14 +22,14 @@ This database can help in several ways. For example, we can analyze which driver
 
 ## How it's built
 
-The site runs entirely on GitHub Pages - plain HTML, CSS, and JavaScript (no framework, no build step). Icons from Ionicons, fonts from Google Fonts. Data comes from `docs/data.json`, which you can update or contribute to.
+The site runs entirely on GitHub Pages - plain HTML, CSS, and JavaScript (no framework, no build step). Icons from Ionicons, fonts from Google Fonts. Data comes from `docs/drivers.json`, which you can update or contribute to.
  
 ```
 docs/
 ├── index.html
 ├── style.css
 ├── script.js
-├── data.json                 # driver and issue data
+├── drivers.json               # driver and issue data
 └── assets/
     └── bugs-chart-dark.svg   # auto-generated, see scripts/generate_chart.py
 ```
