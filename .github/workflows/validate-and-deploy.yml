@@ -12,23 +12,12 @@ on:
     branches: [ "main", "master" ]
   workflow_dispatch:
 
-# Required by actions/deploy-pages: id-token to mint the OIDC token Pages
-# deployment auth uses, pages to publish, contents:write so the chart-commit
-# step below can push back to the repo.
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-# Only one Pages deployment can run at a time; a second push while one is
-# still deploying waits for the first to finish rather than racing it.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
+    # contents: write so the chart-commit step below can push back to the repo.
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -83,6 +72,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate-and-build
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    # Required by actions/deploy-pages: id-token to mint the OIDC token Pages
+    # deployment auth uses, pages to publish.
+    permissions:
+      pages: write
+      id-token: write
+    # Only one Pages deployment can run at a time; a second push while one is
+    # still deploying waits for the first to finish rather than racing it.
+    # Scoped to this job only so PR runs (which never deploy) never queue
+    # behind an unrelated Pages deployment.
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
