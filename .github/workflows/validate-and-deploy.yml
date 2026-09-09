@@ -1,4 +1,4 @@
-# Runs on every push and PR so a broken data.json edit (or a bug in
+# Runs on every push and PR so a broken drivers.json edit (or a bug in
 # validate_data.py itself) is caught before it reaches the live site.
 # Only push/workflow_dispatch actually deploy - PRs run the same
 # validate-and-build job as a check, but stop there (see the `if:` guards
@@ -42,19 +42,19 @@ jobs:
         run: |
           python -m unittest discover -s tests
 
-      - name: Validate data.json
+      - name: Validate drivers.json
         run: |
-          python scripts/validate_data.py docs/data.json
+          python scripts/validate_data.py docs/drivers.json
 
       - name: Generate trend chart
         run: |
           python scripts/generate_chart.py
 
       # generate_chart.py always rewrites the SVG, but its output only
-      # actually changes when data.json changed - `git diff --quiet` skips
+      # actually changes when drivers.json changed - `git diff --quiet` skips
       # the commit+push (and the extra CI run it would trigger) when the
       # chart came out byte-identical to what's already committed.
-      - name: Commit updated chart if data.json changed it
+      - name: Commit updated chart if drivers.json changed it
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
           if ! git diff --quiet -- docs/assets; then
